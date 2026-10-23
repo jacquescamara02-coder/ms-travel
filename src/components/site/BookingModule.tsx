@@ -8,8 +8,9 @@ import { cn } from "@/lib/utils";
 import { btn } from "./primitives";
 
 type Kind = "billet" | "hotel" | "visa";
-type Values = Record<string, string>;
-type Errors = Record<string, string>;
+type Key = "nom"|"prenom"|"email"|"whatsapp"|"paysActuel"|"villeActuelle"|"typeVoyage"|"paysDest"|"villeDest"|"dateDepart"|"dateRetour"|"adultes"|"enfants"|"classe"|"remarques"|"dateArrivee"|"dateDepartHotel"|"chambres"|"categorie"|"paysVisa"|"dateVoyage"|"duree"|"personnes"|"details";
+type Values = Partial<Record<Key, string>>;
+type Errors = Partial<Record<string, string>>;
 
 const CHOICES: { id: Kind; title: string; text: string; Icon: typeof Plane }[] = [
   { id: "billet", title: "Achat de billet", text: "Billets d'avion aller simple ou aller-retour", Icon: Plane },
@@ -75,7 +76,7 @@ const fmtDate = (s?: string) => (s ? new Date(s + "T00:00:00").toLocaleDateStrin
 export function buildWhatsAppMessage(kind: Kind, v: Values) {
   const lines = [`*${TITLES[kind]} — M-S TRAVEL*`, ""];
   const group = (title: string, keys: string[]) => {
-    const rows = keys.filter((k) => v[k]).map((k) => `• ${LABELS[k]} : ${k.startsWith("date") ? fmtDate(v[k]) : v[k]}`);
+    const rows = (keys as Key[]).filter((k) => v[k]).map((k) => `• ${LABELS[k]} : ${k.startsWith("date") ? fmtDate(v[k]) : v[k]}`);
     if (rows.length) lines.push(`*${title}*`, ...rows, "");
   };
   group("Vos informations", ["nom", "prenom", "email", "whatsapp"]);
@@ -96,7 +97,7 @@ const DEFAULTS: Record<Kind, Values> = {
 /* ---------- Field primitives ---------- */
 const inputCls = "h-12 w-full rounded-xl border border-input bg-background px-4 text-sm text-foreground transition-colors duration-200 placeholder:text-muted-foreground/70 hover:border-navy/30 focus:border-gold focus:outline-none focus:ring-4 focus:ring-gold/15 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive";
 
-function Field({ id, label, required, error, children, className }: { id: string; label: string; required?: boolean; error?: string; children: ReactNode; className?: string }) {
+function Field({ id, label, required, error, children, className }: { id: string; label: string; required?: boolean; error?: string | undefined; children: ReactNode; className?: string | undefined }) {
   return (
     <div className={className}>
       <label htmlFor={id} className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-navy/80">
@@ -133,13 +134,13 @@ export function BookingModule() {
     setErrors({});
     setStatus("idle");
   };
-  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const set = (k: Key) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const val = e.target.value;
     setValues((v) => ({ ...v, [k]: val, ...(k === "paysDest" ? { villeDest: "" } : {}) }));
     if (errors[k]) setErrors((er) => ({ ...er, [k]: "" }));
   };
-  const a = (k: string) => ({ id: `f-${k}`, name: k, value: values[k] ?? "", onChange: set(k), "aria-invalid": !!errors[k] || undefined, "aria-describedby": errors[k] ? `f-${k}-err` : undefined });
-  const cities = useMemo(() => DEST_CITIES[values.paysDest] ?? [], [values.paysDest]);
+  const a = (k: Key) => ({ id: `f-${k}`, name: k, value: values[k] ?? "", onChange: set(k), "aria-invalid": !!errors[k] || undefined, "aria-describedby": errors[k] ? `f-${k}-err` : undefined });
+  const cities = useMemo(() => DEST_CITIES[values.paysDest ?? ""] ?? [], [values.paysDest]);
   const today = new Date().toISOString().slice(0, 10);
 
   const submit = async (e: React.FormEvent) => {
@@ -158,7 +159,7 @@ export function BookingModule() {
     const url = waLink(buildWhatsAppMessage(kind, v));
     // Open WhatsApp synchronously-ish to avoid popup blockers
     const win = window.open("", "_blank");
-    const { nom, prenom, email, whatsapp, ...details } = v;
+    const { nom = "", prenom = "", email = "", whatsapp = "", ...details } = v;
     const { error } = await supabase.from("booking_requests").insert({ request_type: kind, last_name: nom, first_name: prenom, email, whatsapp, details });
     if (error) console.error(error);
     if (win) win.location.href = url;
@@ -283,7 +284,7 @@ export function BookingModule() {
   );
 }
 
-function DestFields({ a, errors, cities, hasCountry }: { a: (k: string) => object; errors: Errors; cities: string[]; hasCountry: boolean }) {
+function DestFields({ a, errors, cities, hasCountry }: { a: (k: Key) => object; errors: Errors; cities: string[]; hasCountry: boolean }) {
   return (
     <>
       <Field id="f-paysDest" label="Pays de destination" required error={errors.paysDest}>
