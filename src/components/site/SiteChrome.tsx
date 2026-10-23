@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowUp, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { ArrowUp, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { CONTACT } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { btn, FacebookIcon, InstagramIcon, Logo, WhatsAppIcon } from "./primitives";
@@ -82,20 +82,6 @@ export function Header() {
           </div>
         </nav>
       </div>
-      {pathname !== "/" && (
-        <div className="pointer-events-none mx-auto max-w-7xl px-5 pt-3 md:px-6">
-          <button
-            type="button"
-            onClick={() => (window.history.length > 1 ? window.history.back() : (window.location.href = "/"))}
-            className="group pointer-events-auto inline-flex cursor-pointer items-center gap-2 rounded-full glass-light px-4 py-2 text-sm font-semibold text-navy-foreground shadow-soft transition-all duration-200 hover:-translate-x-0.5 hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
-            aria-label="Retour à la page précédente"
-          >
-            <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
-            Retour
-          </button>
-        </div>
-      )}
-
       {/* Mobile full-screen menu */}
       <div className={cn("fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-gradient grain transition-all duration-500 lg:hidden", open ? "visible opacity-100" : "invisible opacity-0")} aria-hidden={!open}>
         <div className="flex h-20 shrink-0 items-center justify-between px-5">

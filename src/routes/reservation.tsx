@@ -14,6 +14,7 @@ import { BookingModule } from "@/components/site/BookingModule";
 
 import { PageHero } from "@/components/site/sections";
 import heroWing from "@/assets/hero-wing.jpg";
+import { PageBack } from "@/components/site/PageBack";
 
 export const Route = createFileRoute("/reservation")({
   head: () => ({ meta: [
@@ -21,6 +22,8 @@ export const Route = createFileRoute("/reservation")({
     { name: "description", content: "Demandez votre billet d'avion, votre hôtel ou votre visa tourisme en ligne. Réponse sous 30 min en jours ouvrés via WhatsApp." },
     { property: "og:title", content: "Réservez votre voyage avec M-S TRAVEL" },
     { property: "og:description", content: "Billets, hôtels et visas tourisme : envoyez votre demande en 2 minutes." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
   ] }),
   component: ReservationPage,
 });
@@ -31,6 +34,7 @@ function ReservationPage() {
       <div className="bg-navy-gradient grain h-28" aria-hidden />
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
+          <PageBack />
           <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.6fr]">
             <div className="lg:sticky lg:top-28">
               <SectionHeading center={false} eyebrow="Commencez l'aventure" title={<>Réservez votre voyage <span className="text-gold-gradient">maintenant</span></>} text="Remplissez le formulaire et notre équipe vous contactera rapidement pour organiser votre voyage idéal." />

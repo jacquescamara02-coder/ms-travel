@@ -1,4 +1,5 @@
 # M-S TRAVEL — Roadmap
+- [x] Placer Retour dans le début des pages, sans suivi du défilement ni chevauchement.
 - [x] 5 pages (Accueil, Destinations, À propos, Nouveautés, Blog + articles)
 - [x] Formulaires billet / hôtel / visa → WhatsApp + enregistrement
 - [x] Newsletter enregistrée

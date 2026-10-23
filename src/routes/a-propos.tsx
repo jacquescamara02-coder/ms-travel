@@ -12,6 +12,8 @@ export const Route = createFileRoute("/a-propos")({
       { name: "description", content: "Découvrez M-S TRAVEL : plus de 10 ans d'expertise visa tourisme, Hadj & Omra à Ouagadougou. Nos valeurs, notre histoire et notre localisation." },
       { property: "og:title", content: "À propos de M-S TRAVEL" },
       { property: "og:description", content: "Votre agence de voyage de confiance à Ouagadougou depuis plus de 10 ans." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,
