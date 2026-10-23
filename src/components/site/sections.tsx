@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Loader2, Mail, Plus, Quote, X } from "lucide-react";
@@ -21,7 +22,7 @@ export function PageHero({ image, badge, title, text, children, bottom }: { imag
           <span className="eyebrow inline-flex items-center gap-2 rounded-full glass-light px-4 py-2 text-gold">{badge}</span>
         </Reveal>
         <Reveal delay={100}>
-          <h1 className="mt-6 max-w-4xl text-5xl font-extrabold leading-[0.98] md:text-7xl">{title}</h1>
+          <AnimatedHeading as="h1" className="mt-6 max-w-4xl text-5xl font-extrabold leading-[0.98] md:text-7xl">{title}</AnimatedHeading>
         </Reveal>
         <Reveal delay={200}>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-foreground/80">{text}</p>
@@ -153,7 +154,7 @@ export function Newsletter() {
         <div className="relative grid items-center gap-10 md:grid-cols-2">
           <div>
             <p className="eyebrow text-gold">Newsletter</p>
-            <h2 className="mt-3 text-4xl font-extrabold">Restez informé de nos offres</h2>
+            <AnimatedHeading className="mt-3 text-4xl font-extrabold">Restez informé de nos offres</AnimatedHeading>
             <p className="mt-4 text-navy-foreground/75">Recevez nos dernières promotions, nouvelles destinations et conseils voyage directement dans votre boîte mail.</p>
           </div>
           {state === "done" ? (

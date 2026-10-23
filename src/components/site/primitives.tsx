@@ -2,9 +2,10 @@ import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from 
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/ms-travel-logo.png.asset.json";
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 
 export const btn = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ease-out focus-visible:outline-none disabled:opacity-60 disabled:pointer-events-none active:scale-[0.98]",
+  "orbit-border-btn inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ease-out focus-visible:outline-none disabled:opacity-60 disabled:pointer-events-none active:scale-[0.98]",
   {
     variants: {
       variant: {
@@ -96,7 +97,7 @@ export function SectionHeading({ eyebrow, title, text, light, center = true }: {
         {eyebrow}
         {center && <span className="h-px w-8 bg-gold" aria-hidden />}
       </p>
-      <h2 className={cn("mt-4 text-4xl font-extrabold leading-[1.05] md:text-5xl", light ? "text-navy-foreground" : "text-navy")}>{title}</h2>
+      <AnimatedHeading className={cn("mt-4 text-4xl font-extrabold leading-[1.05] md:text-5xl", light ? "text-navy-foreground" : "text-navy")}>{title}</AnimatedHeading>
       {text && <p className={cn("mt-5 text-base leading-relaxed md:text-lg", light ? "text-navy-foreground/75" : "text-muted-foreground")}>{text}</p>}
     </Reveal>
   );

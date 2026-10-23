@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, BedDouble, Check, ChevronLeft, ChevronRight, Compass, Headset, MapPin, Moon, Phone, Plane, Stamp, Star, MessageCircle } from "lucide-react";
@@ -139,7 +140,7 @@ function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6">
           <Reveal className="max-w-4xl">
             <p className="eyebrow text-gold">Votre agence au Burkina Faso</p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight text-navy md:text-5xl">Agence de Voyage au Burkina Faso spécialisée dans les Billets d'Avion, Visas, Hadj, Omra et Voyages Internationaux</h2>
+            <AnimatedHeading className="mt-4 text-3xl font-extrabold leading-tight text-navy md:text-5xl">Agence de Voyage au Burkina Faso spécialisée dans les Billets d'Avion, Visas, Hadj, Omra et Voyages Internationaux</AnimatedHeading>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">M-S Travel est une agence de voyage basée à Ouagadougou au Burkina Faso, spécialisée dans l'organisation complète de voyages internationaux. Nous accompagnons les particuliers, les entreprises, les ONG, les institutions et les professionnels dans la réservation de billets d'avion, les demandes de visa, les réservations d'hôtels, les assurances voyage, les voyages d'affaires, les séjours touristiques, le Hadj, la Omra ainsi que toutes les formalités administratives liées au voyage.</p>
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -149,13 +150,13 @@ function ServicesPage() {
               { t: "Agence de voyage à Ouagadougou", p: "Si vous recherchez une agence de voyage fiable à Ouagadougou ou au Burkina Faso, M-S Travel met à votre disposition des conseillers expérimentés capables de gérer toutes les étapes de votre projet de voyage : réservation de billet d'avion, obtention de visa, organisation touristique, accompagnement administratif et assistance avant, pendant et après votre départ." },
             ].map((b, k) => (
               <Reveal key={b.t} delay={k * 80} className="rounded-3xl border bg-card p-8 shadow-soft">
-                <h2 className="text-2xl font-extrabold text-navy">{b.t}</h2>
+                <AnimatedHeading className="text-2xl font-extrabold text-navy">{b.t}</AnimatedHeading>
                 <p className="mt-4 leading-relaxed text-muted-foreground">{b.p}</p>
               </Reveal>
             ))}
           </div>
           <Reveal className="mt-16">
-            <h2 className="text-3xl font-extrabold text-navy">Nos principaux services</h2>
+            <AnimatedHeading className="text-3xl font-extrabold text-navy">Nos principaux services</AnimatedHeading>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {SEO_SERVICES.map((s) => (
                 <li key={s} className="flex items-center gap-3 rounded-2xl border bg-card px-5 py-4 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-gold">
