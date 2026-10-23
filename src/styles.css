@@ -242,7 +242,6 @@
 :root {
   --orbit-highlight: var(--gold-soft);
   --orbit-accent: var(--gold);
-  --orbit-gradient: conic-gradient(from var(--orbit-angle), transparent 0% 65%, var(--orbit-accent) 78%, var(--orbit-highlight) 88%, transparent 100%);
   --shutter-accent: var(--gold);
 }
 button, .orbit-border-btn {
@@ -256,7 +255,7 @@ button::before, .orbit-border-btn::before {
   z-index: 2;
   border-radius: inherit;
   padding: 2px;
-  background: var(--orbit-gradient);
+  background: conic-gradient(from var(--orbit-angle), transparent 0% 65%, var(--orbit-accent) 78%, var(--orbit-highlight) 88%, transparent 100%);
   -webkit-mask: linear-gradient(var(--card) 0 0) content-box, linear-gradient(var(--card) 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(var(--card) 0 0) content-box, linear-gradient(var(--card) 0 0);
