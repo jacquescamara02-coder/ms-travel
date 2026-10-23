@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Render page-back navigation inside each page's normal content flow (shared PageHero or the page introduction), never in the fixed Header, to prevent scrolling overlap.

@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import type { BlogPost, Destination } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Stars, Tilt } from "./primitives";
+import { PageBack } from "./PageBack";
 
 export function PageHero({ image, badge, title, text, children, bottom }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export function PageHero({ image, badge, title, text, children, bottom }: { imag
       <div className="absolute inset-0 -z-10 bg-night-overlay" />
       <div className="grain absolute inset-0 -z-10" />
       <div className="mx-auto w-full max-w-7xl px-6">
+        <PageBack />
         <Reveal>
           <span className="eyebrow inline-flex items-center gap-2 rounded-full glass-light px-4 py-2 text-gold">{badge}</span>
         </Reveal>
