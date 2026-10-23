@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, type HTMLAttributes, type ReactNode } from "react";
+import { Children, cloneElement, isValidElement, useEffect, useState, type HTMLAttributes, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +30,9 @@ function shutterNodes(nodes: ReactNode, reduced: boolean, offset = { value: 0 })
 
 export default function HeroText({ text, children, className }: { text?: string; children?: ReactNode; className?: string }) {
   const reduced = useReducedMotion();
-  return <span className={cn("shutter-text", className)}>{shutterNodes(children ?? text ?? "", reduced === true)}</span>;
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+  return <span className={cn("shutter-text", className)}>{shutterNodes(children ?? text ?? "", hydrated && reduced === true)}</span>;
 }
 
 export function AnimatedHeading({ as: Tag = "h2", children, ...props }: HTMLAttributes<HTMLHeadingElement> & { as?: "h1" | "h2" }) {
