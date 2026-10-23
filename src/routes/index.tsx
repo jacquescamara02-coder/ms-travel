@@ -99,7 +99,7 @@ function HeroSlider() {
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 md:pr-20">
             <div key={s.code} className="text-right animate-in fade-in slide-in-from-bottom-2 duration-700" aria-live="polite">
               <p className="eyebrow text-gold">{s.code} · {String(i + 1).padStart(2, "0")}/{String(n).padStart(2, "0")}</p>
               <p className="font-display text-2xl font-extrabold">{s.name}</p>

@@ -145,7 +145,8 @@ export function BookingModule() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const parsed = schemas[kind].safeParse(values);
+    const blank = { nom: "", prenom: "", email: "", whatsapp: "", paysActuel: "", villeActuelle: "", paysDest: "", villeDest: "", dateDepart: "", dateArrivee: "", dateDepartHotel: "", paysVisa: "", dateVoyage: "", details: "" };
+    const parsed = schemas[kind].safeParse({ ...blank, ...values });
     if (!parsed.success) {
       const errs: Errors = {};
       for (const i of parsed.error.issues) errs[String(i.path[0]) as Key] ??= i.message;
