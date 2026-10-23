@@ -12,9 +12,6 @@ import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/pr
 import { BlogCard, Faq, Newsletter, Reviews, StatsBand } from "@/components/site/sections";
 import { BookingModule } from "@/components/site/BookingModule";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
 import { PageHero } from "@/components/site/sections";
 import heroWing from "@/assets/hero-wing.jpg";
 
