@@ -21,6 +21,8 @@ export const Route = createFileRoute("/services")({
     { name: "description", content: "Billetterie aérienne, visa tourisme, Hadj & Omra, hôtels et circuits depuis Ouagadougou. Découvrez tous les services de M-S TRAVEL." },
     { property: "og:title", content: "Les services de M-S TRAVEL" },
     { property: "og:description", content: "Billets d'avion, visas tourisme, pèlerinages et séjours organisés depuis le Burkina Faso." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
   ] }),
   component: ServicesPage,
 });

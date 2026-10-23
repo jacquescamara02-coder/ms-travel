@@ -14,6 +14,8 @@ export const Route = createFileRoute("/destinations")({
       { name: "description", content: "Dubaï, Turquie, Thaïlande, Maroc, Kenya, Qatar… 14 destinations visa tourisme garanties depuis Ouagadougou avec M-S TRAVEL." },
       { property: "og:title", content: "Explorez nos 14 destinations visa tourisme" },
       { property: "og:description", content: "Visas tourisme, billets et séjours vers l'Afrique, l'Asie et le Moyen-Orient depuis le Burkina Faso." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: DestinationsPage,

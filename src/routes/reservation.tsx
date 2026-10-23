@@ -22,6 +22,8 @@ export const Route = createFileRoute("/reservation")({
     { name: "description", content: "Demandez votre billet d'avion, votre hôtel ou votre visa tourisme en ligne. Réponse sous 30 min en jours ouvrés via WhatsApp." },
     { property: "og:title", content: "Réservez votre voyage avec M-S TRAVEL" },
     { property: "og:description", content: "Billets, hôtels et visas tourisme : envoyez votre demande en 2 minutes." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
   ] }),
   component: ReservationPage,
 });

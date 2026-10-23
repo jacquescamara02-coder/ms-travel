@@ -14,6 +14,8 @@ export const Route = createFileRoute("/nouveautes")({
       { name: "description", content: "Offres spéciales, Hadj 2027, Camp VIP à La Mecque, Maroc sans visa et forfaits Dubaï : toutes les nouveautés M-S TRAVEL." },
       { property: "og:title", content: "Actualités & Nouveautés M-S TRAVEL" },
       { property: "og:description", content: "Promotions exclusives, pèlerinages et nouvelles destinations depuis Ouagadougou." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: News,

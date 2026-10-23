@@ -14,6 +14,8 @@ export const Route = createFileRoute("/blog/")({
       { name: "description", content: "Guides de destination, conseils pratiques, informations visa et actualités de M-S Travel pour voyager mieux depuis Ouagadougou." },
       { property: "og:title", content: "Blog & Actualités — M-S TRAVEL" },
       { property: "og:description", content: "Conseils voyage, visas et pèlerinages depuis le Burkina Faso." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: BlogPage,

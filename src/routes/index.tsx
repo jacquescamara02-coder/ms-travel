@@ -19,6 +19,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Billets d'avion au meilleur prix, visas touristiques rapides, Hadj & Omra et hôtels. Agence de voyage de confiance à Ouagadougou depuis plus de 10 ans." },
       { property: "og:title", content: "M-S TRAVEL — Explorez le monde sans limites" },
       { property: "og:description", content: "Billets, visas tourisme, Hadj & Omra : tout depuis Ouagadougou avec M-S TRAVEL." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
