@@ -7,6 +7,7 @@ import { btn, FacebookIcon, InstagramIcon, Logo, WhatsAppIcon } from "./primitiv
 
 const NAV = [
   { to: "/", label: "Accueil" },
+  { to: "/services", label: "Services" },
   { to: "/destinations", label: "Destinations" },
   { to: "/a-propos", label: "À propos" },
   { to: "/blog", label: "Blog" },
@@ -74,7 +75,7 @@ export function Header() {
             ))}
           </ul>
           <div className="flex items-center gap-3">
-            <Link to="/" hash="reservation" className={cn(btn({ variant: "cta", size: "sm" }), "hidden sm:inline-flex")}>Réserver</Link>
+            <Link to="/reservation" className={cn(btn({ variant: "cta", size: "sm" }), "hidden sm:inline-flex")}>Réserver</Link>
             <button onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground lg:hidden" aria-label="Ouvrir le menu">
               <Menu className="h-5 w-5" />
             </button>
@@ -96,7 +97,7 @@ export function Header() {
           ))}
         </ul>
         <div className="absolute inset-x-6 bottom-10 space-y-4">
-          <Link to="/" hash="reservation" onClick={() => setOpen(false)} className={cn(btn({ variant: "cta", size: "lg" }), "w-full")}>Réserver</Link>
+          <Link to="/reservation" onClick={() => setOpen(false)} className={cn(btn({ variant: "cta", size: "lg" }), "w-full")}>Réserver</Link>
           <div className="flex items-center justify-between text-sm text-navy-foreground/75">
             <a href={CONTACT.phone2Href}>{CONTACT.phone2}</a>
             <Socials />
@@ -123,7 +124,7 @@ export function Footer() {
           <h3 className="eyebrow text-gold">Navigation</h3>
           <ul className={cn(col, "mt-5")}>
             {NAV.map((n) => <li key={n.to}><Link to={n.to} className={link}>{n.label}</Link></li>)}
-            <li><Link to="/" hash="reservation" className={link}>Réservation</Link></li>
+            <li><Link to="/reservation" className={link}>Réservation</Link></li>
           </ul>
         </div>
         <div>

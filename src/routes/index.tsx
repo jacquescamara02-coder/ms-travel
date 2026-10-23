@@ -67,7 +67,7 @@ function HeroSlider() {
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-foreground/80">Billets d'avion au meilleur prix, visas touristiques rapides et accompagnement complet pour votre Hadj — tout depuis Ouagadougou.</p>
           </Reveal>
           <Reveal delay={340} className="mt-10 flex flex-wrap gap-3">
-            <a href="#reservation" className={btn({ variant: "cta", size: "lg" })}>Réserver maintenant <ArrowRight className="h-5 w-5" /></a>
+            <Link to="/reservation" className={btn({ variant: "cta", size: "lg" })}>Réserver maintenant <ArrowRight className="h-5 w-5" /></Link>
             <Link to="/destinations" className={btn({ variant: "ghostLight", size: "lg" })}>Voir les destinations</Link>
           </Reveal>
         </div>
@@ -160,7 +160,6 @@ function Home() {
           })}
         </div>
       </section>
-
       {/* Popular destinations carousel */}
       <section className="bg-navy-gradient grain relative overflow-hidden py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
@@ -189,118 +188,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Partner countries */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Nos pays partenaires" title="Destinations Touristiques" text="Spécialisés dans les destinations à procédures rapides et garanties. Pas de visa Europe, USA ou Canada." />
-        <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {PARTNER_TILES.map((slug, k) => {
-            const d = destBySlug(slug);
-            return (
-              <Reveal key={slug} delay={k * 70}>
-                <Link to="/destinations" hash={slug} className="group relative block aspect-[4/3] overflow-hidden rounded-3xl">
-                  <img src={d.image} alt={d.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/85 to-transparent" />
-                  <div className="absolute bottom-4 left-5 flex items-baseline gap-2 text-navy-foreground">
-                    <span className="font-display text-2xl font-extrabold md:text-3xl">{d.name}</span>
-                    <span className="text-sm font-bold text-gold">{d.code}</span>
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Visa Tourisme */}
-      <section className="bg-secondary/60 py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Procédures simplifiées" title={<>Visa <span className="text-gold-gradient">Tourisme</span></>} text="Chez M-S TRAVEL, nous croyons que le tourisme est une porte vers la liberté. Nous vous accompagnons pas à pas pour des destinations fascinantes." />
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {VISA_CARDS.map((v, k) => {
-              const d = destBySlug(v.slug);
-              return (
-                <Reveal key={v.slug} delay={k * 60}>
-                  <Tilt className="h-full">
-                    <article className="group flex h-full flex-col rounded-3xl border bg-card p-6 shadow-soft">
-                      <div className="flex items-center justify-between">
-                        <span className="h-12 w-12 overflow-hidden rounded-2xl"><img src={d.image} alt="" loading="lazy" className="h-full w-full object-cover" /></span>
-                        <span className="rounded-full bg-navy px-3 py-1 font-display text-xs font-bold text-gold">{d.code}</span>
-                      </div>
-                      <h3 className="mt-5 text-xl font-extrabold text-navy">{d.name}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.text}</p>
-                    </article>
-                  </Tilt>
-                </Reveal>
-              );
-            })}
-          </div>
-          <Reveal className="mx-auto mt-14 max-w-4xl rounded-3xl border-l-4 border-cta bg-card p-8 shadow-soft">
-            <p className="eyebrow text-cta">Informations importantes</p>
-            <p className="mt-3 leading-relaxed text-foreground/85">Nous ne faisons pas de visa d'études, de travail ou de regroupement familial. Nous ne traitons pas les demandes pour les pays européens, américains ou canadiens. Nos services concernent uniquement les visas touristiques pour des destinations accessibles, rapides et sûres.</p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Hadj & Omra */}
-      <section className="relative isolate overflow-hidden bg-navy py-24 text-navy-foreground md:py-32">
-        <img src={mecca} alt="La Kaaba et les pèlerins à La Mecque" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover opacity-50" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="max-w-2xl">
-            <SectionHeading light center={false} eyebrow="Voyage spirituel" title={<>Hadj <span className="text-gold-gradient">& Omra</span></>} />
-            <Reveal delay={100}>
-              <p className="mt-6 text-lg leading-relaxed text-navy-foreground/80">Le pèlerinage n'est pas qu'un simple déplacement, c'est l'<strong className="text-gold">accomplissement d'une vie spirituelle</strong>. Chez M-S TRAVEL, nous prenons soin de chaque détail pour que votre voyage vers la Mecque soit fluide, serein et mémorable.</p>
-            </Reveal>
-            <ul className="mt-8 space-y-3">
-              {["Assistance complète pour votre visa et vos documents", "Formation et accompagnement avant le départ", "Gestion de la billetterie et de l'hébergement à La Mecque", "Suivi jusqu'à votre arrivée sur les lieux saints", "Guide spirituel et logistique sur place"].map((t, k) => (
-                <Reveal as="li" key={t} delay={150 + k * 60} className="flex items-center gap-3">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold text-navy"><Check className="h-4 w-4" /></span>{t}
-                </Reveal>
-              ))}
-            </ul>
-            <Reveal delay={500} className="mt-10">
-              <a href={waLink("Bonjour M-S TRAVEL, je souhaite un accompagnement pour le Hadj / la Omra.")} target="_blank" rel="noreferrer" className={btn({ variant: "gold", size: "lg" })}>
-                <MessageCircle className="h-5 w-5" /> Demander mon accompagnement
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Booking */}
-      <section id="reservation" className="scroll-mt-24 py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.6fr]">
-            <div className="lg:sticky lg:top-28">
-              <SectionHeading center={false} eyebrow="Commencez l'aventure" title={<>Réservez votre voyage <span className="text-gold-gradient">maintenant</span></>} text="Remplissez le formulaire et notre équipe vous contactera rapidement pour organiser votre voyage idéal." />
-              <Reveal delay={100} className="relative mt-8 hidden overflow-hidden rounded-3xl lg:block">
-                <img src={couple} alt="Couple souriant tenant passeports et billets" loading="lazy" className="aspect-[4/5] w-full object-cover" />
-                <div className="absolute inset-x-4 bottom-4 rounded-2xl glass p-4 text-navy-foreground">
-                  <p className="eyebrow text-gold">Appelez-nous</p>
-                  <p className="mt-1 font-display font-bold">{CONTACT.phone1} | {CONTACT.phone2}</p>
-                </div>
-              </Reveal>
-              <div className="mt-6 grid gap-3">
-                <a href={CONTACT.phone1Href} className="flex items-center gap-4 rounded-2xl border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-gold hover:shadow-soft">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-navy text-gold"><Phone className="h-5 w-5" /></span>
-                  <span><span className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">Téléphone</span><span className="font-semibold text-navy">{CONTACT.phone1} | {CONTACT.phone2}</span></span>
-                </a>
-                <a href={CONTACT.whatsappUrl} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-2xl border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-gold hover:shadow-soft">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-whatsapp text-navy"><MessageCircle className="h-5 w-5" /></span>
-                  <span><span className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">WhatsApp</span><span className="font-semibold text-navy">{CONTACT.phone2}</span></span>
-                </a>
-                <div className="flex items-start gap-4 rounded-2xl border bg-card p-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-navy text-gold"><MapPin className="h-5 w-5" /></span>
-                  <span><span className="block text-xs font-bold uppercase tracking-wider text-muted-foreground">Adresse</span><span className="text-sm text-navy">Nonsin, échangeur du Nord — Immeuble orange après la passerelle, Ouagadougou. BP : {CONTACT.bp}</span></span>
-                </div>
-              </div>
-            </div>
-            <Reveal delay={150}><BookingModule /></Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* About teaser */}
       <section className="bg-secondary/60 py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
@@ -325,7 +212,7 @@ function Home() {
                 ))}
               </ul>
             </Reveal>
-            <Reveal delay={300} className="mt-10"><Link to="/a-propos" className={btn({ variant: "navy", size: "lg" })}>Découvrez nos services <ArrowRight className="h-5 w-5" /></Link></Reveal>
+            <Reveal delay={300} className="mt-10"><Link to="/services" className={btn({ variant: "navy", size: "lg" })}>Découvrez nos services <ArrowRight className="h-5 w-5" /></Link></Reveal>
           </div>
         </div>
       </section>
@@ -337,81 +224,6 @@ function Home() {
       </section>
 
       <StatsBand stats={[{ value: 500, suffix: "+", label: "Clients satisfaits" }, { value: 14, suffix: "+", label: "Destinations" }, { value: 10, suffix: "+", label: "Ans d'expérience" }, { value: 100, suffix: "%", label: "Visa tourisme" }]} />
-
-      {/* Latest news */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading center={false} eyebrow="Promotions actuelles" title="Dernières nouveautés" />
-          <Reveal><Link to="/nouveautes" className={btn({ variant: "outline" })}>Toutes les nouveautés <ArrowRight className="h-4 w-4" /></Link></Reveal>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {NEWS.slice(0, 3).map((n, k) => (
-            <Reveal key={n.id} delay={k * 80}>
-              <Tilt className="h-full">
-                <Link to="/nouveautes" className="group flex h-full flex-col overflow-hidden rounded-3xl border bg-card shadow-soft">
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img src={n.image} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <span className="absolute left-4 top-4 rounded-full bg-cta px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-cta-foreground">{n.badge}</span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="eyebrow text-gold">{n.tag} · {n.date}</p>
-                    <h3 className="mt-3 line-clamp-2 text-lg font-extrabold text-navy">{n.title}</h3>
-                  </div>
-                </Link>
-              </Tilt>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* SEO block */}
-      <section className="bg-secondary/60 py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <Reveal className="max-w-4xl">
-            <p className="eyebrow text-gold">Votre agence au Burkina Faso</p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-tight text-navy md:text-5xl">Agence de Voyage au Burkina Faso spécialisée dans les Billets d'Avion, Visas, Hadj, Omra et Voyages Internationaux</h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">M-S Travel est une agence de voyage basée à Ouagadougou au Burkina Faso, spécialisée dans l'organisation complète de voyages internationaux. Nous accompagnons les particuliers, les entreprises, les ONG, les institutions et les professionnels dans la réservation de billets d'avion, les demandes de visa, les réservations d'hôtels, les assurances voyage, les voyages d'affaires, les séjours touristiques, le Hadj, la Omra ainsi que toutes les formalités administratives liées au voyage.</p>
-          </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              { t: "Pourquoi choisir M-S Travel ?", p: "Voyager demande une organisation rigoureuse. Notre équipe accompagne chaque client depuis la préparation du dossier jusqu'au retour de voyage. Nous recherchons les meilleurs itinéraires, les meilleurs tarifs et les solutions les plus adaptées selon votre budget et votre destination. Notre objectif est simple : rendre chaque voyage plus simple, plus rapide et plus sécurisé." },
-              { t: "Destinations populaires", p: "Nous accompagnons nos voyageurs vers de nombreuses destinations internationales telles que Dubai, Turquie, Thaïlande, Chine, Maroc, Arabie Saoudite, Qatar, France, Canada, États-Unis, Royaume-Uni ainsi que plusieurs pays d'Europe, d'Afrique, d'Asie et du Moyen-Orient." },
-              { t: "Agence de voyage à Ouagadougou", p: "Si vous recherchez une agence de voyage fiable à Ouagadougou ou au Burkina Faso, M-S Travel met à votre disposition des conseillers expérimentés capables de gérer toutes les étapes de votre projet de voyage : réservation de billet d'avion, obtention de visa, organisation touristique, accompagnement administratif et assistance avant, pendant et après votre départ." },
-            ].map((b, k) => (
-              <Reveal key={b.t} delay={k * 80} className="rounded-3xl border bg-card p-8 shadow-soft">
-                <h2 className="text-2xl font-extrabold text-navy">{b.t}</h2>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{b.p}</p>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="mt-16">
-            <h2 className="text-3xl font-extrabold text-navy">Nos principaux services</h2>
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {SEO_SERVICES.map((s) => (
-                <li key={s} className="flex items-center gap-3 rounded-2xl border bg-card px-5 py-4 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-gold">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-accent text-gold"><Check className="h-4 w-4" /></span>{s}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-          <div className="mt-20">
-            <SectionHeading eyebrow="FAQ" title="Questions fréquentes" />
-            <div className="mt-10"><Faq items={FAQ_HOME} /></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Blog */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading center={false} eyebrow="Actualités & conseils" title="Notre Blog Voyage" />
-          <Reveal><Link to="/blog" className={btn({ variant: "outline" })}>Tous les articles <ArrowRight className="h-4 w-4" /></Link></Reveal>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {[BLOG[0]!, BLOG[2]!].map((p, k) => <Reveal key={p.slug} delay={k * 80}><BlogCard p={p} /></Reveal>)}
-        </div>
-      </section>
-
       <Newsletter />
 
       {/* Final CTA */}
@@ -421,7 +233,7 @@ function Home() {
           <h2 className="text-4xl font-extrabold md:text-6xl">Votre prochain voyage commence ici</h2>
           <p className="mx-auto mt-5 max-w-xl text-lg opacity-90">Visa, billets, hôtel, Hadj : parlez à un conseiller M-S TRAVEL dès maintenant.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <a href="#reservation" className={btn({ variant: "navy", size: "lg" })}>Réserver maintenant</a>
+            <Link to="/reservation" className={btn({ variant: "navy", size: "lg" })}>Réserver maintenant</Link>
             <a href={CONTACT.whatsappUrl} target="_blank" rel="noreferrer" className={btn({ variant: "ghostLight", size: "lg" })}><MessageCircle className="h-5 w-5" />WhatsApp</a>
           </div>
         </Reveal>

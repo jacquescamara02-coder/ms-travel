@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as DestinationsRouteImport } from './routes/destinations'
 import { Route as NouveautesRouteImport } from './routes/nouveautes'
+import { Route as ReservationRouteImport } from './routes/reservation'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -36,6 +38,16 @@ const NouveautesRoute = NouveautesRouteImport.update({
   path: '/nouveautes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReservationRoute = ReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -52,6 +64,8 @@ export interface FileRoutesByFullPath {
   '/a-propos': typeof AProposRoute
   '/destinations': typeof DestinationsRoute
   '/nouveautes': typeof NouveautesRoute
+  '/reservation': typeof ReservationRoute
+  '/services': typeof ServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -60,6 +74,8 @@ export interface FileRoutesByTo {
   '/a-propos': typeof AProposRoute
   '/destinations': typeof DestinationsRoute
   '/nouveautes': typeof NouveautesRoute
+  '/reservation': typeof ReservationRoute
+  '/services': typeof ServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -69,6 +85,8 @@ export interface FileRoutesById {
   '/a-propos': typeof AProposRoute
   '/destinations': typeof DestinationsRoute
   '/nouveautes': typeof NouveautesRoute
+  '/reservation': typeof ReservationRoute
+  '/services': typeof ServicesRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -79,6 +97,8 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/destinations'
     | '/nouveautes'
+    | '/reservation'
+    | '/services'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +107,8 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/destinations'
     | '/nouveautes'
+    | '/reservation'
+    | '/services'
     | '/blog/$slug'
     | '/blog'
   id:
@@ -95,6 +117,8 @@ export interface FileRouteTypes {
     | '/a-propos'
     | '/destinations'
     | '/nouveautes'
+    | '/reservation'
+    | '/services'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -104,6 +128,8 @@ export interface RootRouteChildren {
   AProposRoute: typeof AProposRoute
   DestinationsRoute: typeof DestinationsRoute
   NouveautesRoute: typeof NouveautesRoute
+  ReservationRoute: typeof ReservationRoute
+  ServicesRoute: typeof ServicesRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -138,6 +164,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NouveautesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reservation': {
+      id: '/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof ReservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -160,6 +200,8 @@ const rootRouteChildren: RootRouteChildren = {
   AProposRoute: AProposRoute,
   DestinationsRoute: DestinationsRoute,
   NouveautesRoute: NouveautesRoute,
+  ReservationRoute: ReservationRoute,
+  ServicesRoute: ServicesRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
