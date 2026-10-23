@@ -40,7 +40,7 @@ export function RoundCarousel({ items }: { items: RoundItem[] }) {
       if (!drag.current) {
         if (target.current !== null) {
           const d = target.current - angle.current;
-          angle.current += d * 0.12;
+          angle.current += reduce ? d : d * 0.12;
           if (Math.abs(d) < 0.05) target.current = null;
         } else if (Math.abs(velocity.current) > 0.01) {
           angle.current += velocity.current;
@@ -84,6 +84,10 @@ export function RoundCarousel({ items }: { items: RoundItem[] }) {
         style={{ perspective: `${size.r * 3}px`, height: size.h + 120 }}
         onMouseEnter={() => (hover.current = true)}
         onMouseLeave={() => (hover.current = false)}
+        onFocusCapture={() => (hover.current = true)}
+        onBlurCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) hover.current = false;
+        }}
         onPointerDown={(e) => {
           drag.current = { x: e.clientX, moved: 0, last: 0 };
           target.current = null;
