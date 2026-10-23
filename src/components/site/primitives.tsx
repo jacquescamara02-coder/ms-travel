@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";\nimport logoAsset from "@/assets/ms-travel-logo.png.asset.json";
+import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/ms-travel-logo.png.asset.json";
 
 export const btn = cva(
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ease-out focus-visible:outline-none disabled:opacity-60 disabled:pointer-events-none active:scale-[0.98]",
