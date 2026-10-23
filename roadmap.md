@@ -1,5 +1,5 @@
 # M-S TRAVEL — Roadmap
-- [ ] Appliquer les bordures orbitales aux boutons et l’effet shutter aux grands titres, puis vérifier les pages.
+- [x] Appliquer les bordures orbitales aux boutons et l’effet shutter aux grands titres, puis vérifier les pages.
 - [x] Placer Retour dans le début des pages, sans suivi du défilement ni chevauchement.
 - [x] 5 pages (Accueil, Destinations, À propos, Nouveautés, Blog + articles)
 - [x] Formulaires billet / hôtel / visa → WhatsApp + enregistrement
