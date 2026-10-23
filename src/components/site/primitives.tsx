@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";\nimport logoAsset from "@/assets/ms-travel-logo.png.asset.json";
 
 export const btn = cva(
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ease-out focus-visible:outline-none disabled:opacity-60 disabled:pointer-events-none active:scale-[0.98]",
@@ -160,17 +160,8 @@ export function WhatsAppIcon(p: { className?: string }) {
 
 export function Logo({ light = true }: { light?: boolean }) {
   return (
-    <span className="flex items-center gap-3">
-      {/* Emplacement logo : remplacer par le logo officiel M-S TRAVEL */}
-      <span className="grid h-11 w-11 place-items-center rounded-xl bg-cta text-cta-foreground shadow-cta">
-        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
-          <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" />
-        </svg>
-      </span>
-      <span className="leading-none">
-        <span className={cn("block font-display text-lg font-extrabold tracking-tight", light ? "text-navy-foreground" : "text-navy")}>M-S TRAVEL</span>
-        <span className={cn("mt-1 block text-[0.62rem] font-bold tracking-[0.28em]", light ? "text-gold" : "text-gold")}>AGENCE DE VOYAGE</span>
-      </span>
+    <span className={cn("inline-flex items-center rounded-xl px-2.5 py-1.5", light ? "bg-background shadow-soft" : "")}>
+      <img src={logoAsset.url} alt="M-S TRAVEL" className="h-11 w-auto md:h-12" />
     </span>
   );
 }
