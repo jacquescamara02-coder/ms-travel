@@ -1,4 +1,5 @@
 # M-S TRAVEL — Roadmap
+- [x] Adapter les destinations populaires au style roundcarousel et vérifier navigation et affichage.
 - [x] Appliquer les bordures orbitales aux boutons et l’effet shutter aux grands titres, puis vérifier les pages.
 - [x] Placer Retour dans le début des pages, sans suivi du défilement ni chevauchement.
 - [x] 5 pages (Accueil, Destinations, À propos, Nouveautés, Blog + articles)

@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/primitives";
 import { BlogCard, Faq, Newsletter, Reviews, StatsBand } from "@/components/site/sections";
 import { BookingModule } from "@/components/site/BookingModule";
+import { RoundCarousel } from "@/components/site/RoundCarousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -147,25 +148,9 @@ function Home() {
             <Reveal><Link to="/destinations" className={btn({ variant: "gold" })}>Toutes les destinations <ArrowRight className="h-4 w-4" /></Link></Reveal>
           </div>
         </div>
-        <div className="mt-14 overflow-hidden">
-          <div className="flex w-max gap-5 px-6 animate-marquee [animation-duration:70s] hover:[animation-play-state:paused]">
-            {[...POPULAR, ...POPULAR].map((p, k) => {
-              const d = destBySlug(p.slug);
-              return (
-                <Link key={k} to="/destinations" hash={d.slug} className="group relative h-[420px] w-[280px] shrink-0 overflow-hidden rounded-3xl">
-                  <img src={d.image} alt={d.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full glass px-3 py-1 text-xs font-bold text-navy-foreground">{d.code}</span>
-                  <div className="absolute inset-x-5 bottom-5 text-navy-foreground">
-                    <p className="eyebrow text-gold">{p.label}</p>
-                    <p className="mt-1 font-display text-3xl font-extrabold">{d.name}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold opacity-0 transition-all duration-300 group-hover:opacity-100">Découvrir <ArrowRight className="h-4 w-4" /></span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+        <Reveal className="mt-8">
+          <RoundCarousel items={POPULAR.map((p) => { const d = destBySlug(p.slug); return { slug: d.slug, name: d.name, code: d.code, image: d.image, label: p.label }; })} />
+        </Reveal>
       </section>
       {/* About teaser */}
       <section className="bg-secondary/60 py-24 md:py-32">
