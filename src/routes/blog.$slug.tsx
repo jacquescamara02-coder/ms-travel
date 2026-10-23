@@ -70,7 +70,7 @@ function Article() {
         <div className="bg-navy-gradient mt-12 rounded-3xl p-8 text-center text-navy-foreground">
           <h2 className="text-2xl font-extrabold">Prêt à partir ?</h2>
           <p className="mt-2 text-navy-foreground/75">Nos experts vous accompagnent de A à Z.</p>
-          <Link to="/" hash="reservation" className={btn({ variant: "gold", size: "lg" }) + " mt-6"}>Demander un devis</Link>
+          <Link to="/reservation" className={btn({ variant: "gold", size: "lg" }) + " mt-6"}>Demander un devis</Link>
         </div>
       </div>
       <section className="mx-auto max-w-7xl px-6 pb-24">

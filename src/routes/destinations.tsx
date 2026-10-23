@@ -49,7 +49,7 @@ function DestinationsPage() {
         }
       >
         <a href="#liste" className={btn({ variant: "cta", size: "lg" })}>Voir toutes les destinations</a>
-        <Link to="/" hash="reservation" className={btn({ variant: "ghostLight", size: "lg" })}>Réserver maintenant</Link>
+        <Link to="/reservation" className={btn({ variant: "ghostLight", size: "lg" })}>Réserver maintenant</Link>
       </PageHero>
 
       <div id="liste" className="sticky top-20 z-30 scroll-mt-20 border-b glass-light bg-background/85 backdrop-blur-xl">
@@ -143,7 +143,7 @@ function DestinationModal({ d, onClose }: { d: Destination; onClose: () => void 
           <div className="mt-6 flex flex-wrap gap-2">{d.chips.map((c) => <span key={c} className="rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-navy">{c}</span>)}</div>
           <p className="mt-6 flex items-center gap-2 font-semibold text-success"><Check className="h-5 w-5" />{d.check}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/" hash="reservation" onClick={onClose} className={btn({ variant: "cta", size: "lg" })}>Demander mon visa <ArrowRight className="h-5 w-5" /></Link>
+            <Link to="/reservation" onClick={onClose} className={btn({ variant: "cta", size: "lg" })}>Demander mon visa <ArrowRight className="h-5 w-5" /></Link>
             <a href={waLink(`Bonjour M-S TRAVEL, je souhaite des informations sur un voyage / visa pour : ${d.name}.`)} target="_blank" rel="noreferrer" className={btn({ variant: "outline", size: "lg" })}>WhatsApp {CONTACT.phone2}</a>
           </div>
         </div>
