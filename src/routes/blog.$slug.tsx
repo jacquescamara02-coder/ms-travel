@@ -38,7 +38,7 @@ function Article() {
     const url = window.location.href;
     if (net === "copy") {
       navigator.clipboard.writeText(url);
-      return toast.success("Lien copié");
+      toast.success("Lien copié"); return;
     }
     const href = net === "wa" ? `https://wa.me/?text=${encodeURIComponent(`${post.title} ${url}`)}` : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
     window.open(href, "_blank", "noopener");

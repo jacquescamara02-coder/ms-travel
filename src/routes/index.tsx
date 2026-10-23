@@ -37,7 +37,7 @@ function HeroSlider() {
     const t = setTimeout(() => go(1), SLIDE_MS);
     return () => clearTimeout(t);
   }, [i, paused, go]);
-  const s = HERO_SLIDES[i];
+  const s = HERO_SLIDES[i]!;
 
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carrousel" aria-label="Destinations à la une">
@@ -408,7 +408,7 @@ function Home() {
           <Reveal><Link to="/blog" className={btn({ variant: "outline" })}>Tous les articles <ArrowRight className="h-4 w-4" /></Link></Reveal>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {[BLOG[0], BLOG[2]].map((p, k) => <Reveal key={p.slug} delay={k * 80}><BlogCard p={p} /></Reveal>)}
+          {[BLOG[0]!, BLOG[2]!].map((p, k) => <Reveal key={p.slug} delay={k * 80}><BlogCard p={p} /></Reveal>)}
         </div>
       </section>
 
