@@ -50,7 +50,7 @@ function HeroSlider() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/85 via-navy/30 to-transparent" />
       <div className="grain absolute inset-0 -z-10" />
 
-      <div className="mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-6 pb-40 pt-36 lg:grid-cols-[1.4fr_1fr]">
+      <div className="mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-6 pb-20 pt-36 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full glass-light px-4 py-2 text-xs font-bold tracking-wider">
@@ -88,30 +88,6 @@ function HeroSlider() {
         </div>
       </div>
 
-      {/* Caption + controls */}
-      <div className="absolute inset-x-0 bottom-0">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-6 pb-8 md:flex-row md:items-end md:justify-between">
-          <div className="flex gap-1.5" role="tablist" aria-label="Choisir une destination">
-            {HERO_SLIDES.map((sl, k) => (
-              <button key={sl.code} onClick={() => setI(k)} role="tab" aria-selected={k === i} aria-label={sl.name} className="group relative h-1 w-8 overflow-hidden rounded-full bg-navy-foreground/25 sm:w-12">
-                {k === i && <span key={`${i}-${paused}`} className="absolute inset-0 origin-left bg-gold" style={{ animation: paused ? "none" : `progress ${SLIDE_MS}ms linear forwards`, transform: paused ? "scaleX(1)" : undefined }} />}
-                {k < i && <span className="absolute inset-0 bg-navy-foreground/60" />}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center gap-5 md:pr-20">
-            <div key={s.code} className="text-right animate-in fade-in slide-in-from-bottom-2 duration-700" aria-live="polite">
-              <p className="eyebrow text-gold">{s.code} · {String(i + 1).padStart(2, "0")}/{String(n).padStart(2, "0")}</p>
-              <p className="font-display text-2xl font-extrabold">{s.name}</p>
-              <p className="text-sm text-navy-foreground/70">{s.tagline}</p>
-            </div>
-            <div className="flex gap-2">
-              <button onClick={() => go(-1)} aria-label="Destination précédente" className="grid h-12 w-12 place-items-center rounded-full glass-light transition-all hover:border-gold hover:text-gold"><ChevronLeft className="h-5 w-5" /></button>
-              <button onClick={() => go(1)} aria-label="Destination suivante" className="grid h-12 w-12 place-items-center rounded-full glass-light transition-all hover:border-gold hover:text-gold"><ChevronRight className="h-5 w-5" /></button>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
