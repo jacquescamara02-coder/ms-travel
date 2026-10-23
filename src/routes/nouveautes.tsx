@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Calendar, Check, Play, X } from "lucide-react";
@@ -90,7 +91,7 @@ function News() {
             <img src={open.image} alt="" className="aspect-[16/9] w-full object-cover" />
             <div className="p-6 md:p-10">
               <p className="eyebrow text-gold">{open.tag} · {open.date}</p>
-              <h2 id="nm-title" className="mt-3 text-3xl font-extrabold text-navy">{open.title}</h2>
+              <AnimatedHeading id="nm-title" className="mt-3 text-3xl font-extrabold text-navy">{open.title}</AnimatedHeading>
               <p className="mt-4 leading-relaxed text-foreground/85">{open.text}</p>
               {open.price && <p className="mt-6 inline-block rounded-2xl bg-accent px-5 py-3 font-display text-xl font-extrabold text-navy">Coût : {open.price}</p>}
               {open.details?.map((d) => (

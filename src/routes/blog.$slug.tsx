@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Check, Facebook, Link2, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/blog/$slug")({
   }),
   notFoundComponent: () => (
     <div className="mx-auto max-w-xl px-6 py-48 text-center">
-      <h1 className="text-3xl font-extrabold text-navy">Article introuvable</h1>
+      <AnimatedHeading as="h1" className="text-3xl font-extrabold text-navy">Article introuvable</AnimatedHeading>
       <Link to="/blog" className={btn({ variant: "cta", size: "md" }) + " mt-8"}>Retour au blog</Link>
     </div>
   ),
@@ -50,7 +51,7 @@ function Article() {
         <div className="mx-auto max-w-3xl">
           <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-navy-foreground/70 hover:text-gold"><ArrowLeft className="h-4 w-4" />Retour au blog</Link>
           <p className="eyebrow mt-8 text-gold">{post.category}</p>
-          <h1 className="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">{post.title}</h1>
+          <AnimatedHeading as="h1" className="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">{post.title}</AnimatedHeading>
           <p className="mt-6 text-sm text-navy-foreground/70">{post.date} · Par {post.author}</p>
         </div>
       </header>
@@ -69,13 +70,13 @@ function Article() {
           <button onClick={() => share("copy")} className={btn({ variant: "outline", size: "sm" })}><Link2 className="h-4 w-4" />Copier le lien</button>
         </div>
         <div className="bg-navy-gradient mt-12 rounded-3xl p-8 text-center text-navy-foreground">
-          <h2 className="text-2xl font-extrabold">Prêt à partir ?</h2>
+          <AnimatedHeading className="text-2xl font-extrabold">Prêt à partir ?</AnimatedHeading>
           <p className="mt-2 text-navy-foreground/75">Nos experts vous accompagnent de A à Z.</p>
           <Link to="/reservation" className={btn({ variant: "gold", size: "lg" }) + " mt-6"}>Demander un devis</Link>
         </div>
       </div>
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <h2 className="text-3xl font-extrabold text-navy">Articles liés</h2>
+        <AnimatedHeading className="text-3xl font-extrabold text-navy">Articles liés</AnimatedHeading>
         <div className="mt-8 grid gap-6 md:grid-cols-2">{related.map((p) => <BlogCard key={p.slug} p={p} />)}</div>
       </section>
     </article>

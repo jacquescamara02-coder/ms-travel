@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, BedDouble, Check, ChevronLeft, ChevronRight, Compass, Headset, MapPin, Moon, Phone, Plane, Stamp, Star, MessageCircle } from "lucide-react";
@@ -39,7 +40,7 @@ function HeroSlider() {
     const t = setTimeout(() => go(1), SLIDE_MS);
     return () => clearTimeout(t);
   }, [i, paused, go]);
-  const s = HERO_SLIDES[i]!;
+  const s = HERO_SLIDES[i];
 
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carrousel" aria-label="Destinations à la une">
@@ -61,9 +62,9 @@ function HeroSlider() {
           </Reveal>
           <Reveal delay={100}><p className="eyebrow mt-8 text-gold">Votre partenaire de voyage de confiance</p></Reveal>
           <Reveal delay={180}>
-            <h1 className="mt-4 text-5xl font-extrabold leading-[0.95] sm:text-6xl lg:text-[5.5rem]">
+            <AnimatedHeading as="h1" className="mt-4 text-5xl font-extrabold leading-[0.95] sm:text-6xl lg:text-[5.5rem]">
               Explorez le monde <span className="text-gold-gradient">sans limites</span> avec M-S TRAVEL
-            </h1>
+            </AnimatedHeading>
           </Reveal>
           <Reveal delay={260}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-foreground/80">Billets d'avion au meilleur prix, visas touristiques rapides et accompagnement complet pour votre Hadj — tout depuis Ouagadougou.</p>
@@ -208,7 +209,7 @@ function Home() {
       <section className="px-4 pb-24 md:px-6">
         <Reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-cta px-8 py-16 text-center text-cta-foreground shadow-cta md:py-20">
           <Plane className="absolute -left-6 top-6 h-32 w-32 -rotate-12 opacity-10" aria-hidden />
-          <h2 className="text-4xl font-extrabold md:text-6xl">Votre prochain voyage commence ici</h2>
+          <AnimatedHeading className="text-4xl font-extrabold md:text-6xl">Votre prochain voyage commence ici</AnimatedHeading>
           <p className="mx-auto mt-5 max-w-xl text-lg opacity-90">Visa, billets, hôtel, Hadj : parlez à un conseiller M-S TRAVEL dès maintenant.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link to="/reservation" className={btn({ variant: "navy", size: "lg" })}>Réserver maintenant</Link>

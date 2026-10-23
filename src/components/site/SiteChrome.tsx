@@ -23,7 +23,7 @@ function Socials({ className }: { className?: string }) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       {items.map(({ href, label, Icon }) => (
-        <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="grid h-8 w-8 place-items-center rounded-full border border-navy-foreground/15 text-navy-foreground/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold">
+        <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="orbit-border-btn grid h-8 w-8 place-items-center rounded-full border border-navy-foreground/15 text-navy-foreground/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-gold hover:text-gold">
           <Icon className="h-4 w-4" />
         </a>
       ))}
@@ -189,7 +189,7 @@ export function FloatingActions() {
         </svg>
         <ArrowUp className="h-5 w-5" />
       </button>
-      <a href={CONTACT.whatsappUrl} target="_blank" rel="noreferrer" aria-label="Discuter sur WhatsApp" className="relative grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-navy shadow-soft transition-transform duration-300 hover:scale-110">
+      <a href={CONTACT.whatsappUrl} target="_blank" rel="noreferrer" aria-label="Discuter sur WhatsApp" className="orbit-border-btn relative grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-navy shadow-soft transition-transform duration-300 hover:scale-110">
         <span className="absolute inset-0 rounded-full bg-whatsapp animate-pulse-ring" aria-hidden />
         <WhatsAppIcon className="relative h-7 w-7" />
       </a>

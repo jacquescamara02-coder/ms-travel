@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, MessageCircle, Search } from "lucide-react";
@@ -56,12 +57,12 @@ function BlogPage() {
           </div>
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <div className="bg-navy-gradient grain relative overflow-hidden rounded-3xl p-7 text-navy-foreground">
-              <h2 className="text-2xl font-extrabold">Votre prochain voyage</h2>
+              <AnimatedHeading className="text-2xl font-extrabold">Votre prochain voyage</AnimatedHeading>
               <p className="mt-3 text-sm text-navy-foreground/75">Visa, billets, séjours... Nos experts vous accompagnent de A à Z.</p>
               <Link to="/reservation" className={cn(btn({ variant: "gold" }), "mt-6 w-full")}>Demander un devis</Link>
             </div>
             <div className="rounded-3xl border bg-card p-7">
-              <h2 className="eyebrow text-gold">Catégories</h2>
+              <AnimatedHeading className="eyebrow text-gold">Catégories</AnimatedHeading>
               <ul className="mt-4 space-y-1">
                 {(["Tous", "Annonces", "Oumrah & Pèlerinage", "Voyage"] as const).map((c) => (
                   <li key={c}><button onClick={() => setCat(c)} className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-navy transition-colors hover:bg-accent"><span>{c === "Tous" ? "Tous les articles" : c}</span><span className="rounded-full bg-secondary px-2 text-xs">{c === "Tous" ? BLOG.length : count(c)}</span></button></li>
@@ -69,7 +70,7 @@ function BlogPage() {
               </ul>
             </div>
             <div className="rounded-3xl border bg-card p-7">
-              <h2 className="eyebrow text-gold">Voir aussi</h2>
+              <AnimatedHeading className="eyebrow text-gold">Voir aussi</AnimatedHeading>
               <ul className="mt-4 space-y-3 text-sm font-semibold text-navy">
                 <li><Link to="/nouveautes" className="flex items-center justify-between hover:text-cta">Offres & Nouveautés <ArrowRight className="h-4 w-4" /></Link></li>
                 <li><Link to="/destinations" className="flex items-center justify-between hover:text-cta">Destinations <ArrowRight className="h-4 w-4" /></Link></li>

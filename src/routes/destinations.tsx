@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Check, Search, X } from "lucide-react";
@@ -78,7 +79,7 @@ function DestinationsPage() {
           if (!items.length) return null;
           return (
             <div key={r} className="mb-20 last:mb-0">
-              <Reveal><h2 className="flex items-baseline gap-3 text-3xl font-extrabold text-navy md:text-4xl">{r}<span className="text-base font-semibold text-gold">— {items.length} destination{items.length > 1 ? "s" : ""}</span></h2></Reveal>
+              <Reveal><AnimatedHeading className="flex flex-wrap items-baseline gap-3 text-3xl font-extrabold text-navy md:text-4xl">{r}<span className="text-base font-semibold text-gold">— {items.length} destination{items.length > 1 ? "s" : ""}</span></AnimatedHeading></Reveal>
               <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {items.map((d, k) => <Reveal key={d.slug} delay={(k % 3) * 80}><DestinationCard d={d} onMore={() => setOpen(d)} /></Reveal>)}
               </div>
@@ -137,7 +138,7 @@ function DestinationModal({ d, onClose }: { d: Destination; onClose: () => void 
           <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
           <div className="absolute bottom-6 left-6 text-navy-foreground">
             <p className="eyebrow text-gold">{d.code} · {d.tagline}</p>
-            <h2 id="dm-title" className="text-4xl font-extrabold md:text-5xl">{d.name}</h2>
+            <AnimatedHeading id="dm-title" className="text-4xl font-extrabold md:text-5xl">{d.name}</AnimatedHeading>
           </div>
         </div>
         <div className="p-6 md:p-10">

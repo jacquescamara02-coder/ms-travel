@@ -1,3 +1,4 @@
+import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -21,7 +22,7 @@ function NotFoundComponent() {
     <div className="bg-navy-gradient grain flex min-h-screen items-center justify-center px-4 text-navy-foreground">
       <div className="max-w-md text-center">
         <p className="font-display text-8xl font-extrabold text-gold-gradient">404</p>
-        <h1 className="mt-4 text-2xl font-bold">Cette page s'est envolée</h1>
+        <AnimatedHeading as="h1" className="mt-4 text-2xl font-bold">Cette page s'est envolée</AnimatedHeading>
         <p className="mt-2 text-sm text-navy-foreground/70">La page que vous cherchez n'existe pas ou a été déplacée.</p>
         <div className="mt-8">
           <Link to="/" className="inline-flex h-12 items-center justify-center rounded-full bg-cta px-6 text-sm font-semibold text-cta-foreground shadow-cta transition-transform hover:-translate-y-0.5">
@@ -43,7 +44,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">Cette page n'a pas pu se charger</h1>
+        <AnimatedHeading as="h1" className="text-xl font-semibold tracking-tight text-foreground">Cette page n'a pas pu se charger</AnimatedHeading>
         <p className="mt-2 text-sm text-muted-foreground">Une erreur est survenue. Réessayez ou revenez à l'accueil.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
