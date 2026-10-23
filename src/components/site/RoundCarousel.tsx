@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export type RoundItem = { slug: string; name: string; code: string; label: string; image: string };
 
@@ -141,12 +142,12 @@ export function RoundCarousel({ items }: { items: RoundItem[] }) {
         </div>
       </div>
       <div className="mt-2 flex justify-center gap-3">
-        <button type="button" onClick={() => goTo(1)} aria-label="Destination précédente" className="grid h-12 w-12 place-items-center rounded-full glass-light text-navy-foreground transition-transform duration-200 hover:-translate-y-0.5">
+        <Button variant="ghost" size="icon" type="button" onClick={() => goTo(1)} aria-label="Destination précédente" className="grid h-12 w-12 place-items-center rounded-full glass-light text-navy-foreground transition-transform duration-200 hover:-translate-y-0.5">
           <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button type="button" onClick={() => goTo(-1)} aria-label="Destination suivante" className="grid h-12 w-12 place-items-center rounded-full glass-light text-navy-foreground transition-transform duration-200 hover:-translate-y-0.5">
+        </Button>
+        <Button variant="ghost" size="icon" type="button" onClick={() => goTo(-1)} aria-label="Destination suivante" className="grid h-12 w-12 place-items-center rounded-full glass-light text-navy-foreground transition-transform duration-200 hover:-translate-y-0.5">
           <ChevronRight className="h-5 w-5" />
-        </button>
+        </Button>
       </div>
     </div>
   );
