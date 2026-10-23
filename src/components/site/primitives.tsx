@@ -33,6 +33,7 @@ export function Reveal({ children, delay = 0, className, as: Tag = "div" }: { ch
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => {
+        if (!e) return;
         if (e.isIntersecting) {
           setVisible(true);
           io.disconnect();
@@ -54,7 +55,7 @@ export function Reveal({ children, delay = 0, className, as: Tag = "div" }: { ch
   );
 }
 
-export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: { value: number; suffix?: string; prefix?: string; duration?: number }) {
+export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: { value: number; suffix?: string | undefined; prefix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [n, setN] = useState(0);
   useEffect(() => {
@@ -62,7 +63,8 @@ export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: { 
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
+        if (!e) return;
+      if (!e?.isIntersecting) return;
       io.disconnect();
       if (reduce) return setN(value);
       const start = performance.now();

@@ -134,12 +134,12 @@ export function Newsletter() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = emailSchema.safeParse(email);
-    if (!parsed.success) return toast.error(parsed.error.issues[0].message);
+    if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Email invalide"); return; }
     setState("loading");
     const { error } = await supabase.from("newsletter_subscribers").insert({ email: parsed.data.toLowerCase() });
     if (error && error.code !== "23505") {
       setState("idle");
-      return toast.error("Inscription impossible pour le moment. Réessayez.");
+      toast.error("Inscription impossible pour le moment. Réessayez."); return;
     }
     setState("done");
     toast.success("Inscription confirmée — merci !");
