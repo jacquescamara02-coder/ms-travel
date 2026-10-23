@@ -61,7 +61,7 @@ export function Header() {
           <Socials />
         </div>
       </div>
-      <div className={cn("transition-all duration-300", scrolled ? "glass shadow-soft" : "bg-transparent")}>
+      <div className={cn("transition-all duration-300", scrolled ? "bg-navy shadow-soft border-b border-gold/20" : "bg-navy/95")}>
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-6" aria-label="Navigation principale">
           <Link to="/" aria-label="M-S TRAVEL — Accueil"><Logo /></Link>
           <ul className="hidden items-center gap-1 lg:flex">
@@ -97,19 +97,19 @@ export function Header() {
       )}
 
       {/* Mobile full-screen menu */}
-      <div className={cn("fixed inset-0 z-[60] bg-navy-gradient grain transition-all duration-500 lg:hidden", open ? "visible opacity-100" : "invisible opacity-0")} aria-hidden={!open}>
-        <div className="flex h-20 items-center justify-between px-5">
+      <div className={cn("fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-gradient grain transition-all duration-500 lg:hidden", open ? "visible opacity-100" : "invisible opacity-0")} aria-hidden={!open}>
+        <div className="flex h-20 shrink-0 items-center justify-between px-5">
           <Logo />
           <button onClick={() => setOpen(false)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground" aria-label="Fermer le menu"><X className="h-5 w-5" /></button>
         </div>
-        <ul className="mt-8 space-y-2 px-6">
+        <ul className="mt-4 flex-1 space-y-1 px-6">
           {NAV.map((n, i) => (
             <li key={n.to} style={{ transitionDelay: `${open ? 80 + i * 60 : 0}ms` }} className={cn("transition-all duration-500", open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
-              <Link to={n.to} className={cn("block py-3 font-display text-4xl font-extrabold", isActive(n.to) ? "text-gold" : "text-navy-foreground")}>{n.label}</Link>
+              <Link to={n.to} className={cn("block py-2.5 font-display text-3xl font-extrabold", isActive(n.to) ? "text-gold" : "text-navy-foreground")}>{n.label}</Link>
             </li>
           ))}
         </ul>
-        <div className="absolute inset-x-6 bottom-10 space-y-4">
+        <div className="shrink-0 space-y-4 px-6 pb-10 pt-6">
           <Link to="/reservation" onClick={() => setOpen(false)} className={cn(btn({ variant: "cta", size: "lg" }), "w-full")}>Réserver</Link>
           <div className="flex items-center justify-between text-sm text-navy-foreground/75">
             <a href={CONTACT.phone2Href}>{CONTACT.phone2}</a>
