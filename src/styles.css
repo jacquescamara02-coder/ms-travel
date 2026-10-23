@@ -266,15 +266,10 @@ button::before, .orbit-border-btn::before {
 button:hover::before, .orbit-border-btn:hover::before { animation-duration: 1.8s; }
 button:disabled::before, .orbit-border-btn[aria-disabled="true"]::before { animation: none; opacity: 0; }
 @keyframes orbit-border { to { --orbit-angle: 360deg; } }
-.shutter-text { letter-spacing: 0; overflow-wrap: anywhere; }
-.shutter-word { display: inline-block; max-width: 100%; }
-.shutter-char { position: relative; display: inline-block; overflow: clip; vertical-align: bottom; }
-.shutter-base { display: inline-block; }
-.shutter-slice { position: absolute; inset: 0; color: var(--shutter-accent); pointer-events: none; }
-.shutter-top { clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); }
-.shutter-middle { clip-path: polygon(0 35%, 100% 35%, 100% 65%, 0 65%); color: currentColor; }
-.shutter-bottom { clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); }
-.text-gold-gradient .shutter-base { background: var(--gradient-gold); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.letter-swing-text { letter-spacing: 0; overflow-wrap: anywhere; }
+.letter-swing-word { display: inline-block; max-width: 100%; }
+.letter-swing-char { display: inline-block; transform-origin: top center; }
+.text-gold-gradient .letter-swing-char { background: var(--gradient-gold); background-clip: text; -webkit-background-clip: text; color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -285,5 +280,5 @@ button:disabled::before, .orbit-border-btn[aria-disabled="true"]::before { anima
   }
   .reveal { opacity: 1; transform: none; }
   button::before, .orbit-border-btn::before { animation: none; }
-  .shutter-slice { display: none; }
+  .letter-swing-char { transform: none !important; opacity: 1 !important; }
 }
