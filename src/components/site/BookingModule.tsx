@@ -10,7 +10,7 @@ import { btn } from "./primitives";
 type Kind = "billet" | "hotel" | "visa";
 type Key = "nom"|"prenom"|"email"|"whatsapp"|"paysActuel"|"villeActuelle"|"typeVoyage"|"paysDest"|"villeDest"|"dateDepart"|"dateRetour"|"adultes"|"enfants"|"classe"|"remarques"|"dateArrivee"|"dateDepartHotel"|"chambres"|"categorie"|"paysVisa"|"dateVoyage"|"duree"|"personnes"|"details";
 type Values = Partial<Record<Key, string>>;
-type Errors = Partial<Record<string, string>>;
+type Errors = Values;
 
 const CHOICES: { id: Kind; title: string; text: string; Icon: typeof Plane }[] = [
   { id: "billet", title: "Achat de billet", text: "Billets d'avion aller simple ou aller-retour", Icon: Plane },
@@ -148,7 +148,7 @@ export function BookingModule() {
     const parsed = schemas[kind].safeParse(values);
     if (!parsed.success) {
       const errs: Errors = {};
-      for (const i of parsed.error.issues) errs[String(i.path[0])] ??= i.message;
+      for (const i of parsed.error.issues) errs[String(i.path[0]) as Key] ??= i.message;
       setErrors(errs);
       document.getElementById(`f-${Object.keys(errs)[0]}`)?.focus();
       toast.error("Merci de compléter les champs requis.");
