@@ -30,7 +30,7 @@ function News() {
   const list = NEWS.filter((n) => f === "Tout voir" || n.kind === f);
   return (
     <>
-      <PageHero image={wing} badge="Offres spéciales disponibles" title={<>Actualités & <span className="text-gold-gradient">Nouveautés</span></>} text="Découvrez nos dernières offres, promotions exclusives, nouvelles destinations et conseils voyage. M-S TRAVEL vous garde toujours informé pour voyager mieux.">
+      <PageHero image={wing} badge="Offres spéciales disponibles" title={<>Actualités & <span className="text-brand-red">Nouveautés</span></>} text="Découvrez nos dernières offres, promotions exclusives, nouvelles destinations et conseils voyage. M-S TRAVEL vous garde toujours informé pour voyager mieux.">
         <a href="#offres" className={btn({ variant: "cta", size: "lg" })}>Voir les offres</a>
         <Link to="/blog" className={btn({ variant: "ghostLight", size: "lg" })}>Lire le blog</Link>
       </PageHero>

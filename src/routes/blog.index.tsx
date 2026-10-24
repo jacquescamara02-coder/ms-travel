@@ -33,7 +33,7 @@ function BlogPage() {
 
   return (
     <>
-      <PageHero image={blogHero} badge="Conseils & actualités voyage" title={<>Blog & <span className="text-gold-gradient">Actualités</span></>} text="Guides de destination, conseils pratiques, informations visa et actualités de M-S Travel. Tout pour voyager mieux depuis Ouagadougou.">
+      <PageHero image={blogHero} badge="Conseils & actualités voyage" title={<>Blog & <span className="text-brand-red">Actualités</span></>} text="Guides de destination, conseils pratiques, informations visa et actualités de M-S Travel. Tout pour voyager mieux depuis Ouagadougou.">
         <form onSubmit={(e) => { e.preventDefault(); setQ(input.trim()); }} className="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search">
           <label className="relative flex-1">
             <span className="sr-only">Rechercher un article</span>

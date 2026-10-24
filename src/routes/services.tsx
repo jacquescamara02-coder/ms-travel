@@ -38,7 +38,7 @@ function ServicesPage() {
         <a href="#hadj" className={btn({ variant: "ghostLight", size: "lg" })}>Hadj & Omra</a>
       </PageHero>
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Ce que nous faisons" title={<>Nos <span className="text-gold-gradient">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou." />
+        <SectionHeading eyebrow="Ce que nous faisons" title={<>Nos <span className="text-brand-red">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou." />
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, k) => {
             const Icon = ICONS[s.icon];
@@ -83,7 +83,7 @@ function ServicesPage() {
       {/* Visa Tourisme */}
       <section className="bg-secondary/60 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Procédures simplifiées" title={<>Visa <span className="text-gold-gradient">Tourisme</span></>} text="Chez M-S TRAVEL, nous croyons que le tourisme est une porte vers la liberté. Nous vous accompagnons pas à pas pour des destinations fascinantes." />
+          <SectionHeading eyebrow="Procédures simplifiées" title={<>Visa <span className="text-brand-red">Tourisme</span></>} text="Chez M-S TRAVEL, nous croyons que le tourisme est une porte vers la liberté. Nous vous accompagnons pas à pas pour des destinations fascinantes." />
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {VISA_CARDS.map((v, k) => {
               const d = destBySlug(v.slug);
@@ -116,7 +116,7 @@ function ServicesPage() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl">
-            <SectionHeading light center={false} eyebrow="Voyage spirituel" title={<>Hadj <span className="text-gold-gradient">& Omra</span></>} />
+            <SectionHeading light center={false} eyebrow="Voyage spirituel" title={<>Hadj <span className="text-brand-red">& Omra</span></>} />
             <Reveal delay={100}>
               <p className="mt-6 text-lg leading-relaxed text-navy-foreground/80">Le pèlerinage n'est pas qu'un simple déplacement, c'est l'<strong className="text-gold">accomplissement d'une vie spirituelle</strong>. Chez M-S TRAVEL, nous prenons soin de chaque détail pour que votre voyage vers la Mecque soit fluide, serein et mémorable.</p>
             </Reveal>
