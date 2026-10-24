@@ -79,6 +79,75 @@ function About() {
         </div>
       </section>
 
+      {/* Mission & Vision */}
+      <section className="mx-auto max-w-7xl px-6 pb-24 md:pb-32">
+        <div className="grid gap-6 md:grid-cols-2">
+          <Reveal>
+            <Tilt className="h-full">
+              <article className="group h-full rounded-3xl border bg-card p-8 shadow-soft">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-navy text-gold transition-transform duration-500 group-hover:-rotate-6"><Target className="h-7 w-7" /></span>
+                <h3 className="mt-6 text-2xl font-extrabold text-navy">Notre mission</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">Faciliter l'organisation des voyages en proposant des solutions adaptées aux besoins des clients, un accompagnement professionnel et une assistance attentive à chaque étape de leur parcours.</p>
+              </article>
+            </Tilt>
+          </Reveal>
+          <Reveal delay={120}>
+            <Tilt className="h-full">
+              <article className="group h-full rounded-3xl border bg-card p-8 shadow-soft">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-navy text-gold transition-transform duration-500 group-hover:-rotate-6"><Eye className="h-7 w-7" /></span>
+                <h3 className="mt-6 text-2xl font-extrabold text-navy">Notre vision</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">Faire de M-S TRAVEL une agence de voyages de référence au Burkina Faso, reconnue pour son professionnalisme, la fiabilité de ses services, la qualité de son accompagnement et la solidité de ses relations avec ses clients et partenaires.</p>
+              </article>
+            </Tilt>
+          </Reveal>
+        </div>
+        <Reveal delay={200} className="mt-8">
+          <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">Les prestations effectivement disponibles sont communiquées par notre équipe selon la demande du client et les possibilités de prise en charge.</p>
+        </Reveal>
+      </section>
+
+      {/* Notre dirigeant */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <SectionHeading eyebrow="Notre dirigeant" title={<>M. Ould Ahmad Nouradine <span className="text-brand-red">BARRY</span></>} text="Fondateur et Gérant de M-S TRAVEL" />
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <Reveal>
+            <article className="h-full rounded-3xl border bg-card p-8 shadow-soft md:p-10">
+              <div className="flex items-center gap-4">
+                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gold-gradient font-display text-2xl font-extrabold text-navy shadow-gold">MB</span>
+                <div>
+                  <p className="font-display text-xl font-extrabold text-navy">M. Ould Ahmad Nouradine BARRY</p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Fondateur &amp; Gérant</p>
+                </div>
+              </div>
+              <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
+                <p>Entrepreneur burkinabè et professionnel du voyage, il cumule plus de <strong className="text-navy">quatorze années d'expérience</strong> dans le domaine de la billetterie aérienne. Son parcours, marqué par douze années d'exercice comme <strong className="text-navy">chef d'agence chez ARAFA VOYAGES de 2012 à 2024</strong>, lui a permis de développer des compétences en gestion d'agence, en relation clientèle et en organisation des prestations de voyage.</p>
+                <p>En fondant M-S TRAVEL en <strong className="text-navy">janvier 2020</strong>, il a donné forme à une ambition entrepreneuriale : développer une agence structurée, orientée vers la qualité du service et la confiance des clients.</p>
+                <p>Sa vision est de faire progresser durablement l'entreprise, de renforcer ses partenariats et de contribuer au développement économique du Burkina Faso.</p>
+              </div>
+            </article>
+          </Reveal>
+          <Reveal delay={120}>
+            <article className="flex h-full flex-col rounded-3xl border bg-card p-8 shadow-soft md:p-10">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-navy text-gold"><Quote className="h-7 w-7" /></span>
+              <h3 className="mt-6 text-2xl font-extrabold text-navy">Pourquoi choisir M-S TRAVEL ?</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">Choisir M-S TRAVEL, c'est bénéficier d'un interlocuteur professionnel pour préparer ses déplacements et être accompagné dans ses démarches de voyage. Notre approche repose sur :</p>
+              <ul className="mt-6 space-y-3">
+                {[
+                  "Une expérience professionnelle dans le secteur de la billetterie aérienne.",
+                  "Une écoute attentive des besoins des clients.",
+                  "Des informations claires sur les prestations et leurs conditions.",
+                  "Un accompagnement adapté aux demandes individuelles et professionnelles.",
+                  "Une volonté de construire des relations durables avec les clients et les partenaires.",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm font-semibold text-navy"><Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />{t}</li>
+                ))}
+              </ul>
+              <p className="mt-auto border-t pt-6 text-sm italic leading-relaxed text-muted-foreground">Chez M-S TRAVEL, nous considérons chaque projet de voyage comme une responsabilité qui mérite attention, organisation et sérieux. Notre priorité : fournir un service professionnel, communiquer des informations fiables et accompagner chaque client dans la préparation de son déplacement.</p>
+            </article>
+          </Reveal>
+        </div>
+      </section>
+
       <StatsBand stats={[{ value: 500, suffix: "+", label: "Clients satisfaits" }, { value: 14, suffix: "+", label: "Destinations" }, { value: 10, suffix: "+", label: "Ans d'expérience" }, { value: 100, suffix: "%", label: "Visa tourisme" }]} />
 
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
