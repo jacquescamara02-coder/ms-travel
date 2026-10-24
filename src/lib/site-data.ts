@@ -16,8 +16,8 @@ import wing from "@/assets/hero-wing.jpg";
 import blogHero from "@/assets/hero-blog.jpg";
 
 export const CONTACT = {
-  email: "contact@mstravel-bk.com",
-  emailSecondary: "service@mstravel-bk.com",
+  email: "contact@mstravel-bf.com",
+  emailSecondary: "service@mstravel-bf.com",
   phone1: "+226 25 65 97 74",
   phone1Href: "tel:+22625659774",
   phone2: "+226 58 27 07 07",
