@@ -70,7 +70,7 @@ const jsonLd = {
   "@type": "TravelAgency",
   name: "M-S TRAVEL",
   description: "Agence de voyage à Ouagadougou : billets d'avion, visas tourisme, Hadj & Omra, hôtels.",
-  url: "https://mstravel-bk.com",
+  url: "https://mstravel-bf.com",
   email: CONTACT.email,
   telephone: [CONTACT.phone1, CONTACT.phone2],
   address: {
