@@ -33,8 +33,8 @@ function About() {
     <>
       <PageHero
         image={directeur.url}
-        imageClass="object-[26%_16%] md:object-[44%_18%]"
-        overlayClass="bg-night-overlay bg-navy/30"
+        imageClass="object-[58%_10%] md:object-[44%_18%]"
+        overlayClass="bg-night-overlay bg-navy/45 md:bg-navy/25"
         badge="10+ ans d'expérience"
         title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>}
         text="Votre agence de voyage de confiance à Ouagadougou depuis plus de 10 ans. Nous transformons vos rêves de voyage en réalité avec professionnalisme et passion."
