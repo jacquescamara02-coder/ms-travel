@@ -5,12 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * M-S TRAVEL design system — "Nuit d'Harmattan"
- * Abyss navy  #0A1330  (fond profond)
- * Royal ink   #14245A  (surfaces)
- * Sahel gold  #D9A93F  (accents, fins)
- * Signal red  #E0392B  (CTA uniquement)
- * Mist        #EEF1F8  (fond clair)
+ * M-S TRAVEL — official logo palette
+ * Ocean ink #06384A, Petrol #17617A, Sky #2BAAD5,
+ * Raspberry #DC3151, Ice #EFF7FA, White #FFFFFF.
+ * Legacy gold roles now map to the logo's sky accents.
  */
 
 @theme inline {
@@ -72,35 +70,39 @@
 
 :root {
   --radius: 1rem;
-  --navy: oklch(0.2 0.06 268);
-  --navy-2: oklch(0.29 0.1 268);
+  --brand-ink: oklch(0.32 0.055 228);
+  --brand-petrol: oklch(0.45 0.09 228);
+  --brand-sky: oklch(0.70 0.13 228);
+  --brand-red: oklch(0.59 0.20 15);
+  --navy: var(--brand-ink);
+  --navy-2: var(--brand-petrol);
   --navy-foreground: oklch(0.97 0.01 260);
-  --gold: oklch(0.76 0.13 80);
-  --gold-soft: oklch(0.88 0.08 85);
-  --cta: oklch(0.6 0.2 30);
+  --gold: var(--brand-sky);
+  --gold-soft: oklch(0.87 0.07 228);
+  --cta: var(--brand-red);
   --cta-foreground: oklch(0.99 0 0);
   --success: oklch(0.62 0.15 155);
   --whatsapp: oklch(0.7 0.17 150);
 
-  --background: oklch(0.965 0.008 265);
-  --foreground: oklch(0.2 0.06 268);
+  --background: oklch(0.975 0.008 228);
+  --foreground: var(--brand-ink);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.06 268);
+  --card-foreground: var(--brand-ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.06 268);
-  --primary: oklch(0.29 0.1 268);
+  --popover-foreground: var(--brand-ink);
+  --primary: var(--brand-petrol);
   --primary-foreground: oklch(0.98 0.005 260);
-  --secondary: oklch(0.93 0.015 265);
-  --secondary-foreground: oklch(0.2 0.06 268);
-  --muted: oklch(0.93 0.015 265);
-  --muted-foreground: oklch(0.45 0.04 265);
-  --accent: oklch(0.94 0.04 85);
-  --accent-foreground: oklch(0.3 0.06 70);
+  --secondary: oklch(0.94 0.025 228);
+  --secondary-foreground: var(--brand-ink);
+  --muted: var(--secondary);
+  --muted-foreground: oklch(0.44 0.035 228);
+  --accent: oklch(0.94 0.03 228);
+  --accent-foreground: var(--brand-ink);
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.89 0.02 265);
-  --input: oklch(0.87 0.02 265);
-  --ring: oklch(0.76 0.13 80);
+  --border: oklch(0.88 0.025 228);
+  --input: oklch(0.85 0.03 228);
+  --ring: var(--brand-petrol);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -115,12 +117,13 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  --gradient-night: linear-gradient(180deg, oklch(0.16 0.05 268 / 0.55) 0%, oklch(0.16 0.05 268 / 0.25) 40%, oklch(0.14 0.05 268 / 0.95) 100%);
-  --gradient-gold: linear-gradient(120deg, var(--gold-soft), var(--gold) 55%, oklch(0.66 0.13 70));
-  --gradient-navy: radial-gradient(120% 90% at 10% 0%, oklch(0.32 0.11 268) 0%, var(--navy) 55%, oklch(0.15 0.05 268) 100%);
-  --shadow-soft: 0 20px 50px -24px oklch(0.2 0.06 268 / 0.35);
-  --shadow-gold: 0 18px 40px -16px oklch(0.76 0.13 80 / 0.55);
-  --shadow-cta: 0 14px 30px -12px oklch(0.6 0.2 30 / 0.6);
+  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.65), oklch(0.22 0.04 228 / 0.35) 40%, oklch(0.22 0.04 228 / 0.95));
+  --gradient-gold: linear-gradient(120deg, var(--gold-soft), var(--brand-sky));
+  --gradient-heading: linear-gradient(120deg, var(--brand-petrol), var(--brand-red));
+  --gradient-navy: linear-gradient(135deg, var(--brand-petrol), var(--brand-ink) 70%);
+  --shadow-soft: 0 20px 50px -24px oklch(0.32 0.055 228 / 0.35);
+  --shadow-gold: 0 18px 40px -16px oklch(0.70 0.13 228 / 0.45);
+  --shadow-cta: 0 14px 30px -12px oklch(0.59 0.20 15 / 0.5);
 }
 
 @layer base {
@@ -144,13 +147,13 @@
     cursor: pointer;
   }
   :focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--ring);
     outline-offset: 3px;
   }
 }
 
 @utility text-gold-gradient {
-  background: var(--gradient-gold);
+  background: var(--gradient-heading);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -165,7 +168,7 @@
   background: var(--gradient-gold);
 }
 @utility glass {
-  background: oklch(0.2 0.06 268 / 0.55);
+  background: oklch(0.32 0.055 228 / 0.65);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   border: 1px solid oklch(1 0 0 / 0.12);
@@ -254,7 +257,7 @@
 }
 :root {
   --orbit-highlight: var(--gold-soft);
-  --orbit-accent: var(--gold);
+  --orbit-accent: var(--brand-red);
   --shutter-accent: var(--gold);
 }
 button, .orbit-border-btn {
@@ -282,7 +285,8 @@ button:disabled::before, .orbit-border-btn[aria-disabled="true"]::before { anima
 .letter-swing-text { letter-spacing: 0; overflow-wrap: anywhere; }
 .letter-swing-word { display: inline-block; max-width: 100%; }
 .letter-swing-char { display: inline-block; transform-origin: top center; }
-.text-gold-gradient .letter-swing-char { background: var(--gradient-gold); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.text-gold-gradient .letter-swing-char { background: var(--gradient-heading); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.text-navy-foreground .text-gold-gradient, .text-navy-foreground .text-gold-gradient .letter-swing-char { background-image: var(--gradient-gold); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

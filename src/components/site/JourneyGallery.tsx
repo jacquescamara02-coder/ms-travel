@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Pause, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal, SectionHeading, btn } from "./primitives";
 import morocco from "@/assets/journey-morocco.jpg";
@@ -76,9 +76,7 @@ export function JourneyGallery() {
     <section aria-label="Carnet de voyages" className="journey-gallery overflow-hidden bg-background py-24 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 md:flex-row md:items-end">
         <SectionHeading center={false} eyebrow="Carnet de voyages" title={<>Le monde se découvre <span className="text-gold-gradient">ensemble</span></>} text="En famille, en couple ou entre amis : des destinations qui rapprochent et des moments qui restent." />
-        {!reduced && <Reveal className="shrink-0">
-          <Button variant="outline" size="icon" className="h-12 w-12 rounded-full" aria-label={paused ? "Reprendre l’animation" : "Mettre l’animation en pause"} title={paused ? "Reprendre l’animation" : "Mettre l’animation en pause"} aria-pressed={paused} onClick={() => setPaused((value) => !value)}>{paused ? <Play /> : <Pause />}</Button>
-        </Reveal>}
+        {!reduced && <Button variant="outline" className="sr-only focus:not-sr-only" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>{paused ? "Reprendre l’animation" : "Mettre l’animation en pause"}</Button>}
       </div>
       <Reveal className="mt-12">
         <div ref={stage} className="journey-stage" data-static={reduced} role="group" aria-label="Voyages au Maroc, à Dubaï, en Thaïlande et au Kenya">
