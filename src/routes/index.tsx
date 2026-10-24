@@ -166,7 +166,9 @@ function Home() {
           <div>
             <SectionHeading center={false} eyebrow="Qui sommes-nous" title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>} />
             <Reveal delay={100} className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
-              <p>M-S TRAVEL est une agence de voyage basée à <strong className="text-navy">Ouagadougou, Burkina Faso</strong>, spécialisée dans l'accompagnement pour <strong className="text-navy">tous les types de visa</strong> et les pèlerinages religieux. Nous mettons un point d'honneur à simplifier vos démarches et à vous permettre de voyager sans stress.</p>
+              <p className="font-display text-lg font-bold text-navy">Votre partenaire de confiance pour vos voyages.</p>
+              <p>M-S TRAVEL est une agence de voyages basée à <strong className="text-navy">Ouagadougou, Burkina Faso</strong>, fondée en <strong className="text-navy">janvier 2020</strong> par M. Ould Ahmad Nouradine BARRY, fort de plus de <strong className="text-navy">quatorze années d'expérience</strong> dans la billetterie aérienne. Elle met cette expertise au service des particuliers, des entreprises et des organisations.</p>
+              <p>Notre engagement : un accompagnement adapté aux besoins de chaque client, en privilégiant la <strong className="text-navy">qualité du service</strong>, la <strong className="text-navy">transparence des informations</strong> et l'établissement de <strong className="text-navy">relations durables</strong>.</p>
               <p>Nous traitons <strong className="text-navy">tous les types de visa</strong> — tourisme, études, travail, affaires et immigration — vers <strong className="text-navy">toutes les destinations</strong> : pays arabes et Moyen-Orient, espace Schengen, Royaume-Uni, Canada et États-Unis.</p>
               <p><strong className="text-navy">Situés à Nonsin, échangeur du Nord</strong> — immeuble orange après la passerelle, à quelques mètres de la Caisse Populaire de Nonsin. <strong className="text-navy">BP : 17 BP OUAGA 498.</strong></p>
             </Reveal>
