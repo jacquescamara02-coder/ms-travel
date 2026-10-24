@@ -78,6 +78,7 @@
   /* Same logo red, tuned per background so text always stays readable. */
   --brand-red-text: #C82A48;
   --brand-red-soft: #FE838F;
+  --brand-sky-soft: #4FBEE2;
   --navy: var(--brand-ink);
   --navy-2: var(--brand-petrol);
   --navy-foreground: oklch(0.97 0.01 260);
@@ -169,6 +170,8 @@
 .text-brand-red .letter-swing-char, span.text-brand-red.letter-swing-char { color: var(--brand-red-text); }
 /* On dark night sections the same red is used one shade lighter so it stays readable. */
 .text-navy-foreground .text-brand-red, .text-navy-foreground .text-brand-red .letter-swing-char, .text-navy-foreground span.text-brand-red.letter-swing-char { color: var(--brand-red-soft); }
+/* Small cyan labels on dark surfaces use the lighter tint so they stay readable. */
+.text-navy-foreground .text-gold, .text-navy-foreground .eyebrow { color: var(--brand-sky-soft); }
 @utility bg-night-overlay {
   background: var(--gradient-night);
 }
