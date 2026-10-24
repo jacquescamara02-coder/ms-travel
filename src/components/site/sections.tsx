@@ -10,16 +10,17 @@ import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Stars, Tilt } from "./primitives";
 import { PageBack } from "./PageBack";
 
-export function PageHero({ image, badge, title, text, children, bottom }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode }) {
+export function PageHero({ image, badge, title, text, children, bottom, imageClass = "object-center", overlayClass = "bg-night-overlay bg-navy/15", scrim = false }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode; imageClass?: string; overlayClass?: string; scrim?: boolean }) {
   return (
     <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
-      <img src={image} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns" />
-      <div className="absolute inset-0 -z-10 bg-night-overlay bg-navy/15" />
+      <img src={image} alt="" className={`absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns ${imageClass}`} />
+      <div className={`absolute inset-0 -z-10 ${overlayClass}`} />
       <div className="grain absolute inset-0 -z-10" />
+      {scrim && <div className="absolute inset-x-0 bottom-0 -z-10 h-4/5 bg-gradient-to-t from-navy via-navy/85 to-transparent" />}
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
         <Reveal>
-          <span className="eyebrow inline-flex items-center gap-2 rounded-full glass-light px-4 py-2 text-gold">{badge}</span>
+          <span className="eyebrow inline-flex items-center gap-2 rounded-full bg-navy/70 px-4 py-2 text-gold backdrop-blur-md">{badge}</span>
         </Reveal>
         <Reveal delay={100}>
           <AnimatedHeading as="h1" className="mt-6 max-w-4xl text-5xl font-extrabold leading-[0.98] md:text-7xl">{title}</AnimatedHeading>
