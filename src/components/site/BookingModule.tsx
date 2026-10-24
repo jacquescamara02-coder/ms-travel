@@ -15,7 +15,7 @@ type Errors = Values;
 const CHOICES: { id: Kind; title: string; text: string; Icon: typeof Plane }[] = [
   { id: "billet", title: "Achat de billet", text: "Billets d'avion aller simple ou aller-retour", Icon: Plane },
   { id: "hotel", title: "Réservation d'hôtel", text: "Hébergements dans vos destinations", Icon: BedDouble },
-  { id: "visa", title: "Demande de visa", text: "Visa tourisme — destinations accessibles", Icon: Stamp },
+  { id: "visa", title: "Demande de visa", text: "Tous types de visa — tourisme, études, travail, affaires", Icon: Stamp },
 ];
 
 const req = (label: string, max = 120) => z.string().trim().min(1, `${label} est requis`).max(max, `${label} est trop long`);
@@ -69,7 +69,7 @@ const LABELS: Record<string, string> = {
   adultes: "Adultes", enfants: "Enfants (2–11 ans)", classe: "Classe", remarques: "Remarques", dateArrivee: "Arrivée", dateDepartHotel: "Départ",
   chambres: "Chambres", categorie: "Catégorie d'hôtel", paysVisa: "Pays pour le visa", dateVoyage: "Date de voyage prévue", duree: "Durée du séjour", personnes: "Nombre de personnes", details: "Détails",
 };
-const TITLES: Record<Kind, string> = { billet: "DEMANDE DE BILLET D'AVION", hotel: "DEMANDE DE RÉSERVATION D'HÔTEL", visa: "DEMANDE DE VISA TOURISME" };
+const TITLES: Record<Kind, string> = { billet: "DEMANDE DE BILLET D'AVION", hotel: "DEMANDE DE RÉSERVATION D'HÔTEL", visa: "DEMANDE DE VISA" };
 
 const fmtDate = (s?: string) => (s ? new Date(s + "T00:00:00").toLocaleDateString("fr-FR") : "");
 
