@@ -16,6 +16,7 @@ export function PageHero({ image, badge, title, text, children, bottom, imageCla
       <img src={image} alt="" className={`absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns ${imageClass}`} />
       <div className={`absolute inset-0 -z-10 ${overlayClass}`} />
       <div className="grain absolute inset-0 -z-10" />
+      {scrim && <div className="absolute inset-x-0 bottom-0 -z-10 h-4/5 bg-gradient-to-t from-navy via-navy/85 to-transparent" />}
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
         <Reveal>
