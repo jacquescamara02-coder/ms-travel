@@ -72,6 +72,7 @@
   --radius: 1rem;
   --brand-ink: oklch(0.32 0.055 228);
   --brand-petrol: oklch(0.45 0.09 228);
+  --brand-petrol-deep: #0D4255;
   --brand-sky: oklch(0.70 0.13 228);
   --brand-red: oklch(0.59 0.20 15);
   /* Same logo red, tuned per background so text always stays readable. */
@@ -120,10 +121,10 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.65), oklch(0.22 0.04 228 / 0.35) 40%, oklch(0.22 0.04 228 / 0.95));
+  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.65), oklch(0.22 0.04 228 / 0.62) 40%, oklch(0.22 0.04 228 / 0.95));
   --gradient-gold: linear-gradient(120deg, var(--gold-soft), var(--brand-sky));
   --gradient-heading: linear-gradient(120deg, var(--brand-petrol), var(--brand-red));
-  --gradient-navy: linear-gradient(135deg, var(--brand-petrol), var(--brand-ink) 70%);
+  --gradient-navy: linear-gradient(135deg, var(--brand-petrol-deep), var(--brand-ink) 70%);
   --shadow-soft: 0 20px 50px -24px oklch(0.32 0.055 228 / 0.35);
   --shadow-gold: 0 18px 40px -16px oklch(0.70 0.13 228 / 0.45);
   --shadow-cta: 0 14px 30px -12px oklch(0.59 0.20 15 / 0.5);
