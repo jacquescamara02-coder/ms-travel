@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Clock, Heart, Mail, MapPin, Phone, ShieldCheck, Zap, Handshake, Inbox } from "lucide-react";
+import { ArrowRight, Check, Clock, Eye, Handshake, Heart, Inbox, Mail, MapPin, Phone, Quote, ShieldCheck, Target, Zap } from "lucide-react";
 import office from "@/assets/about-office.jpg";
 import directeur from "@/assets/about-directeur-operations.jpg.asset.json";
 import { CONTACT } from "@/lib/site-data";
