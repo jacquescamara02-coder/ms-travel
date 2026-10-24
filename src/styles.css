@@ -122,7 +122,7 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.65), oklch(0.22 0.04 228 / 0.62) 40%, oklch(0.22 0.04 228 / 0.95));
+  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.42), oklch(0.22 0.04 228 / 0.38) 40%, oklch(0.22 0.04 228 / 0.80));
   --gradient-gold: linear-gradient(120deg, var(--gold-soft), var(--brand-sky));
   --gradient-heading: linear-gradient(120deg, var(--brand-petrol), var(--brand-red));
   --gradient-navy: linear-gradient(135deg, var(--brand-petrol-deep), var(--brand-ink) 70%);

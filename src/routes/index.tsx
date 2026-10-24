@@ -52,7 +52,7 @@ function HeroSlider() {
         </div>
       ))}
       <div className="absolute inset-0 -z-10 bg-night-overlay" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/85 via-navy/30 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/72 via-navy/22 to-transparent" />
       <div className="grain absolute inset-0 -z-10" />
 
       <div className="mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-6 pb-20 pt-36 lg:grid-cols-[1.4fr_1fr]">
