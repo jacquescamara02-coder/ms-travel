@@ -19,7 +19,7 @@ export function PageHero({ image, badge, title, text, children, bottom, imageCla
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
         <Reveal>
-          <span className="eyebrow inline-flex items-center gap-2 rounded-full glass-light px-4 py-2 text-gold">{badge}</span>
+          <span className="eyebrow inline-flex items-center gap-2 rounded-full bg-navy/70 px-4 py-2 text-gold backdrop-blur-md">{badge}</span>
         </Reveal>
         <Reveal delay={100}>
           <AnimatedHeading as="h1" className="mt-6 max-w-4xl text-5xl font-extrabold leading-[0.98] md:text-7xl">{title}</AnimatedHeading>

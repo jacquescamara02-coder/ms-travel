@@ -33,7 +33,7 @@ function About() {
     <>
       <PageHero
         image={directeur.url}
-        imageClass="object-[58%_10%] md:object-[44%_18%]"
+        imageClass="object-[89%_0%] md:object-[44%_0%]"
         overlayClass="bg-night-overlay bg-navy/45 md:bg-navy/25"
         badge="10+ ans d'expérience"
         title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>}
