@@ -70,13 +70,13 @@ function Article() {
           <button onClick={() => share("copy")} className={btn({ variant: "outline", size: "sm" })}><Link2 className="h-4 w-4" />Copier le lien</button>
         </div>
         <div className="bg-navy-gradient mt-12 rounded-3xl p-8 text-center text-navy-foreground">
-          <AnimatedHeading className="text-2xl font-extrabold">Prêt à partir ?</AnimatedHeading>
+          <AnimatedHeading className="text-2xl font-extrabold">Prêt à <span className="text-brand-red">partir</span> ?</AnimatedHeading>
           <p className="mt-2 text-navy-foreground/75">Nos experts vous accompagnent de A à Z.</p>
           <Link to="/reservation" className={btn({ variant: "gold", size: "lg" }) + " mt-6"}>Demander un devis</Link>
         </div>
       </div>
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <AnimatedHeading className="text-3xl font-extrabold text-navy">Articles liés</AnimatedHeading>
+        <AnimatedHeading className="text-3xl font-extrabold text-navy">Articles <span className="text-brand-red">liés</span></AnimatedHeading>
         <div className="mt-8 grid gap-6 md:grid-cols-2">{related.map((p) => <BlogCard key={p.slug} p={p} />)}</div>
       </section>
     </article>

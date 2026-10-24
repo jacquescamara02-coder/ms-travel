@@ -33,12 +33,12 @@ const ICONS = { plane: Plane, stamp: Stamp, moon: Moon, hotel: BedDouble, map: C
 function ServicesPage() {
   return (
     <>
-      <PageHero image={heroWing} badge="Ce que nous faisons" title={<>Nos <span className="text-gold-gradient">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou.">
+      <PageHero image={heroWing} badge="Ce que nous faisons" title={<>Nos <span className="text-brand-red">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou.">
         <Link to="/reservation" className={btn({ variant: "cta", size: "lg" })}>Réserver maintenant</Link>
         <a href="#hadj" className={btn({ variant: "ghostLight", size: "lg" })}>Hadj & Omra</a>
       </PageHero>
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Ce que nous faisons" title={<>Nos <span className="text-gold-gradient">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou." />
+        <SectionHeading eyebrow="Ce que nous faisons" title={<>Nos <span className="text-brand-red">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou." />
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, k) => {
             const Icon = ICONS[s.icon];
@@ -60,7 +60,7 @@ function ServicesPage() {
       </section>
       {/* Partner countries */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Nos pays partenaires" title="Destinations Touristiques" text="Spécialisés dans les destinations à procédures rapides et garanties. Pas de visa Europe, USA ou Canada." />
+        <SectionHeading eyebrow="Nos pays partenaires" title={<>Destinations <span className="text-brand-red">Touristiques</span></>} text="Spécialisés dans les destinations à procédures rapides et garanties. Pas de visa Europe, USA ou Canada." />
         <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
           {PARTNER_TILES.map((slug, k) => {
             const d = destBySlug(slug);
@@ -83,7 +83,7 @@ function ServicesPage() {
       {/* Visa Tourisme */}
       <section className="bg-secondary/60 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Procédures simplifiées" title={<>Visa <span className="text-gold-gradient">Tourisme</span></>} text="Chez M-S TRAVEL, nous croyons que le tourisme est une porte vers la liberté. Nous vous accompagnons pas à pas pour des destinations fascinantes." />
+          <SectionHeading eyebrow="Procédures simplifiées" title={<>Visa <span className="text-brand-red">Tourisme</span></>} text="Chez M-S TRAVEL, nous croyons que le tourisme est une porte vers la liberté. Nous vous accompagnons pas à pas pour des destinations fascinantes." />
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {VISA_CARDS.map((v, k) => {
               const d = destBySlug(v.slug);
@@ -116,7 +116,7 @@ function ServicesPage() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl">
-            <SectionHeading light center={false} eyebrow="Voyage spirituel" title={<>Hadj <span className="text-gold-gradient">& Omra</span></>} />
+            <SectionHeading light center={false} eyebrow="Voyage spirituel" title={<>Hadj <span className="text-brand-red">& Omra</span></>} />
             <Reveal delay={100}>
               <p className="mt-6 text-lg leading-relaxed text-navy-foreground/80">Le pèlerinage n'est pas qu'un simple déplacement, c'est l'<strong className="text-gold">accomplissement d'une vie spirituelle</strong>. Chez M-S TRAVEL, nous prenons soin de chaque détail pour que votre voyage vers la Mecque soit fluide, serein et mémorable.</p>
             </Reveal>
@@ -140,7 +140,7 @@ function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6">
           <Reveal className="max-w-4xl">
             <p className="eyebrow text-gold">Votre agence au Burkina Faso</p>
-            <AnimatedHeading className="mt-4 text-3xl font-extrabold leading-tight text-navy md:text-5xl">Agence de Voyage au Burkina Faso spécialisée dans les Billets d'Avion, Visas, Hadj, Omra et Voyages Internationaux</AnimatedHeading>
+            <AnimatedHeading className="mt-4 text-3xl font-extrabold leading-tight text-navy md:text-5xl">Agence de Voyage au Burkina Faso spécialisée dans les Billets d'Avion, Visas, Hadj, Omra et <span className="text-brand-red">Voyages Internationaux</span></AnimatedHeading>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">M-S Travel est une agence de voyage basée à Ouagadougou au Burkina Faso, spécialisée dans l'organisation complète de voyages internationaux. Nous accompagnons les particuliers, les entreprises, les ONG, les institutions et les professionnels dans la réservation de billets d'avion, les demandes de visa, les réservations d'hôtels, les assurances voyage, les voyages d'affaires, les séjours touristiques, le Hadj, la Omra ainsi que toutes les formalités administratives liées au voyage.</p>
           </Reveal>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -156,7 +156,7 @@ function ServicesPage() {
             ))}
           </div>
           <Reveal className="mt-16">
-            <AnimatedHeading className="text-3xl font-extrabold text-navy">Nos principaux services</AnimatedHeading>
+            <AnimatedHeading className="text-3xl font-extrabold text-navy">Nos principaux <span className="text-brand-red">services</span></AnimatedHeading>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {SEO_SERVICES.map((s) => (
                 <li key={s} className="flex items-center gap-3 rounded-2xl border bg-card px-5 py-4 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-gold">
@@ -166,7 +166,7 @@ function ServicesPage() {
             </ul>
           </Reveal>
           <div className="mt-20">
-            <SectionHeading eyebrow="FAQ" title="Questions fréquentes" />
+            <SectionHeading eyebrow="FAQ" title={<>Questions <span className="text-brand-red">fréquentes</span></>} />
             <div className="mt-10"><Faq items={FAQ_HOME} /></div>
           </div>
         </div>

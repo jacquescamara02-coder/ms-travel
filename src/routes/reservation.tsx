@@ -37,7 +37,7 @@ function ReservationPage() {
           <PageBack />
           <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.6fr]">
             <div className="lg:sticky lg:top-28">
-              <SectionHeading center={false} eyebrow="Commencez l'aventure" title={<>Réservez votre voyage <span className="text-gold-gradient">maintenant</span></>} text="Remplissez le formulaire et notre équipe vous contactera rapidement pour organiser votre voyage idéal." />
+              <SectionHeading center={false} eyebrow="Commencez l'aventure" title={<>Réservez votre voyage <span className="text-brand-red">maintenant</span></>} text="Remplissez le formulaire et notre équipe vous contactera rapidement pour organiser votre voyage idéal." />
               <Reveal delay={100} className="relative mt-8 hidden overflow-hidden rounded-3xl lg:block">
                 <img src={couple} alt="Couple souriant tenant passeports et billets" loading="lazy" className="aspect-[4/5] w-full object-cover" />
                 <div className="absolute inset-x-4 bottom-4 rounded-2xl glass p-4 text-navy-foreground">

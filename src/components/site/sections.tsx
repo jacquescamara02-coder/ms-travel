@@ -14,7 +14,7 @@ export function PageHero({ image, badge, title, text, children, bottom }: { imag
   return (
     <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
       <img src={image} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns" />
-      <div className="absolute inset-0 -z-10 bg-night-overlay" />
+      <div className="absolute inset-0 -z-10 bg-night-overlay bg-navy/25" />
       <div className="grain absolute inset-0 -z-10" />
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
@@ -116,7 +116,7 @@ export function ImportantInfo() {
   return (
     <Reveal className="mx-auto max-w-4xl rounded-3xl border border-gold/40 bg-card p-8 shadow-soft md:p-12">
       <p className="eyebrow text-gold">Informations importantes</p>
-      <h3 className="mt-3 text-3xl font-extrabold text-navy">Ce que nous faisons et ne faisons pas</h3>
+      <h3 className="mt-3 text-3xl font-extrabold text-navy">Ce que nous faisons et <span className="text-brand-red">ne faisons pas</span></h3>
       <ul className="mt-8 grid gap-4">
         {no.map((t, i) => (
           <li key={i} className="flex gap-4"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-destructive/10 text-destructive"><X className="h-4 w-4" /></span><span className="text-foreground/85">{t}</span></li>
@@ -154,7 +154,7 @@ export function Newsletter() {
         <div className="relative grid items-center gap-10 md:grid-cols-2">
           <div>
             <p className="eyebrow text-gold">Newsletter</p>
-            <AnimatedHeading className="mt-3 text-4xl font-extrabold">Restez informé de nos offres</AnimatedHeading>
+            <AnimatedHeading className="mt-3 text-4xl font-extrabold">Restez informé de nos <span className="text-brand-red">offres</span></AnimatedHeading>
             <p className="mt-4 text-navy-foreground/75">Recevez nos dernières promotions, nouvelles destinations et conseils voyage directement dans votre boîte mail.</p>
           </div>
           {state === "done" ? (
@@ -164,7 +164,7 @@ export function Newsletter() {
               <label htmlFor="nl-email" className="sr-only">Votre adresse email</label>
               <div className="relative flex-1">
                 <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-foreground/50" />
-                <input id="nl-email" type="email" required maxLength={255} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Votre adresse email..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/50 focus:border-gold focus:outline-none" />
+                <input id="nl-email" type="email" required maxLength={255} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Votre adresse email..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/70 focus:border-gold focus:outline-none" />
               </div>
               <button type="submit" disabled={state === "loading"} className={btn({ variant: "cta", size: "lg" })}>
                 {state === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : "S'inscrire"}

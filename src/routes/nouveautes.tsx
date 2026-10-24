@@ -30,14 +30,14 @@ function News() {
   const list = NEWS.filter((n) => f === "Tout voir" || n.kind === f);
   return (
     <>
-      <PageHero image={wing} badge="Offres spéciales disponibles" title={<>Actualités & <span className="text-gold-gradient">Nouveautés</span></>} text="Découvrez nos dernières offres, promotions exclusives, nouvelles destinations et conseils voyage. M-S TRAVEL vous garde toujours informé pour voyager mieux.">
+      <PageHero image={wing} badge="Offres spéciales disponibles" title={<>Actualités & <span className="text-brand-red">Nouveautés</span></>} text="Découvrez nos dernières offres, promotions exclusives, nouvelles destinations et conseils voyage. M-S TRAVEL vous garde toujours informé pour voyager mieux.">
         <a href="#offres" className={btn({ variant: "cta", size: "lg" })}>Voir les offres</a>
         <Link to="/blog" className={btn({ variant: "ghostLight", size: "lg" })}>Lire le blog</Link>
       </PageHero>
 
       <section id="offres" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-24">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading center={false} eyebrow="Promotions actuelles" title="Nos Offres & Nouveautés" />
+          <SectionHeading center={false} eyebrow="Promotions actuelles" title={<>Nos Offres & <span className="text-brand-red">Nouveautés</span></>} />
           <Reveal><a href={waLink("Bonjour M-S TRAVEL, je souhaite réserver une de vos offres.")} target="_blank" rel="noreferrer" className={btn({ variant: "cta" })}>Réserver une offre</a></Reveal>
         </div>
         <div className="mt-10 flex flex-wrap gap-2" role="tablist">
@@ -78,7 +78,7 @@ function News() {
 
       <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading center={false} eyebrow="Conseils & guides" title="Articles & Conseils" />
+          <SectionHeading center={false} eyebrow="Conseils & guides" title={<>Articles & <span className="text-brand-red">Conseils</span></>} />
           <Reveal><Link to="/blog" className={btn({ variant: "outline" })}>Voir tout le blog <ArrowRight className="h-4 w-4" /></Link></Reveal>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">{BLOG.map((p, k) => <Reveal key={p.slug} delay={k * 80}><BlogCard p={p} /></Reveal>)}</div>

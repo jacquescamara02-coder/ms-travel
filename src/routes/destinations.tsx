@@ -41,7 +41,7 @@ function DestinationsPage() {
       <PageHero
         image={wing}
         badge="14 destinations disponibles"
-        title={<>Explorez nos <span className="text-gold-gradient">Destinations</span> Visa Tourisme</>}
+        title={<>Explorez nos <span className="text-brand-red">Destinations</span> Visa Tourisme</>}
         text="Du Burkina Faso vers le monde — M-S TRAVEL vous accompagne pour vos visas tourisme, billets d'avion et séjours organisés vers les plus belles destinations d'Afrique, d'Asie et du Moyen-Orient."
         bottom={
           <div className="grid max-w-3xl grid-cols-3 gap-3">
@@ -91,9 +91,9 @@ function DestinationsPage() {
       <StatsBand stats={[{ value: 14, label: "Destinations visa tourisme" }, { value: 100, suffix: "%", label: "Spécialisés visa tourisme" }, { value: 10, suffix: "+", label: "Ans d'expérience" }, { value: 0, display: "3–5j", label: "Délai moyen visa Dubaï" }]} />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionHeading eyebrow="M-S TRAVEL en chiffres" title="Votre agence de confiance depuis Ouagadougou" text="Plus de 10 ans d'expertise au service des voyageurs du Burkina Faso vers le monde entier avec sérieux, fiabilité et passion." />
+        <SectionHeading eyebrow="M-S TRAVEL en chiffres" title={<>Votre agence de <span className="text-brand-red">confiance</span> depuis Ouagadougou</>} text="Plus de 10 ans d'expertise au service des voyageurs du Burkina Faso vers le monde entier avec sérieux, fiabilité et passion." />
         <div className="mt-20">
-          <SectionHeading eyebrow="Comment ça marche" title={<>Obtenez votre visa en <span className="text-gold-gradient">4 étapes simples</span></>} text="M-S TRAVEL s'occupe de tout depuis Ouagadougou. Vous déposez votre dossier, nous faisons le reste." />
+          <SectionHeading eyebrow="Comment ça marche" title={<>Obtenez votre visa en <span className="text-brand-red">4 étapes simples</span></>} text="M-S TRAVEL s'occupe de tout depuis Ouagadougou. Vous déposez votre dossier, nous faisons le reste." />
           <ol className="relative mt-14 grid gap-6 md:grid-cols-4">
             <span className="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-gold to-transparent md:block" aria-hidden />
             {[
@@ -114,12 +114,12 @@ function DestinationsPage() {
       </section>
 
       <section className="bg-secondary/60 py-24">
-        <div className="px-6"><SectionHeading eyebrow="Ils nous font confiance" title="Avis de nos clients" /></div>
+        <div className="px-6"><SectionHeading eyebrow="Ils nous font confiance" title={<>Avis de nos <span className="text-brand-red">clients</span></>} /></div>
         <div className="mt-12"><Reviews items={REVIEWS_DEST} /></div>
       </section>
 
       <section className="px-6 py-24">
-        <SectionHeading eyebrow="Questions fréquentes" title="FAQ Destinations & Visas" />
+        <SectionHeading eyebrow="Questions fréquentes" title={<>FAQ Destinations & <span className="text-brand-red">Visas</span></>} />
         <div className="mt-10"><Faq items={FAQ_DEST} /></div>
       </section>
 

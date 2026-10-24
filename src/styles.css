@@ -72,8 +72,13 @@
   --radius: 1rem;
   --brand-ink: oklch(0.32 0.055 228);
   --brand-petrol: oklch(0.45 0.09 228);
+  --brand-petrol-deep: #0D4255;
   --brand-sky: oklch(0.70 0.13 228);
   --brand-red: oklch(0.59 0.20 15);
+  /* Same logo red, tuned per background so text always stays readable. */
+  --brand-red-text: #C82A48;
+  --brand-red-soft: #FE838F;
+  --brand-sky-soft: #4FBEE2;
   --navy: var(--brand-ink);
   --navy-2: var(--brand-petrol);
   --navy-foreground: oklch(0.97 0.01 260);
@@ -117,10 +122,10 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.65), oklch(0.22 0.04 228 / 0.35) 40%, oklch(0.22 0.04 228 / 0.95));
+  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.65), oklch(0.22 0.04 228 / 0.62) 40%, oklch(0.22 0.04 228 / 0.95));
   --gradient-gold: linear-gradient(120deg, var(--gold-soft), var(--brand-sky));
   --gradient-heading: linear-gradient(120deg, var(--brand-petrol), var(--brand-red));
-  --gradient-navy: linear-gradient(135deg, var(--brand-petrol), var(--brand-ink) 70%);
+  --gradient-navy: linear-gradient(135deg, var(--brand-petrol-deep), var(--brand-ink) 70%);
   --shadow-soft: 0 20px 50px -24px oklch(0.32 0.055 228 / 0.35);
   --shadow-gold: 0 18px 40px -16px oklch(0.70 0.13 228 / 0.45);
   --shadow-cta: 0 14px 30px -12px oklch(0.59 0.20 15 / 0.5);
@@ -160,11 +165,15 @@
 }
 
 @utility text-brand-red {
-  color: var(--brand-red);
+  color: var(--brand-red-text);
 }
-.text-brand-red .letter-swing-char, span.text-brand-red.letter-swing-char { color: var(--brand-red); }
+.text-brand-red .letter-swing-char, span.text-brand-red.letter-swing-char { color: var(--brand-red-text); }
+/* On dark night sections the same red is used one shade lighter so it stays readable. */
+.text-navy-foreground .text-brand-red, .text-navy-foreground .text-brand-red .letter-swing-char, .text-navy-foreground span.text-brand-red.letter-swing-char { color: var(--brand-red-soft); }
+/* Small cyan labels on dark surfaces use the lighter tint so they stay readable. */
+.text-navy-foreground .text-gold, .text-navy-foreground .eyebrow { color: var(--brand-sky-soft); }
 @utility bg-night-overlay {
-  background: var(--gradient-night);
+  background-image: var(--gradient-night);
 }
 @utility bg-night-gradient {
   /* Fond d'origine de la section Destinations (Nuit d'Harmattan), conservé à la demande du client */

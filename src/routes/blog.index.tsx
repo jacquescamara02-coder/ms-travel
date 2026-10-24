@@ -33,12 +33,12 @@ function BlogPage() {
 
   return (
     <>
-      <PageHero image={blogHero} badge="Conseils & actualités voyage" title={<>Blog & <span className="text-gold-gradient">Actualités</span></>} text="Guides de destination, conseils pratiques, informations visa et actualités de M-S Travel. Tout pour voyager mieux depuis Ouagadougou.">
+      <PageHero image={blogHero} badge="Conseils & actualités voyage" title={<>Blog & <span className="text-brand-red">Actualités</span></>} text="Guides de destination, conseils pratiques, informations visa et actualités de M-S Travel. Tout pour voyager mieux depuis Ouagadougou.">
         <form onSubmit={(e) => { e.preventDefault(); setQ(input.trim()); }} className="flex w-full max-w-xl flex-col gap-3 sm:flex-row" role="search">
           <label className="relative flex-1">
             <span className="sr-only">Rechercher un article</span>
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-foreground/60" />
-            <input value={input} onChange={(e) => setInput(e.target.value)} maxLength={100} placeholder="Rechercher un article..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/55 focus:outline-none" />
+            <input value={input} onChange={(e) => setInput(e.target.value)} maxLength={100} placeholder="Rechercher un article..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/70 focus:outline-none" />
           </label>
           <button className={btn({ variant: "cta", size: "lg" })}>Rechercher</button>
         </form>
@@ -57,7 +57,7 @@ function BlogPage() {
           </div>
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <div className="bg-navy-gradient grain relative overflow-hidden rounded-3xl p-7 text-navy-foreground">
-              <AnimatedHeading className="text-2xl font-extrabold">Votre prochain voyage</AnimatedHeading>
+              <AnimatedHeading className="text-2xl font-extrabold">Votre prochain <span className="text-brand-red">voyage</span></AnimatedHeading>
               <p className="mt-3 text-sm text-navy-foreground/75">Visa, billets, séjours... Nos experts vous accompagnent de A à Z.</p>
               <Link to="/reservation" className={cn(btn({ variant: "gold" }), "mt-6 w-full")}>Demander un devis</Link>
             </div>

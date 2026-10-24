@@ -153,7 +153,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-navy-foreground/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-navy-foreground/55 md:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-navy-foreground/55 md:flex-row md:pr-24">
           <p>© 2026 M-S TRAVEL — Tous droits réservés</p>
           <p>Designed by Leano Studio</p>
         </div>

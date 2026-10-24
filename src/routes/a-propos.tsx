@@ -33,7 +33,7 @@ function About() {
       <PageHero
         image={office}
         badge="10+ ans d'expérience"
-        title={<>À propos de <span className="text-gold-gradient">M-S TRAVEL</span></>}
+        title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>}
         text="Votre agence de voyage de confiance à Ouagadougou depuis plus de 10 ans. Nous transformons vos rêves de voyage en réalité avec professionnalisme et passion."
         bottom={
           <div className="flex flex-wrap gap-8 text-navy-foreground">
@@ -56,7 +56,7 @@ function About() {
           </div>
         </Reveal>
         <div>
-          <SectionHeading center={false} eyebrow="Notre histoire" title={<>Qui sommes-nous — <span className="text-gold-gradient">M-S TRAVEL</span></>} />
+          <SectionHeading center={false} eyebrow="Notre histoire" title={<>Qui sommes-nous — <span className="text-brand-red">M-S TRAVEL</span></>} />
           <Reveal delay={100} className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
             <p>M-S TRAVEL est une agence de voyage basée à <strong className="text-navy">Ouagadougou, Burkina Faso</strong>, fondée par des passionnés du voyage et des experts en tourisme international. Depuis plus de 10 ans, nous accompagnons les Burkinabè et les ressortissants de la sous-région dans leurs projets de voyages.</p>
             <p>Notre spécialité : le <strong className="text-navy">visa tourisme</strong> et l'organisation du <strong className="text-navy">Hadj et de l'Omra</strong>. Nous croyons que chaque personne mérite de voir le monde. C'est pourquoi nous mettons notre expertise au service de ceux qui souhaitent voyager sereinement, sans stress et sans mauvaises surprises.</p>
@@ -75,7 +75,7 @@ function About() {
       <StatsBand stats={[{ value: 500, suffix: "+", label: "Clients satisfaits" }, { value: 14, suffix: "+", label: "Destinations" }, { value: 10, suffix: "+", label: "Ans d'expérience" }, { value: 100, suffix: "%", label: "Visa tourisme" }]} />
 
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Ce qui nous distingue" title={<>Nos <span className="text-gold-gradient">Valeurs</span></>} />
+        <SectionHeading eyebrow="Ce qui nous distingue" title={<>Nos <span className="text-brand-red">Valeurs</span></>} />
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {VALUES.map(({ t, p, Icon }, k) => (
             <Reveal key={t} delay={k * 90}>
@@ -93,7 +93,7 @@ function About() {
 
       <section id="contact" className="scroll-mt-24 bg-secondary/60 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Où nous trouver" title="Notre Localisation" text="Venez nous rendre visite à notre bureau à Ouagadougou. Notre équipe est disponible pour vous recevoir et étudier votre projet de voyage." />
+          <SectionHeading eyebrow="Où nous trouver" title={<>Notre <span className="text-brand-red">Localisation</span></>} text="Venez nous rendre visite à notre bureau à Ouagadougou. Notre équipe est disponible pour vous recevoir et étudier votre projet de voyage." />
           <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
             <Reveal className="space-y-3">
               {[
