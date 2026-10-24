@@ -14,20 +14,35 @@ import mainMain from "@/assets/journey-main-main.jpg.asset.json";
 import terminalVoile from "@/assets/journey-terminal-voile.jpg.asset.json";
 import agentSourire from "@/assets/journey-agent-sourire.jpg.asset.json";
 
-const journeys = [
-  { image: tarmacAccompagnement, label: "Sur le tarmac", note: "Accompagnement", shape: "landscape", alt: "Voyageurs souriants accompagnés sur le tarmac par un agent M-S TRAVEL en gilet jaune" },
-  { image: departPasserelle, label: "À la passerelle", note: "Départ", shape: "portrait", alt: "Voyageur en tenue traditionnelle, sac de l'agence à la main, au pied de la passerelle d'embarquement" },
-  { image: equipeEscorte, label: "Notre équipe", note: "Assistance", shape: "portrait", alt: "Trois agents M-S TRAVEL en gilets jaunes posant au pied de l'escalier d'un avion" },
-  { image: remiseKits, label: "Remise des kits", note: "Départ de groupe", shape: "landscape", alt: "Groupe de clients devant l'agence M-S TRAVEL tenant leurs kits de voyage" },
-  { image: groupeTarmac, label: "Groupe de voyageurs", note: "Assistance", shape: "landscape", alt: "Voyageurs et agents en gilets jaunes sur le tarmac devant un avion" },
-  { image: documentsEmbarquement, label: "Documents d'embarquement", note: "Suivi", shape: "portrait", alt: "Voyageur souriant tenant ses documents d'embarquement devant la passerelle" },
-  { image: marcheSacs, label: "Sur le tarmac", note: "Accompagnement", shape: "portrait", alt: "Deux voyageurs marchant sur le tarmac, grands sacs de voyage à l'épaule" },
-  { image: mainMain, label: "Main dans la main", note: "Assistance", shape: "landscape", alt: "Voyageur âgé tenu par la main et escorté par un agent en gilet jaune sur le tarmac" },
-  { image: terminalVoile, label: "Au terminal", note: "Suivi", shape: "landscape", alt: "Voyageuse voilée tenant ses documents de voyage à l'entrée du terminal" },
-  { image: agentSourire, label: "Notre agent", note: "Escorte", shape: "portrait", alt: "Agent M-S TRAVEL en gilet jaune souriante sur le tarmac" },
+type Shot = { image: { url: string }; label: string; note: string; shape: "portrait" | "landscape"; alt: string };
+
+const ROWS: Shot[][] = [
+  [
+    { image: tarmacAccompagnement, label: "Sur le tarmac", note: "Accompagnement", shape: "landscape", alt: "Voyageurs souriants accompagnés sur le tarmac par un agent M-S TRAVEL en gilet jaune" },
+    { image: departPasserelle, label: "À la passerelle", note: "Départ", shape: "portrait", alt: "Voyageur en tenue traditionnelle, sac de l'agence à la main, au pied de la passerelle d'embarquement" },
+    { image: equipeEscorte, label: "Notre équipe", note: "Assistance", shape: "portrait", alt: "Trois agents M-S TRAVEL en gilets jaunes posant au pied de l'escalier d'un avion" },
+    { image: remiseKits, label: "Remise des kits", note: "Départ de groupe", shape: "landscape", alt: "Groupe de clients devant l'agence M-S TRAVEL tenant leurs kits de voyage" },
+    { image: groupeTarmac, label: "Groupe de voyageurs", note: "Assistance", shape: "landscape", alt: "Voyageurs et agents en gilets jaunes sur le tarmac devant un avion" },
+  ],
+  [
+    { image: documentsEmbarquement, label: "Documents d'embarquement", note: "Suivi", shape: "portrait", alt: "Voyageur souriant tenant ses documents d'embarquement devant la passerelle" },
+    { image: mainMain, label: "Main dans la main", note: "Assistance", shape: "landscape", alt: "Voyageur âgé tenu par la main et escorté par un agent en gilet jaune sur le tarmac" },
+    { image: agentSourire, label: "Notre agent", note: "Escorte", shape: "portrait", alt: "Agent M-S TRAVEL en gilet jaune souriante sur le tarmac" },
+    { image: marcheSacs, label: "Sur le tarmac", note: "Accompagnement", shape: "portrait", alt: "Deux voyageurs marchant sur le tarmac, grands sacs de voyage à l'épaule" },
+    { image: terminalVoile, label: "Au terminal", note: "Suivi", shape: "landscape", alt: "Voyageuse voilée tenant ses documents de voyage à l'entrée du terminal" },
+  ],
 ];
 
-/** Scoped Web Animations adapt the supplied out-to-in gallery without global timelines. */
+function Card({ shot }: { shot: Shot }) {
+  return (
+    <figure className="journey-card" data-shape={shot.shape}>
+      <img src={shot.image.url} alt={shot.alt} loading="lazy" width={shot.shape === "portrait" ? 900 : 1200} height={shot.shape === "portrait" ? 1200 : 900} draggable={false} />
+      <figcaption>{shot.label} · {shot.note}</figcaption>
+    </figure>
+  );
+}
+
+/** Two counter-scrolling rows of client photos; the loop is scoped to this component and paused off-screen. */
 export function JourneyGallery() {
   const stage = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
@@ -46,27 +61,18 @@ export function JourneyGallery() {
     if (!el || reduced) return;
     let animations: Animation[] = [];
     let visible = false;
-    const zones: [number, number][] = [[-1, -1], [1, 1], [1, -1], [-1, 1], [-1, 0], [1, 0], [0, -1], [0, 1], [-1, -0.4], [1, 0.4]];
     const sync = () => animations.forEach((animation) => {
       if (paused || !visible || document.hidden) animation.pause();
       else animation.play();
     });
     const create = () => {
       animations.forEach((animation) => animation.cancel());
-      const { width, height } = el.getBoundingClientRect();
-      const narrow = width < 640;
-      animations = Array.from(el.querySelectorAll<HTMLElement>(".journey-flight")).map((tile, index) => {
-        const [x, y] = zones[index % zones.length] ?? [0, 0];
-        const tx = width * (narrow ? 0.20 : 0.22) * x;
-        const ty = height * 0.12 * y;
-        const transform = (distance: number, scale: number) => `translate(calc(-50% + ${tx * distance}px), calc(-50% + ${ty * distance}px)) scale(${scale})`;
-        return tile.animate([
-          { transform: transform(1.45, 1.28), opacity: 0, offset: 0 },
-          { transform: transform(1, 1), opacity: 1, offset: 0.26 },
-          { transform: transform(0.86, 0.96), opacity: 1, offset: 0.6 },
-          { transform: transform(0.78, 0.9), opacity: 0, offset: 0.76 },
-          { transform: transform(0.78, 0.9), opacity: 0, offset: 1 },
-        ], { duration: 12000, delay: -index * 1200, iterations: Infinity, easing: "ease-in-out" });
+      animations = Array.from(el.querySelectorAll<HTMLElement>(".journey-track")).map((track, index) => {
+        const group = track.querySelector<HTMLElement>(".journey-group");
+        const distance = Math.max((group?.offsetWidth ?? 0) + 24, 1);
+        const from = index % 2 === 0 ? 0 : -distance;
+        const to = index % 2 === 0 ? -distance : 0;
+        return track.animate([{ transform: `translateX(${from}px)` }, { transform: `translateX(${to}px)` }], { duration: 46000, iterations: Infinity, easing: "linear" });
       });
       sync();
     };
@@ -92,11 +98,20 @@ export function JourneyGallery() {
       </div>
       <Reveal className="mt-12">
         <div ref={stage} className="journey-stage" data-static={reduced} role="group" aria-label="Photos de départs et d'accompagnements de voyageurs M-S TRAVEL">
-          {journeys.map((journey, index) => (
-            <figure key={journey.label + index} className="journey-flight" data-shape={journey.shape}>
-              <img src={journey.image.url} alt={journey.alt} loading="lazy" width={journey.shape === "portrait" ? 900 : 1200} height={journey.shape === "portrait" ? 1200 : 900} draggable={false} />
-              <figcaption>{journey.label} · {journey.note}</figcaption>
-            </figure>
+          {ROWS.map((row, index) => (
+            <div key={`row-${index}`} className="journey-row">
+              <div className="journey-track">
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="journey-group" aria-hidden={copy === 1}>
+                    {row.map((shot, k) => (
+                      <div key={`${shot.label}-${k}`} className="journey-cell">
+                        <Card shot={shot} />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </Reveal>
