@@ -121,7 +121,7 @@ function Home() {
 
       {/* Services */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Ce que nous faisons" title={<>Nos <span className="text-gold-gradient">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou." />
+        <SectionHeading eyebrow="Ce que nous faisons" title={<>Nos <span className="text-brand-red">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou." />
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, k) => {
             const Icon = ICONS[s.icon];
@@ -145,7 +145,7 @@ function Home() {
       <section className="bg-night-gradient grain relative overflow-hidden py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeading light center={false} eyebrow="Explorez le monde" title={<>Nos Destinations <span className="text-gold-gradient">populaires</span></>} text="Visa tourisme rapide et garanti pour des destinations accessibles, sûres et inoubliables." />
+            <SectionHeading light center={false} eyebrow="Explorez le monde" title={<>Nos Destinations <span className="text-brand-red">populaires</span></>} text="Visa tourisme rapide et garanti pour des destinations accessibles, sûres et inoubliables." />
             <Reveal><Link to="/destinations" className={btn({ variant: "cta" })}>Toutes les destinations <ArrowRight className="h-4 w-4" /></Link></Reveal>
           </div>
         </div>
@@ -164,7 +164,7 @@ function Home() {
             </div>
           </Reveal>
           <div>
-            <SectionHeading center={false} eyebrow="Qui sommes-nous" title={<>À propos de <span className="text-gold-gradient">M-S TRAVEL</span></>} />
+            <SectionHeading center={false} eyebrow="Qui sommes-nous" title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>} />
             <Reveal delay={100} className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>M-S TRAVEL est une agence de voyage basée à <strong className="text-navy">Ouagadougou, Burkina Faso</strong>, spécialisée dans l'accompagnement pour les visas touristiques et les pèlerinages religieux. Nous mettons un point d'honneur à simplifier vos démarches et à vous permettre de voyager sans stress.</p>
               <p>Nous ne faisons pas de visa d'étude, de travail ni de regroupement familial. Aucun visa pour le <strong className="text-navy">Canada, les États-Unis ni les pays européens</strong>. Notre expertise se concentre sur les <strong className="text-navy">voyages touristiques et spirituels</strong> vers des destinations accessibles et sûres.</p>
@@ -186,7 +186,7 @@ function Home() {
 
       {/* Reviews */}
       <section className="py-24 md:py-32">
-        <div className="px-6"><SectionHeading eyebrow="Ils nous font confiance" title={<>Avis de nos <span className="text-gold-gradient">clients</span></>} /></div>
+        <div className="px-6"><SectionHeading eyebrow="Ils nous font confiance" title={<>Avis de nos <span className="text-brand-red">clients</span></>} /></div>
         <div className="mt-14"><Reviews items={REVIEWS_HOME} /></div>
       </section>
 
