@@ -14,7 +14,7 @@ export function PageHero({ image, badge, title, text, children, bottom }: { imag
   return (
     <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
       <img src={image} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns" />
-      <div className="absolute inset-0 -z-10 bg-night-overlay bg-navy/25" />
+      <div className="absolute inset-0 -z-10 bg-night-overlay bg-navy/15" />
       <div className="grain absolute inset-0 -z-10" />
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
