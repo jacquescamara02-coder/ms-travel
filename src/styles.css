@@ -173,7 +173,7 @@
 /* Small cyan labels on dark surfaces use the lighter tint so they stay readable. */
 .text-navy-foreground .text-gold, .text-navy-foreground .eyebrow { color: var(--brand-sky-soft); }
 @utility bg-night-overlay {
-  background: var(--gradient-night);
+  background-image: var(--gradient-night);
 }
 @utility bg-night-gradient {
   /* Fond d'origine de la section Destinations (Nuit d'Harmattan), conservé à la demande du client */
