@@ -1,7 +1,7 @@
 import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Loader2, Mail, Plus, Quote, X } from "lucide-react";
+import { ArrowRight, Check, Loader2, Mail, Plus, Quote } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
@@ -103,28 +103,33 @@ export function Reviews({ items }: { items: { text: string; name: string; meta: 
   );
 }
 
-export function ImportantInfo() {
-  const no = [
-    <>Nous n'émettons <strong>pas</strong> de visa d'études, de travail ou d'immigration</>,
-    <>Aucun visa pour le <strong>Canada, les USA ou l'Union Européenne</strong></>,
-    <>Pas de regroupement familial ni de demande d'asile</>,
+export function VisaScope() {
+  const zones = [
+    { t: "Pays arabes & Moyen-Orient", p: "Qatar, Dubaï, Arabie Saoudite, Turquie, Israël, Maroc, Égypte et tous les pays arabes." },
+    { t: "Espace Schengen", p: "France, Belgique, Italie, Allemagne et l'ensemble des pays Schengen." },
+    { t: "Europe & Royaume-Uni", p: "Angleterre / Royaume-Uni et les autres destinations européennes." },
+    { t: "Amérique du Nord", p: "Canada et États-Unis d'Amérique." },
   ];
-  const yes = [
-    <>Nous sommes spécialisés <strong>uniquement dans le visa tourisme</strong> vers l'Afrique, l'Asie et le Moyen-Orient</>,
-    <>Nous gérons aussi le <strong>Hadj et l'Omra</strong> : visa, billet, hébergement à La Mecque et Médine, accompagnement spirituel</>,
-  ];
+  const types = ["Tourisme", "Études", "Travail", "Affaires", "Immigration", "Hadj & Omra"];
   return (
     <Reveal className="mx-auto max-w-4xl rounded-3xl border border-gold/40 bg-card p-8 shadow-soft md:p-12">
-      <p className="eyebrow text-gold">Informations importantes</p>
-      <h3 className="mt-3 text-3xl font-extrabold text-navy">Ce que nous faisons et <span className="text-brand-red">ne faisons pas</span></h3>
-      <ul className="mt-8 grid gap-4">
-        {no.map((t, i) => (
-          <li key={i} className="flex gap-4"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-destructive/10 text-destructive"><X className="h-4 w-4" /></span><span className="text-foreground/85">{t}</span></li>
-        ))}
-        {yes.map((t, i) => (
-          <li key={i} className="flex gap-4"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-success/15 text-success"><Check className="h-4 w-4" /></span><span className="text-foreground/85">{t}</span></li>
+      <p className="eyebrow text-gold">Nos visas</p>
+      <h3 className="mt-3 text-3xl font-extrabold text-navy">Tous les visas, <span className="text-brand-red">tous les pays</span></h3>
+      <p className="mt-4 leading-relaxed text-foreground/85">M-S TRAVEL traite aujourd'hui <strong className="text-navy">tous les types de visa</strong> vers l'ensemble des destinations : pays arabes et Moyen-Orient, espace Schengen, Royaume-Uni, Canada et États-Unis.</p>
+      <ul className="mt-8 grid gap-5 sm:grid-cols-2">
+        {zones.map((z) => (
+          <li key={z.t} className="flex gap-4">
+            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-success/15 text-success"><Check className="h-4 w-4" /></span>
+            <span>
+              <strong className="block text-navy">{z.t}</strong>
+              <span className="text-sm text-muted-foreground">{z.p}</span>
+            </span>
+          </li>
         ))}
       </ul>
+      <div className="mt-8 flex flex-wrap gap-2">
+        {types.map((t) => <span key={t} className="rounded-full bg-secondary px-4 py-1.5 text-sm font-semibold text-navy">{t}</span>)}
+      </div>
     </Reveal>
   );
 }

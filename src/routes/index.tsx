@@ -167,7 +167,7 @@ function Home() {
             <SectionHeading center={false} eyebrow="Qui sommes-nous" title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>} />
             <Reveal delay={100} className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>M-S TRAVEL est une agence de voyage basée à <strong className="text-navy">Ouagadougou, Burkina Faso</strong>, spécialisée dans l'accompagnement pour les visas touristiques et les pèlerinages religieux. Nous mettons un point d'honneur à simplifier vos démarches et à vous permettre de voyager sans stress.</p>
-              <p>Nous ne faisons pas de visa d'étude, de travail ni de regroupement familial. Aucun visa pour le <strong className="text-navy">Canada, les États-Unis ni les pays européens</strong>. Notre expertise se concentre sur les <strong className="text-navy">voyages touristiques et spirituels</strong> vers des destinations accessibles et sûres.</p>
+              <p>Nous traitons <strong className="text-navy">tous les types de visa</strong> — tourisme, études, travail, affaires et immigration — vers <strong className="text-navy">toutes les destinations</strong> : pays arabes et Moyen-Orient, espace Schengen, Royaume-Uni, Canada et États-Unis.</p>
               <p><strong className="text-navy">Situés à Nonsin, échangeur du Nord</strong> — immeuble orange après la passerelle, à quelques mètres de la Caisse Populaire de Nonsin. <strong className="text-navy">BP : 17 BP OUAGA 498.</strong></p>
             </Reveal>
             <Reveal delay={200}>

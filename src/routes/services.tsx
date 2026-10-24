@@ -60,7 +60,7 @@ function ServicesPage() {
       </section>
       {/* Partner countries */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <SectionHeading eyebrow="Nos pays partenaires" title={<>Destinations <span className="text-brand-red">Touristiques</span></>} text="Spécialisés dans les destinations à procédures rapides et garanties. Pas de visa Europe, USA ou Canada." />
+        <SectionHeading eyebrow="Nos pays partenaires" title={<>Destinations <span className="text-brand-red">Touristiques</span></>} text="Du Burkina Faso vers le monde entier : pays arabes, espace Schengen, Royaume-Uni, Canada et États-Unis." />
         <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
           {PARTNER_TILES.map((slug, k) => {
             const d = destBySlug(slug);
@@ -104,8 +104,8 @@ function ServicesPage() {
             })}
           </div>
           <Reveal className="mx-auto mt-14 max-w-4xl rounded-3xl border-l-4 border-cta bg-card p-8 shadow-soft">
-            <p className="eyebrow text-cta">Informations importantes</p>
-            <p className="mt-3 leading-relaxed text-foreground/85">Nous ne faisons pas de visa d'études, de travail ou de regroupement familial. Nous ne traitons pas les demandes pour les pays européens, américains ou canadiens. Nos services concernent uniquement les visas touristiques pour des destinations accessibles, rapides et sûres.</p>
+            <p className="eyebrow text-cta">Tous les visas</p>
+            <p className="mt-3 leading-relaxed text-foreground/85">Nous traitons aujourd'hui <strong className="text-navy">tous les types de visa</strong> : tourisme, études, travail, affaires et immigration. Pays arabes et Moyen-Orient, espace Schengen, Royaume-Uni, Canada et États-Unis — parlez-nous de votre projet, nous prenons le dossier en main.</p>
           </Reveal>
         </div>
       </section>
