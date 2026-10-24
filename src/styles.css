@@ -274,9 +274,10 @@
 }
 .journey-stage[data-static="true"] { padding: 32px 24px; }
 .journey-stage[data-static="true"] .journey-row { overflow: visible; -webkit-mask-image: none; mask-image: none; }
-.journey-stage[data-static="true"] .journey-track { width: auto; flex-wrap: wrap; justify-content: center; }
+.journey-stage[data-static="true"] .journey-track { width: auto; }
+.journey-stage[data-static="true"] .journey-group { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; padding-right: 0; }
 .journey-stage[data-static="true"] .journey-group + .journey-group { display: none; }
-.journey-stage[data-static="true"] .journey-cell { width: min(40vw, 270px); }
+.journey-stage[data-static="true"] .journey-cell { width: auto; }
 .journey-gallery button.sr-only:not(:focus-visible) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border-width: 0; }
 
 @property --orbit-angle {
