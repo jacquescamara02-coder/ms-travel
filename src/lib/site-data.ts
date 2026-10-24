@@ -98,7 +98,7 @@ export const POPULAR = [
 
 export const SERVICES = [
   { title: "Billetterie Aérienne", text: "Réservation de billets d'avion aux meilleurs prix pour toutes destinations. Émission rapide, sécurisée et fiable.", icon: "plane" },
-  { title: "Visa Tourisme", text: "Accompagnement complet : Dubaï, Thaïlande, Turquie, Qatar, Chine, Arabie Saoudite. Dossier préparé et suivi A à Z.", icon: "stamp" },
+  { title: "Demande de Visa", text: "Tous types de visa : tourisme, études, travail, affaires, immigration. Dubaï, Qatar, Turquie, espace Schengen, Royaume-Uni, Canada, États-Unis. Dossier préparé et suivi A à Z.", icon: "stamp" },
   { title: "Hadj & Omra", text: "Organisation complète du pèlerinage : visa, billet, hébergement à La Mecque et accompagnement spirituel personnalisé.", icon: "moon" },
   { title: "Réservation Hôtel", text: "Sélection et réservation d'hébergements adaptés à votre budget dans toutes vos destinations de voyage.", icon: "hotel" },
   { title: "Circuits Touristiques", text: "Séjours clé en main avec itinéraires personnalisés, transferts aéroport et guides locaux pour une expérience mémorable.", icon: "map" },
@@ -148,8 +148,8 @@ export const FAQ_HOME = [
 ];
 
 export const FAQ_DEST = [
-  { q: "Quelles destinations sont disponibles depuis Ouagadougou avec M-S Travel ?", a: "Nous accompagnons vos visas tourisme vers 14 destinations : Dubaï, Thaïlande, Chine, Qatar, Turquie, Arabie Saoudite, Maroc, Kenya, Madagascar, Éthiopie, Ouganda, Zambie, Cameroun, ainsi que l'accueil au Burkina Faso." },
-  { q: "M-S Travel fait-il les visas pour l'Europe, les USA ou le Canada ?", a: "Non. Nous ne traitons aucun visa pour l'Union Européenne, les États-Unis ou le Canada. Notre expertise porte uniquement sur le visa tourisme vers l'Afrique, l'Asie et le Moyen-Orient." },
+  { q: "Quelles destinations sont disponibles depuis Ouagadougou avec M-S Travel ?", a: "Nous accompagnons vos visas vers 14 destinations phares : Dubaï, Thaïlande, Chine, Qatar, Turquie, Arabie Saoudite, Maroc, Kenya, Madagascar, Éthiopie, Ouganda, Zambie, Cameroun, ainsi que l'accueil au Burkina Faso. Nous traitons aussi l'espace Schengen (France, Belgique, Italie, Allemagne), le Royaume-Uni, le Canada et les États-Unis." },
+  { q: "M-S Travel fait-il les visas pour l'Europe, les USA ou le Canada ?", a: "Oui. Nous traitons tous les types de visa vers ces destinations : espace Schengen (France, Belgique, Italie, Allemagne), Royaume-Uni, Canada et États-Unis, ainsi que tous les pays arabes et du Moyen-Orient." },
   { q: "Quel est le délai pour obtenir un visa tourisme avec M-S Travel ?", a: "Le délai dépend de la destination. Pour Dubaï, il est en moyenne de 3 à 5 jours. Notre équipe vous indique le délai exact dès l'étude de votre dossier." },
   { q: "M-S Travel organise-t-il le Hadj et l'Omra depuis Burkina Faso ?", a: "Oui. Nous gérons le visa, le billet, l'hébergement à La Mecque et Médine ainsi que l'accompagnement spirituel, depuis Ouagadougou." },
   { q: "M-S Travel réserve-t-il aussi les billets d'avion et les hôtels ?", a: "Oui. En plus du visa, nous réservons vos billets d'avion aux meilleurs prix, vos hôtels et votre assurance voyage." },
@@ -219,11 +219,19 @@ export const DEST_CITIES: Record<string, string[]> = {
   "Zambie": ["Lusaka", "Livingstone"],
   "Cameroun": ["Douala", "Yaoundé"],
   "France": ["Paris", "Lyon", "Marseille"],
+  "Belgique": ["Bruxelles", "Liège"],
+  "Italie": ["Rome", "Milan", "Venise"],
+  "Allemagne": ["Berlin", "Munich", "Francfort"],
+  "Royaume-Uni": ["Londres", "Manchester"],
+  "Canada": ["Montréal", "Toronto", "Ottawa"],
+  "États-Unis": ["New York", "Washington", "Miami", "Los Angeles"],
+  "Israël": ["Tel-Aviv", "Jérusalem"],
+  "Égypte": ["Le Caire", "Louxor"],
   "Côte d'Ivoire": ["Abidjan"],
   "Sénégal": ["Dakar"],
   "Autre": ["Autre ville"],
 };
 
 export const VISA_COUNTRIES = [
-  "Dubaï (AE)", "Thaïlande (TH)", "Turquie (TR)", "Qatar (QA)", "Arabie Saoudite (SA)", "Chine (CN)", "Maroc (MA)", "Kenya (KE)", "Éthiopie (ET)", "Madagascar (MG)", "Zambie (ZM)", "Cameroun (CM)",
+  "Dubaï (AE)", "Thaïlande (TH)", "Turquie (TR)", "Qatar (QA)", "Arabie Saoudite (SA)", "Chine (CN)", "Maroc (MA)", "Kenya (KE)", "Éthiopie (ET)", "Madagascar (MG)", "Zambie (ZM)", "Cameroun (CM)", "France (FR)", "Belgique (BE)", "Italie (IT)", "Allemagne (DE)", "Royaume-Uni (GB)", "Canada (CA)", "États-Unis (US)", "Israël (IL)", "Égypte (EG)", "Autre pays",
 ];

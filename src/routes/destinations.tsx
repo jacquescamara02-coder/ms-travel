@@ -6,7 +6,7 @@ import wing from "@/assets/dest-dubai.jpg";
 import { CONTACT, DESTINATIONS, FAQ_DEST, REVIEWS_DEST, waLink, type Destination, type Region } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { btn, Reveal, SectionHeading } from "@/components/site/primitives";
-import { DestinationCard, Faq, ImportantInfo, PageHero, Reviews, StatsBand } from "@/components/site/sections";
+import { DestinationCard, Faq, PageHero, Reviews, StatsBand, VisaScope } from "@/components/site/sections";
 
 export const Route = createFileRoute("/destinations")({
   head: () => ({
@@ -110,7 +110,7 @@ function DestinationsPage() {
             ))}
           </ol>
         </div>
-        <div className="mt-24"><ImportantInfo /></div>
+        <div className="mt-24"><VisaScope /></div>
       </section>
 
       <section className="bg-secondary/60 py-24">

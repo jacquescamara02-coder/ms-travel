@@ -129,7 +129,7 @@ export function Footer() {
         <div>
           <h3 className="eyebrow text-gold">Services</h3>
           <ul className={cn(col, "mt-5")}>
-            {["Billetterie Aérienne", "Visa Tourisme", "Hadj & Omra", "Réservation Hôtel", "Circuits Touristiques"].map((s) => <li key={s}>{s}</li>)}
+            {["Billetterie Aérienne", "Demande de Visa", "Hadj & Omra", "Réservation Hôtel", "Circuits Touristiques"].map((s) => <li key={s}>{s}</li>)}
           </ul>
         </div>
         <div>
