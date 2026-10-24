@@ -34,7 +34,7 @@ export function JourneyGallery() {
     if (!el || reduced) return;
     let animations: Animation[] = [];
     let visible = false;
-    const zones = [[-1, -1], [1, 1], [1, -1], [-1, 1], [-1, 0], [1, 0], [0, -1], [0, 1]];
+    const zones: [number, number][] = [[-1, -1], [1, 1], [1, -1], [-1, 1], [-1, 0], [1, 0], [0, -1], [0, 1]];
     const sync = () => animations.forEach((animation) => {
       if (paused || !visible || document.hidden) animation.pause();
       else animation.play();
@@ -44,7 +44,7 @@ export function JourneyGallery() {
       const { width, height } = el.getBoundingClientRect();
       const narrow = width < 640;
       animations = Array.from(el.querySelectorAll<HTMLElement>(".journey-flight")).map((tile, index) => {
-        const [x, y] = zones[index % zones.length];
+        const [x, y] = zones[index % zones.length] ?? [0, 0];
         const tx = width * (narrow ? 0.28 : 0.32) * x;
         const ty = height * 0.30 * y;
         const transform = (distance: number, scale: number) => `translate(calc(-50% + ${tx * distance}px), calc(-50% + ${ty * distance}px)) scale(${scale})`;
@@ -58,7 +58,7 @@ export function JourneyGallery() {
       });
       sync();
     };
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }, { threshold: 0.08 });
+    const observer = new IntersectionObserver(([entry]) => { visible = entry?.isIntersecting ?? false; sync(); }, { threshold: 0.08 });
     observer.observe(el);
     const resize = new ResizeObserver(create);
     resize.observe(el);
