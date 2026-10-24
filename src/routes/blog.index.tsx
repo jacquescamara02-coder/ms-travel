@@ -57,7 +57,7 @@ function BlogPage() {
           </div>
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <div className="bg-navy-gradient grain relative overflow-hidden rounded-3xl p-7 text-navy-foreground">
-              <AnimatedHeading className="text-2xl font-extrabold">Votre prochain voyage</AnimatedHeading>
+              <AnimatedHeading className="text-2xl font-extrabold">Votre prochain <span className="text-brand-red">voyage</span></AnimatedHeading>
               <p className="mt-3 text-sm text-navy-foreground/75">Visa, billets, séjours... Nos experts vous accompagnent de A à Z.</p>
               <Link to="/reservation" className={cn(btn({ variant: "gold" }), "mt-6 w-full")}>Demander un devis</Link>
             </div>

@@ -93,7 +93,7 @@ function About() {
 
       <section id="contact" className="scroll-mt-24 bg-secondary/60 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading eyebrow="Où nous trouver" title="Notre Localisation" text="Venez nous rendre visite à notre bureau à Ouagadougou. Notre équipe est disponible pour vous recevoir et étudier votre projet de voyage." />
+          <SectionHeading eyebrow="Où nous trouver" title={<>Notre <span className="text-brand-red">Localisation</span></>} text="Venez nous rendre visite à notre bureau à Ouagadougou. Notre équipe est disponible pour vous recevoir et étudier votre projet de voyage." />
           <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
             <Reveal className="space-y-3">
               {[

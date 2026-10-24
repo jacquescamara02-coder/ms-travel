@@ -116,7 +116,7 @@ export function ImportantInfo() {
   return (
     <Reveal className="mx-auto max-w-4xl rounded-3xl border border-gold/40 bg-card p-8 shadow-soft md:p-12">
       <p className="eyebrow text-gold">Informations importantes</p>
-      <h3 className="mt-3 text-3xl font-extrabold text-navy">Ce que nous faisons et ne faisons pas</h3>
+      <h3 className="mt-3 text-3xl font-extrabold text-navy">Ce que nous faisons et <span className="text-brand-red">ne faisons pas</span></h3>
       <ul className="mt-8 grid gap-4">
         {no.map((t, i) => (
           <li key={i} className="flex gap-4"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-destructive/10 text-destructive"><X className="h-4 w-4" /></span><span className="text-foreground/85">{t}</span></li>
@@ -154,7 +154,7 @@ export function Newsletter() {
         <div className="relative grid items-center gap-10 md:grid-cols-2">
           <div>
             <p className="eyebrow text-gold">Newsletter</p>
-            <AnimatedHeading className="mt-3 text-4xl font-extrabold">Restez informé de nos offres</AnimatedHeading>
+            <AnimatedHeading className="mt-3 text-4xl font-extrabold">Restez informé de nos <span className="text-brand-red">offres</span></AnimatedHeading>
             <p className="mt-4 text-navy-foreground/75">Recevez nos dernières promotions, nouvelles destinations et conseils voyage directement dans votre boîte mail.</p>
           </div>
           {state === "done" ? (
