@@ -75,7 +75,7 @@ export function JourneyGallery() {
   return (
     <section aria-label="Carnet de voyages" className="journey-gallery overflow-hidden bg-background py-24 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 md:flex-row md:items-end">
-        <SectionHeading center={false} eyebrow="Carnet de voyages" title={<>Le monde se découvre <span className="text-gold-gradient">ensemble</span></>} text="En famille, en couple ou entre amis : des destinations qui rapprochent et des moments qui restent." />
+        <SectionHeading center={false} eyebrow="Carnet de voyages" title={<>Le monde se découvre <span className="text-brand-red">ensemble</span></>} text="En famille, en couple ou entre amis : des destinations qui rapprochent et des moments qui restent." />
         {!reduced && <Button variant="outline" className="sr-only focus:not-sr-only" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>{paused ? "Reprendre l’animation" : "Mettre l’animation en pause"}</Button>}
       </div>
       <Reveal className="mt-12">
