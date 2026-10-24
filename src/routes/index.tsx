@@ -48,7 +48,7 @@ function HeroSlider() {
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carrousel" aria-label="Destinations à la une">
       {HERO_SLIDES.map((sl, k) => (
         <div key={sl.code} className={cn("absolute inset-0 -z-20 transition-opacity duration-[1400ms] ease-out", k === i ? "opacity-100" : "opacity-0")} aria-hidden={k !== i}>
-          <img src={sl.image} alt="" fetchPriority={k === 0 ? "high" : "low"} loading={k === 0 ? "eager" : "lazy"} className={cn("h-full w-full object-cover", k === i && "animate-kenburns")} />
+          <img src={sl.image} alt="" fetchPriority={k === 0 ? "high" : "low"} loading={k === 0 ? "eager" : "lazy"} className={cn("h-full w-full object-cover brightness-[1.1] saturate-[1.06]", k === i && "animate-kenburns")} />
         </div>
       ))}
       <div className="absolute inset-0 -z-10 bg-night-overlay" />
