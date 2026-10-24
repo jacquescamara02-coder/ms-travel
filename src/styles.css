@@ -234,30 +234,18 @@
 }
 
 /* Shared motion treatments retain each control's size and existing palette. */
-.journey-rail {
-  --journey-width: min(68vw, 640px);
-  position: relative;
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  padding: 12px max(24px, calc((100% - var(--journey-width)) / 2)) 24px;
-  scrollbar-width: none;
-  cursor: grab;
-}
-.journey-rail::-webkit-scrollbar { display: none; }
-.journey-rail:active { cursor: grabbing; }
-.journey-slide {
-  flex: 0 0 var(--journey-width);
-  min-width: 0;
-  transform: scale(var(--journey-scale, 1));
-  opacity: var(--journey-opacity, 1);
-  transition: transform 180ms ease-out, opacity 180ms ease-out;
-  transform-origin: center center;
-}
+.journey-stage { position: relative; height: 620px; overflow: hidden; background: var(--navy); isolation: isolate; }
+.journey-flight { position: absolute; top: 50%; left: 50%; width: min(27%, 310px); margin: 0; opacity: 0; will-change: transform, opacity; pointer-events: none; }
+.journey-flight img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; border-radius: 8px; background: var(--navy); }
+.journey-flight figcaption { margin-top: 8px; color: var(--navy-foreground); font-size: 12px; font-weight: 600; text-align: center; }
 @media (max-width: 640px) {
-  .journey-rail { --journey-width: 84vw; gap: 12px; }
+  .journey-stage { height: 510px; }
+  .journey-flight { width: 46%; }
+  .journey-flight figcaption { font-size: 11px; }
 }
+.journey-stage[data-static="true"] { display: grid; height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 32px 24px; }
+.journey-stage[data-static="true"] .journey-flight { position: relative; top: auto; left: auto; width: 100%; opacity: 1; transform: none; will-change: auto; }
+.journey-stage[data-static="true"] .journey-flight[aria-hidden="true"] { display: none; }
 
 @property --orbit-angle {
   syntax: "<angle>";
