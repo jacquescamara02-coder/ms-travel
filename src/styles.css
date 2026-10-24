@@ -255,15 +255,15 @@
 }
 
 /* Shared motion treatments retain each control's size and existing palette. */
-.journey-stage { position: relative; height: 620px; overflow: hidden; background: var(--navy); isolation: isolate; }
-.journey-flight { position: absolute; top: 50%; left: 50%; width: min(27%, 310px); margin: 0; opacity: 0; will-change: transform, opacity; pointer-events: none; }
+.journey-stage { position: relative; height: 660px; overflow: hidden; background: var(--navy); isolation: isolate; }
+.journey-flight { position: absolute; top: 50%; left: 50%; width: min(24%, 270px); margin: 0; opacity: 0; will-change: transform, opacity; pointer-events: none; }
 .journey-flight img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: var(--navy); }
 .journey-flight[data-shape="portrait"] img { aspect-ratio: 3 / 4; }
-.journey-flight figcaption { margin-top: 8px; color: var(--navy-foreground); font-size: 12px; font-weight: 600; text-align: center; }
+.journey-flight figcaption { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 22px 10px 9px; color: var(--navy-foreground); font-size: 11px; font-weight: 600; text-align: center; border-radius: 0 0 8px 8px; background: linear-gradient(to top, color-mix(in srgb, var(--navy) 88%, transparent), transparent); }
 @media (max-width: 640px) {
-  .journey-stage { height: 510px; }
-  .journey-flight { width: 46%; }
-  .journey-flight figcaption { font-size: 11px; }
+  .journey-stage { height: 560px; }
+  .journey-flight { width: 40%; }
+  .journey-flight figcaption { font-size: 10px; }
 }
 .journey-stage[data-static="true"] { display: grid; height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 32px 24px; }
 .journey-stage[data-static="true"] .journey-flight { position: relative; top: auto; left: auto; width: 100%; opacity: 1; transform: none; will-change: auto; }
