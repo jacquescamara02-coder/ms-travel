@@ -3,6 +3,7 @@
 - [x] Retirer le bloc « Informations importantes » et afficher « tous les visas, tous les pays » (Schengen, Royaume-Uni, Canada, USA, pays arabes).
 - [x] Retirer le bouton pause visible et harmoniser toutes les pages avec les couleurs du logo.
 - [x] Adapter le Carnet de voyages au code Image Gallery fourni et vérifier animation, pause et affichage.
+- [x] Mettre les vraies photos du client dans le Carnet de voyage (deux rangées qui défilent) et vérifier têtes, légendes et mode sans animation.
 - [x] Ajouter sous À propos une galerie smooth-scroll-slider de voyages avec familles noires et vérifier son affichage.
 - [x] Remplacer l’effet des grands titres par letter-swing et vérifier toutes les pages.
 - [x] Adapter les destinations populaires au style roundcarousel et vérifier navigation et affichage.
