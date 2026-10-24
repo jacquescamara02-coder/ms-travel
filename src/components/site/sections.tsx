@@ -166,7 +166,7 @@ export function Newsletter() {
                 <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-foreground/50" />
                 <input id="nl-email" type="email" required maxLength={255} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Votre adresse email..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/50 focus:border-gold focus:outline-none" />
               </div>
-              <button type="submit" disabled={state === "loading"} className={btn({ variant: "gold", size: "lg" })}>
+              <button type="submit" disabled={state === "loading"} className={btn({ variant: "cta", size: "lg" })}>
                 {state === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : "S'inscrire"}
               </button>
             </form>
