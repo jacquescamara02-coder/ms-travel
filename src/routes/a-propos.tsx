@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock, Heart, Mail, MapPin, Phone, ShieldCheck, Zap, Handshake, Inbox } from "lucide-react";
 import office from "@/assets/about-office.jpg";
+import directeur from "@/assets/about-directeur-operations.jpg.asset.json";
 import { CONTACT } from "@/lib/site-data";
 import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/primitives";
 import { PageHero, StatsBand } from "@/components/site/sections";
@@ -31,7 +32,7 @@ function About() {
   return (
     <>
       <PageHero
-        image={office}
+        image={directeur.url}
         badge="10+ ans d'expérience"
         title={<>À propos de <span className="text-brand-red">M-S TRAVEL</span></>}
         text="Votre agence de voyage de confiance à Ouagadougou depuis plus de 10 ans. Nous transformons vos rêves de voyage en réalité avec professionnalisme et passion."
