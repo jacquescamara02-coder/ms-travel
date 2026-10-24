@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Clock, Eye, Handshake, Heart, Inbox, Mail, MapPin, Phone, Quote, ShieldCheck, Target, Zap } from "lucide-react";
-import office from "@/assets/about-office.jpg";
+import histoire from "@/assets/about-histoire-client.jpeg.asset.json";
 import directeur from "@/assets/about-directeur-operations.jpg.asset.json";
 import { CONTACT } from "@/lib/site-data";
 import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/primitives";
@@ -53,7 +53,7 @@ function About() {
 
       <section id="histoire" className="mx-auto grid max-w-7xl scroll-mt-24 items-center gap-14 px-6 py-24 md:py-32 lg:grid-cols-2">
         <Reveal className="relative">
-          <img src={office} alt="L'équipe M-S TRAVEL accueille un client" loading="lazy" className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft" />
+          <img src={histoire.url} alt="Photo de M-S TRAVEL — Notre histoire" loading="lazy" className="h-auto w-full rounded-[2rem] shadow-soft" />
           <div className="absolute -bottom-6 -left-2 rounded-3xl bg-navy p-6 text-navy-foreground shadow-soft md:-left-6">
             <p className="font-display text-5xl font-extrabold text-gold-gradient"><Counter value={10} suffix="+" /></p>
             <p className="text-xs font-bold uppercase tracking-widest">Années</p>
