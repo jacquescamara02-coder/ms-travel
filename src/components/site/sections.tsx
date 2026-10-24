@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Stars, Tilt } from "./primitives";
 import { PageBack } from "./PageBack";
 
-export function PageHero({ image, badge, title, text, children, bottom, imageClass = "object-center", overlayClass = "bg-night-overlay bg-navy/15" }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode; imageClass?: string; overlayClass?: string }) {
+export function PageHero({ image, badge, title, text, children, bottom, imageClass = "object-center", overlayClass = "bg-night-overlay bg-navy/15", scrim = false }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode; imageClass?: string; overlayClass?: string; scrim?: boolean }) {
   return (
     <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
       <img src={image} alt="" className={`absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns ${imageClass}`} />
