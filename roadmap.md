@@ -1,5 +1,5 @@
 # M-S TRAVEL — Roadmap
-- [ ] Ajouter sous À propos une galerie smooth-scroll-slider de voyages avec familles noires et vérifier son affichage.
+- [x] Ajouter sous À propos une galerie smooth-scroll-slider de voyages avec familles noires et vérifier son affichage.
 - [x] Remplacer l’effet des grands titres par letter-swing et vérifier toutes les pages.
 - [x] Adapter les destinations populaires au style roundcarousel et vérifier navigation et affichage.
 - [x] Appliquer les bordures orbitales aux boutons et l’effet shutter aux grands titres, puis vérifier les pages.
