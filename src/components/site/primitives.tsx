@@ -92,7 +92,7 @@ export function Counter({ value, suffix = "", prefix = "", duration = 1800 }: { 
 export function SectionHeading({ eyebrow, title, text, light, center = true }: { eyebrow: string; title: ReactNode; text?: string; light?: boolean; center?: boolean }) {
   return (
     <Reveal className={cn("max-w-3xl", center && "mx-auto text-center")}>
-      <p className={cn("eyebrow inline-flex items-center gap-3", light ? "text-gold" : "text-gold")}>
+      <p className={cn("eyebrow inline-flex items-center gap-3", light ? "text-gold" : "text-primary")}>
         <span className="h-px w-8 bg-gold" aria-hidden />
         {eyebrow}
         {center && <span className="h-px w-8 bg-gold" aria-hidden />}

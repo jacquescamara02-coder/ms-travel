@@ -1,4 +1,5 @@
 # M-S TRAVEL — Roadmap
+- [x] Retirer le bouton pause visible et harmoniser toutes les pages avec les couleurs du logo.
 - [x] Adapter le Carnet de voyages au code Image Gallery fourni et vérifier animation, pause et affichage.
 - [x] Ajouter sous À propos une galerie smooth-scroll-slider de voyages avec familles noires et vérifier son affichage.
 - [x] Remplacer l’effet des grands titres par letter-swing et vérifier toutes les pages.
