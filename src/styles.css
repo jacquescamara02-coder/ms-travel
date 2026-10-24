@@ -234,6 +234,31 @@
 }
 
 /* Shared motion treatments retain each control's size and existing palette. */
+.journey-rail {
+  --journey-width: min(68vw, 640px);
+  position: relative;
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 12px max(24px, calc((100% - var(--journey-width)) / 2)) 24px;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.journey-rail::-webkit-scrollbar { display: none; }
+.journey-rail:active { cursor: grabbing; }
+.journey-slide {
+  flex: 0 0 var(--journey-width);
+  min-width: 0;
+  transform: scale(var(--journey-scale, 1));
+  opacity: var(--journey-opacity, 1);
+  transition: transform 180ms ease-out, opacity 180ms ease-out;
+  transform-origin: center center;
+}
+@media (max-width: 640px) {
+  .journey-rail { --journey-width: 84vw; gap: 12px; }
+}
+
 @property --orbit-angle {
   syntax: "<angle>";
   initial-value: 0deg;

@@ -13,6 +13,7 @@ import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/pr
 import { BlogCard, Faq, Newsletter, Reviews, StatsBand } from "@/components/site/sections";
 import { BookingModule } from "@/components/site/BookingModule";
 import { RoundCarousel } from "@/components/site/RoundCarousel";
+import { JourneyGallery } from "@/components/site/JourneyGallery";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -180,6 +181,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <JourneyGallery />
 
       {/* Reviews */}
       <section className="py-24 md:py-32">
