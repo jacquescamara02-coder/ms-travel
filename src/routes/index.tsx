@@ -65,7 +65,7 @@ function HeroSlider() {
           <Reveal delay={100}><p className="eyebrow mt-8 text-gold">Votre partenaire de voyage de confiance</p></Reveal>
           <Reveal delay={180}>
             <AnimatedHeading as="h1" className="mt-4 text-5xl font-extrabold leading-[0.95] sm:text-6xl lg:text-[5.5rem]">
-              Explorez le monde <span className="text-gold-gradient">sans limites</span> avec M-S TRAVEL
+              Explorez le monde <span className="text-brand-red">sans limites</span> avec M-S TRAVEL
             </AnimatedHeading>
           </Reveal>
           <Reveal delay={260}>
@@ -142,7 +142,7 @@ function Home() {
         </div>
       </section>
       {/* Popular destinations carousel */}
-      <section className="bg-navy-gradient grain relative overflow-hidden py-24 md:py-32">
+      <section className="bg-night-gradient grain relative overflow-hidden py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading light center={false} eyebrow="Explorez le monde" title={<>Nos Destinations <span className="text-gold-gradient">populaires</span></>} text="Visa tourisme rapide et garanti pour des destinations accessibles, sûres et inoubliables." />

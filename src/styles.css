@@ -161,6 +161,10 @@
 @utility bg-night-overlay {
   background: var(--gradient-night);
 }
+@utility bg-night-gradient {
+  /* Fond d'origine de la section Destinations (Nuit d'Harmattan), conservé à la demande du client */
+  background: radial-gradient(120% 90% at 10% 0%, oklch(0.32 0.11 268) 0%, oklch(0.2 0.06 268) 55%, oklch(0.15 0.05 268) 100%);
+}
 @utility bg-navy-gradient {
   background: var(--gradient-navy);
 }
