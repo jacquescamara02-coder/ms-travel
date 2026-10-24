@@ -146,7 +146,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading light center={false} eyebrow="Explorez le monde" title={<>Nos Destinations <span className="text-gold-gradient">populaires</span></>} text="Visa tourisme rapide et garanti pour des destinations accessibles, sûres et inoubliables." />
-            <Reveal><Link to="/destinations" className={btn({ variant: "gold" })}>Toutes les destinations <ArrowRight className="h-4 w-4" /></Link></Reveal>
+            <Reveal><Link to="/destinations" className={btn({ variant: "cta" })}>Toutes les destinations <ArrowRight className="h-4 w-4" /></Link></Reveal>
           </div>
         </div>
         <Reveal className="mt-8">
@@ -177,7 +177,7 @@ function Home() {
                 ))}
               </ul>
             </Reveal>
-            <Reveal delay={300} className="mt-10"><Link to="/services" className={btn({ variant: "navy", size: "lg" })}>Découvrez nos services <ArrowRight className="h-5 w-5" /></Link></Reveal>
+            <Reveal delay={300} className="mt-10"><Link to="/services" className={btn({ variant: "cta", size: "lg" })}>Découvrez nos services <ArrowRight className="h-5 w-5" /></Link></Reveal>
           </div>
         </div>
       </section>
