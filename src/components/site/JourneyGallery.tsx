@@ -69,7 +69,7 @@ export function JourneyGallery() {
       animations.forEach((animation) => animation.cancel());
       animations = Array.from(el.querySelectorAll<HTMLElement>(".journey-track")).map((track, index) => {
         const group = track.querySelector<HTMLElement>(".journey-group");
-        const distance = Math.max((group?.offsetWidth ?? 0) + 24, 1);
+        const distance = Math.max(group?.offsetWidth ?? 0, 1);
         const from = index % 2 === 0 ? 0 : -distance;
         const to = index % 2 === 0 ? -distance : 0;
         return track.animate([{ transform: `translateX(${from}px)` }, { transform: `translateX(${to}px)` }], { duration: 46000, iterations: Infinity, easing: "linear" });
