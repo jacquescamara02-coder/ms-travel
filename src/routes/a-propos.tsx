@@ -59,7 +59,7 @@ function About() {
           <SectionHeading center={false} eyebrow="Notre histoire" title={<>Qui sommes-nous — <span className="text-brand-red">M-S TRAVEL</span></>} />
           <Reveal delay={100} className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
             <p>M-S TRAVEL est une agence de voyage basée à <strong className="text-navy">Ouagadougou, Burkina Faso</strong>, fondée par des passionnés du voyage et des experts en tourisme international. Depuis plus de 10 ans, nous accompagnons les Burkinabè et les ressortissants de la sous-région dans leurs projets de voyages.</p>
-            <p>Notre spécialité : le <strong className="text-navy">visa tourisme</strong> et l'organisation du <strong className="text-navy">Hadj et de l'Omra</strong>. Nous croyons que chaque personne mérite de voir le monde. C'est pourquoi nous mettons notre expertise au service de ceux qui souhaitent voyager sereinement, sans stress et sans mauvaises surprises.</p>
+            <p>Notre spécialité : <strong className="text-navy">tous les types de visa</strong> — tourisme, études, travail, affaires, immigration — vers le monde entier (pays arabes, espace Schengen, Royaume-Uni, Canada, États-Unis), ainsi que l'organisation du <strong className="text-navy">Hadj et de l'Omra</strong>. Nous croyons que chaque personne mérite de voir le monde. C'est pourquoi nous mettons notre expertise au service de ceux qui souhaitent voyager sereinement, sans stress et sans mauvaises surprises.</p>
           </Reveal>
           <Reveal delay={200}>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
