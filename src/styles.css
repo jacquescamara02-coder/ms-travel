@@ -158,6 +158,11 @@
   background-clip: text;
   color: transparent;
 }
+
+@utility text-brand-red {
+  color: var(--brand-red);
+}
+.text-brand-red .letter-swing-char, span.text-brand-red.letter-swing-char { color: var(--brand-red); }
 @utility bg-night-overlay {
   background: var(--gradient-night);
 }
