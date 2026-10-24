@@ -74,7 +74,9 @@
   --brand-petrol: oklch(0.45 0.09 228);
   --brand-sky: oklch(0.70 0.13 228);
   --brand-red: oklch(0.59 0.20 15);
-  --brand-red-soft: oklch(0.75 0.15 15);
+  /* Same logo red, tuned per background so text always stays readable. */
+  --brand-red-text: #C82A48;
+  --brand-red-soft: #FE838F;
   --navy: var(--brand-ink);
   --navy-2: var(--brand-petrol);
   --navy-foreground: oklch(0.97 0.01 260);
@@ -161,9 +163,9 @@
 }
 
 @utility text-brand-red {
-  color: var(--brand-red);
+  color: var(--brand-red-text);
 }
-.text-brand-red .letter-swing-char, span.text-brand-red.letter-swing-char { color: var(--brand-red); }
+.text-brand-red .letter-swing-char, span.text-brand-red.letter-swing-char { color: var(--brand-red-text); }
 /* On dark night sections the same red is used one shade lighter so it stays readable. */
 .text-navy-foreground .text-brand-red, .text-navy-foreground .text-brand-red .letter-swing-char, .text-navy-foreground span.text-brand-red.letter-swing-char { color: var(--brand-red-soft); }
 @utility bg-night-overlay {
