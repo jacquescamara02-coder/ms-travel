@@ -10,11 +10,11 @@ import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Stars, Tilt } from "./primitives";
 import { PageBack } from "./PageBack";
 
-export function PageHero({ image, badge, title, text, children, bottom }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode }) {
+export function PageHero({ image, badge, title, text, children, bottom, imageClass = "object-center", overlayClass = "bg-night-overlay bg-navy/15" }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode; imageClass?: string; overlayClass?: string }) {
   return (
     <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
-      <img src={image} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns" />
-      <div className="absolute inset-0 -z-10 bg-night-overlay bg-navy/15" />
+      <img src={image} alt="" className={`absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns ${imageClass}`} />
+      <div className={`absolute inset-0 -z-10 ${overlayClass}`} />
       <div className="grain absolute inset-0 -z-10" />
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
