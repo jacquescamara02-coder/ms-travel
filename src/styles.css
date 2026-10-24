@@ -255,18 +255,29 @@
 }
 
 /* Shared motion treatments retain each control's size and existing palette. */
-.journey-stage { position: relative; height: 620px; overflow: hidden; background: var(--navy); isolation: isolate; }
-.journey-flight { position: absolute; top: 50%; left: 50%; width: min(27%, 310px); margin: 0; opacity: 0; will-change: transform, opacity; pointer-events: none; }
-.journey-flight img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; border-radius: 8px; background: var(--navy); }
-.journey-flight figcaption { margin-top: 8px; color: var(--navy-foreground); font-size: 12px; font-weight: 600; text-align: center; }
+.journey-stage { display: grid; gap: 24px; background: var(--navy); padding: 36px 0; isolation: isolate; }
+.journey-row { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent); }
+.journey-track { display: flex; width: max-content; }
+.journey-group { display: flex; gap: 24px; padding-right: 24px; }
+.journey-cell { width: min(26vw, 270px); }
+.journey-card { margin: 0; }
+.journey-card img { display: block; width: 100%; object-fit: cover; border-radius: 12px; background: var(--navy); transition: transform 260ms ease; }
+.journey-card[data-shape="portrait"] img { aspect-ratio: 3 / 4; }
+.journey-card[data-shape="landscape"] img { aspect-ratio: 4 / 3; }
+.journey-card:hover img { transform: translateY(-4px); }
+.journey-card figcaption { margin-top: 10px; color: var(--navy-foreground); font-size: 12px; font-weight: 600; text-align: center; }
 @media (max-width: 640px) {
-  .journey-stage { height: 510px; }
-  .journey-flight { width: 46%; }
-  .journey-flight figcaption { font-size: 11px; }
+  .journey-stage { gap: 18px; padding: 24px 0; }
+  .journey-group { gap: 16px; padding-right: 16px; }
+  .journey-cell { width: 44vw; }
+  .journey-card figcaption { font-size: 10px; }
 }
-.journey-stage[data-static="true"] { display: grid; height: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 32px 24px; }
-.journey-stage[data-static="true"] .journey-flight { position: relative; top: auto; left: auto; width: 100%; opacity: 1; transform: none; will-change: auto; }
-.journey-stage[data-static="true"] .journey-flight[aria-hidden="true"] { display: none; }
+.journey-stage[data-static="true"] { padding: 32px 24px; }
+.journey-stage[data-static="true"] .journey-row { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+.journey-stage[data-static="true"] .journey-track { width: auto; }
+.journey-stage[data-static="true"] .journey-group { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; padding-right: 0; }
+.journey-stage[data-static="true"] .journey-group + .journey-group { display: none; }
+.journey-stage[data-static="true"] .journey-cell { width: auto; }
 .journey-gallery button.sr-only:not(:focus-visible) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border-width: 0; }
 
 @property --orbit-angle {
