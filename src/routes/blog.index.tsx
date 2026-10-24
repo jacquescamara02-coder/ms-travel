@@ -38,7 +38,7 @@ function BlogPage() {
           <label className="relative flex-1">
             <span className="sr-only">Rechercher un article</span>
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-foreground/60" />
-            <input value={input} onChange={(e) => setInput(e.target.value)} maxLength={100} placeholder="Rechercher un article..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/55 focus:outline-none" />
+            <input value={input} onChange={(e) => setInput(e.target.value)} maxLength={100} placeholder="Rechercher un article..." className="h-14 w-full rounded-full glass-light pl-11 pr-4 text-navy-foreground placeholder:text-navy-foreground/70 focus:outline-none" />
           </label>
           <button className={btn({ variant: "cta", size: "lg" })}>Rechercher</button>
         </form>
