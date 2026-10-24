@@ -33,7 +33,7 @@ function About() {
     <>
       <PageHero
         image={directeur.url}
-        imageClass="object-[89%_0%] md:object-[44%_0%]"
+        imageClass="object-[18%_0%] md:object-[44%_0%]"
         overlayClass="bg-night-overlay bg-navy/30"
         scrim
         badge="10+ ans d'expérience"
