@@ -1,4 +1,6 @@
 # M-S TRAVEL — Roadmap
+- [x] Intégrer la description officielle dans « Qui sommes-nous » et la page À propos.
+- [ ] Placer la nouvelle photo reçue — en attente du choix de son emplacement par le client.
 - [x] Appliquer le rouge du logo aux mots des grands titres de toutes les sections, contraste lisible vérifié.
 - [x] Retirer le bloc « Informations importantes » et afficher « tous les visas, tous les pays » (Schengen, Royaume-Uni, Canada, USA, pays arabes).
 - [x] Retirer le bouton pause visible et harmoniser toutes les pages avec les couleurs du logo.
