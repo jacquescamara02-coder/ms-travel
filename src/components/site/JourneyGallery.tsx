@@ -57,11 +57,11 @@ export function JourneyGallery() {
       const narrow = width < 640;
       animations = Array.from(el.querySelectorAll<HTMLElement>(".journey-flight")).map((tile, index) => {
         const [x, y] = zones[index % zones.length] ?? [0, 0];
-        const tx = width * (narrow ? 0.28 : 0.32) * x;
-        const ty = height * 0.30 * y;
+        const tx = width * (narrow ? 0.22 : 0.26) * x;
+        const ty = height * 0.22 * y;
         const transform = (distance: number, scale: number) => `translate(calc(-50% + ${tx * distance}px), calc(-50% + ${ty * distance}px)) scale(${scale})`;
         return tile.animate([
-          { transform: transform(1.65, 1.7), opacity: 0, offset: 0 },
+          { transform: transform(1.45, 1.28), opacity: 0, offset: 0 },
           { transform: transform(1, 1), opacity: 1, offset: 0.22 },
           { transform: transform(0.96, 1), opacity: 1, offset: 0.65 },
           { transform: transform(0.38, 0.08), opacity: 0, offset: 0.84 },
