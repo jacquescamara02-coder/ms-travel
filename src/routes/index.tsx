@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, BedDouble, Check, ChevronLeft, ChevronRight, Compass, Headset, MapPin, Moon, Phone, Plane, Stamp, Star, MessageCircle } from "lucide-react";
 import couple from "@/assets/couple-passport.jpg";
-import office from "@/assets/about-office.jpg";
+import aboutTeam from "@/assets/about-team.jpg.asset.json";
 import mecca from "@/assets/dest-arabie.jpg";
 import {
   BLOG, CONTACT, DESTINATIONS, FAQ_HOME, HERO_SLIDES, NEWS, PARTNER_TILES, POPULAR, REVIEWS_HOME, SEO_SERVICES, SERVICES, VISA_CARDS, destBySlug, waLink,
@@ -157,7 +157,7 @@ function Home() {
       <section className="bg-secondary/60 py-24 md:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2">
           <Reveal className="relative">
-            <img src={office} alt="Conseillère M-S TRAVEL accueillant un client" loading="lazy" className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft" />
+            <img src={aboutTeam.url} alt="Un conseiller M-S TRAVEL à l'accueil de son bureau" loading="lazy" className="aspect-[4/5] w-full rounded-[2rem] object-cover object-center shadow-soft" />
             <div className="absolute -bottom-6 -right-2 rounded-3xl bg-gold-gradient p-6 text-navy shadow-gold md:-right-6">
               <p className="font-display text-5xl font-extrabold"><Counter value={10} suffix="+" /></p>
               <p className="text-xs font-bold uppercase tracking-widest">Ans d'expérience</p>
