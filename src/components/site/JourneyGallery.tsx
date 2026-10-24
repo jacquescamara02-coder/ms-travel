@@ -57,15 +57,15 @@ export function JourneyGallery() {
       const narrow = width < 640;
       animations = Array.from(el.querySelectorAll<HTMLElement>(".journey-flight")).map((tile, index) => {
         const [x, y] = zones[index % zones.length] ?? [0, 0];
-        const tx = width * (narrow ? 0.22 : 0.26) * x;
-        const ty = height * 0.22 * y;
+        const tx = width * (narrow ? 0.20 : 0.22) * x;
+        const ty = height * 0.12 * y;
         const transform = (distance: number, scale: number) => `translate(calc(-50% + ${tx * distance}px), calc(-50% + ${ty * distance}px)) scale(${scale})`;
         return tile.animate([
           { transform: transform(1.45, 1.28), opacity: 0, offset: 0 },
-          { transform: transform(1, 1), opacity: 1, offset: 0.22 },
-          { transform: transform(0.96, 1), opacity: 1, offset: 0.65 },
-          { transform: transform(0.38, 0.08), opacity: 0, offset: 0.84 },
-          { transform: transform(0.38, 0.08), opacity: 0, offset: 1 },
+          { transform: transform(1, 1), opacity: 1, offset: 0.26 },
+          { transform: transform(0.86, 0.96), opacity: 1, offset: 0.6 },
+          { transform: transform(0.78, 0.9), opacity: 0, offset: 0.76 },
+          { transform: transform(0.78, 0.9), opacity: 0, offset: 1 },
         ], { duration: 12000, delay: -index * 1200, iterations: Infinity, easing: "ease-in-out" });
       });
       sync();
