@@ -257,7 +257,8 @@
 /* Shared motion treatments retain each control's size and existing palette. */
 .journey-stage { position: relative; height: 620px; overflow: hidden; background: var(--navy); isolation: isolate; }
 .journey-flight { position: absolute; top: 50%; left: 50%; width: min(27%, 310px); margin: 0; opacity: 0; will-change: transform, opacity; pointer-events: none; }
-.journey-flight img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; border-radius: 8px; background: var(--navy); }
+.journey-flight img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: var(--navy); }
+.journey-flight[data-shape="portrait"] img { aspect-ratio: 3 / 4; }
 .journey-flight figcaption { margin-top: 8px; color: var(--navy-foreground); font-size: 12px; font-weight: 600; text-align: center; }
 @media (max-width: 640px) {
   .journey-stage { height: 510px; }
