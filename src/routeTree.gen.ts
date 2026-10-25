@@ -24,6 +24,7 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminDemandesRouteImport } from './routes/_authenticated/admin.demandes'
 import { Route as AuthenticatedAdminMediasRouteImport } from './routes/_authenticated/admin.medias'
+import { Route as AuthenticatedAdminContenuKeyRouteImport } from './routes/_authenticated/admin.contenu.$key'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -101,6 +102,12 @@ const AuthenticatedAdminMediasRoute =
     path: '/medias',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminContenuKeyRoute =
+  AuthenticatedAdminContenuKeyRouteImport.update({
+    id: '/contenu/$key',
+    path: '/contenu/$key',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/admin/demandes': typeof AuthenticatedAdminDemandesRoute
   '/admin/medias': typeof AuthenticatedAdminMediasRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/contenu/$key': typeof AuthenticatedAdminContenuKeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -132,6 +140,7 @@ export interface FileRoutesByTo {
   '/admin/demandes': typeof AuthenticatedAdminDemandesRoute
   '/admin/medias': typeof AuthenticatedAdminMediasRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/contenu/$key': typeof AuthenticatedAdminContenuKeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -150,6 +159,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/demandes': typeof AuthenticatedAdminDemandesRoute
   '/_authenticated/admin/medias': typeof AuthenticatedAdminMediasRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/contenu/$key': typeof AuthenticatedAdminContenuKeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/admin/demandes'
     | '/admin/medias'
     | '/admin/'
+    | '/admin/contenu/$key'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/admin/demandes'
     | '/admin/medias'
     | '/admin'
+    | '/admin/contenu/$key'
   id:
     | '__root__'
     | '/'
@@ -200,6 +212,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/demandes'
     | '/_authenticated/admin/medias'
     | '/_authenticated/admin/'
+    | '/_authenticated/admin/contenu/$key'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -323,6 +336,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminMediasRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/contenu/$key': {
+      id: '/_authenticated/admin/contenu/$key'
+      path: '/contenu/$key'
+      fullPath: '/admin/contenu/$key'
+      preLoaderRoute: typeof AuthenticatedAdminContenuKeyRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
@@ -330,12 +350,14 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminDemandesRoute: typeof AuthenticatedAdminDemandesRoute
   AuthenticatedAdminMediasRoute: typeof AuthenticatedAdminMediasRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminContenuKeyRoute: typeof AuthenticatedAdminContenuKeyRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminDemandesRoute: AuthenticatedAdminDemandesRoute,
   AuthenticatedAdminMediasRoute: AuthenticatedAdminMediasRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminContenuKeyRoute: AuthenticatedAdminContenuKeyRoute,
 }
 
 const AuthenticatedAdminRouteWithChildren =
