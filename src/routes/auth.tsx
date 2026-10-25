@@ -20,7 +20,7 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-const field = "h-12 w-full rounded-xl border bg-background px-4 text-foreground focus:border-sky focus:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+const field = "h-12 w-full rounded-xl border bg-background px-4 text-foreground focus:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ function AuthPage() {
           {busy && <Loader2 className="h-4 w-4 animate-spin" />}{mode === "login" ? "Se connecter" : "Envoyer le lien"}
         </button>
         <div className="mt-5 flex justify-between text-sm">
-          <button type="button" onClick={() => setMode(mode === "login" ? "forgot" : "login")} className="cursor-pointer font-semibold text-petrol hover:underline">{mode === "login" ? "Mot de passe oublié ?" : "Retour à la connexion"}</button>
+          <button type="button" onClick={() => setMode(mode === "login" ? "forgot" : "login")} className="cursor-pointer font-semibold text-navy hover:underline">{mode === "login" ? "Mot de passe oublié ?" : "Retour à la connexion"}</button>
           <Link to="/" className="font-semibold text-muted-foreground hover:underline">Voir le site</Link>
         </div>
       </form>
