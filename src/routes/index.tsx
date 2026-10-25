@@ -6,13 +6,14 @@ import couple from "@/assets/couple-passport.jpg";
 import aboutTeam from "@/assets/about-team.jpg.asset.json";
 import mecca from "@/assets/dest-arabie.jpg";
 import {
-  BLOG, CONTACT, DESTINATIONS, FAQ_HOME, HERO_SLIDES, NEWS, PARTNER_TILES, POPULAR, REVIEWS_HOME, SEO_SERVICES, SERVICES, VISA_CARDS, destBySlug, waLink,
+  BLOG, CONTACT, PAGE_HEROES, DESTINATIONS, FAQ_HOME, HERO_SLIDES, NEWS, PARTNER_TILES, POPULAR, REVIEWS_HOME, SEO_SERVICES, SERVICES, VISA_CARDS, destBySlug, waLink,
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/primitives";
 import { BlogCard, Faq, Newsletter, Reviews, StatsBand } from "@/components/site/sections";
 import { BookingModule } from "@/components/site/BookingModule";
 import { RoundCarousel } from "@/components/site/RoundCarousel";
+import { Marked } from "@/components/site/ExtraContent";
 import { JourneyGallery } from "@/components/site/JourneyGallery";
 
 export const Route = createFileRoute("/")({
@@ -43,6 +44,7 @@ function HeroSlider() {
     return () => clearTimeout(t);
   }, [i, paused, go]);
   const s = HERO_SLIDES[i];
+  const hero = PAGE_HEROES["accueil"] ?? {};
 
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carrousel" aria-label="Destinations à la une">
@@ -59,17 +61,17 @@ function HeroSlider() {
         <div>
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full glass-light px-4 py-2 text-xs font-bold tracking-wider">
-              <Star className="h-3.5 w-3.5 fill-gold text-gold" /> AGENCE N°1 — OUAGADOUGOU, BURKINA FASO
+              <Star className="h-3.5 w-3.5 fill-gold text-gold" /> {hero.badge || "AGENCE N°1 — OUAGADOUGOU, BURKINA FASO"}
             </span>
           </Reveal>
           <Reveal delay={100}><p className="eyebrow mt-8 text-gold">Votre partenaire de voyage de confiance</p></Reveal>
           <Reveal delay={180}>
             <AnimatedHeading as="h1" className="mt-4 text-5xl font-extrabold leading-[0.95] sm:text-6xl lg:text-[5.5rem]">
-              Explorez le monde <span className="text-brand-red">sans limites</span> avec M-S TRAVEL
+              {hero.title ? <Marked text={hero.title} /> : <>Explorez le monde <span className="text-brand-red">sans limites</span> avec M-S TRAVEL</>}
             </AnimatedHeading>
           </Reveal>
           <Reveal delay={260}>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-foreground/80">Billets d'avion au meilleur prix, visas touristiques rapides et accompagnement complet pour votre Hadj — tout depuis Ouagadougou.</p>
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-foreground/80">{hero.text || "Billets d'avion au meilleur prix, visas touristiques rapides et accompagnement complet pour votre Hadj — tout depuis Ouagadougou."}</p>
           </Reveal>
           <Reveal delay={340} className="mt-10 flex flex-wrap gap-3">
             <Link to="/reservation" className={btn({ variant: "cta", size: "lg" })}>Réserver maintenant <ArrowRight className="h-5 w-5" /></Link>

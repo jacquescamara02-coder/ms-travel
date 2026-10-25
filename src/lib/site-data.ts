@@ -15,6 +15,18 @@ import burkina from "@/assets/dest-burkina.jpg";
 import wing from "@/assets/hero-wing.jpg";
 import blogHero from "@/assets/hero-blog.jpg";
 
+import tarmacAccompagnement from "@/assets/journey-tarmac-accompagnement.jpg.asset.json";
+import departPasserelle from "@/assets/journey-depart-passerelle.jpg.asset.json";
+import equipeEscorte from "@/assets/journey-equipe-escorte.jpg.asset.json";
+import remiseKits from "@/assets/journey-remise-kits.jpg.asset.json";
+import groupeTarmac from "@/assets/journey-groupe-tarmac.jpg.asset.json";
+import documentsEmbarquement from "@/assets/journey-documents-embarquement.jpg.asset.json";
+import marcheSacs from "@/assets/journey-marche-sacs.jpg.asset.json";
+import mainMain from "@/assets/journey-main-main.jpg.asset.json";
+import terminalVoile from "@/assets/journey-terminal-voile.jpg.asset.json";
+import agentSourire from "@/assets/journey-agent-sourire.jpg.asset.json";
+
+
 export const CONTACT = {
   email: "contact@mstravel-bf.com",
   emailSecondary: "service@mstravel-bf.com",
@@ -235,3 +247,28 @@ export const DEST_CITIES: Record<string, string[]> = {
 export const VISA_COUNTRIES = [
   "Dubaï (AE)", "Thaïlande (TH)", "Turquie (TR)", "Qatar (QA)", "Arabie Saoudite (SA)", "Chine (CN)", "Maroc (MA)", "Kenya (KE)", "Éthiopie (ET)", "Madagascar (MG)", "Zambie (ZM)", "Cameroun (CM)", "France (FR)", "Belgique (BE)", "Italie (IT)", "Allemagne (DE)", "Royaume-Uni (GB)", "Canada (CA)", "États-Unis (US)", "Israël (IL)", "Égypte (EG)", "Autre pays",
 ];
+
+/* ---------- Contenus gérés depuis le tableau administrateur ---------- */
+export type GalleryShot = { image: string; label: string; note: string; shape: "portrait" | "landscape"; alt: string };
+export const GALLERY: GalleryShot[] = [
+  { image: tarmacAccompagnement.url, label: "Sur le tarmac", note: "Accompagnement", shape: "landscape", alt: "Voyageurs souriants accompagnés sur le tarmac par un agent M-S TRAVEL en gilet jaune" },
+  { image: documentsEmbarquement.url, label: "Documents d'embarquement", note: "Suivi", shape: "portrait", alt: "Voyageur souriant tenant ses documents d'embarquement devant la passerelle" },
+  { image: departPasserelle.url, label: "À la passerelle", note: "Départ", shape: "portrait", alt: "Voyageur en tenue traditionnelle, sac de l'agence à la main, au pied de la passerelle d'embarquement" },
+  { image: mainMain.url, label: "Main dans la main", note: "Assistance", shape: "landscape", alt: "Voyageur âgé tenu par la main et escorté par un agent en gilet jaune sur le tarmac" },
+  { image: equipeEscorte.url, label: "Notre équipe", note: "Assistance", shape: "portrait", alt: "Trois agents M-S TRAVEL en gilets jaunes posant au pied de l'escalier d'un avion" },
+  { image: agentSourire.url, label: "Notre agent", note: "Escorte", shape: "portrait", alt: "Agent M-S TRAVEL en gilet jaune souriante sur le tarmac" },
+  { image: remiseKits.url, label: "Remise des kits", note: "Départ de groupe", shape: "landscape", alt: "Groupe de clients devant l'agence M-S TRAVEL tenant leurs kits de voyage" },
+  { image: marcheSacs.url, label: "Sur le tarmac", note: "Accompagnement", shape: "portrait", alt: "Deux voyageurs marchant sur le tarmac, grands sacs de voyage à l'épaule" },
+  { image: groupeTarmac.url, label: "Groupe de voyageurs", note: "Assistance", shape: "landscape", alt: "Voyageurs et agents en gilets jaunes sur le tarmac devant un avion" },
+  { image: terminalVoile.url, label: "Au terminal", note: "Suivi", shape: "landscape", alt: "Voyageuse voilée tenant ses documents de voyage à l'entrée du terminal" },
+];
+
+export type HeroOverride = { image?: string; badge?: string; title?: string; text?: string };
+/** Remplacements des bannières par page. Titre : entourer un mot de *astérisques* pour le mettre en rouge. */
+export const PAGE_HEROES: Record<string, HeroOverride> = {};
+
+export type VideoItem = { title: string; description: string; url: string; date: string };
+export const VIDEOS: VideoItem[] = [];
+
+export type PageBlock = { page: string; title: string; text: string; image?: string; buttonLabel?: string; buttonUrl?: string };
+export const PAGE_BLOCKS: PageBlock[] = [];

@@ -33,7 +33,7 @@ const ICONS = { plane: Plane, stamp: Stamp, moon: Moon, hotel: BedDouble, map: C
 function ServicesPage() {
   return (
     <>
-      <PageHero image={heroWing} badge="Ce que nous faisons" title={<>Nos <span className="text-brand-red">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou.">
+      <PageHero pageKey="services" image={heroWing} badge="Ce que nous faisons" title={<>Nos <span className="text-brand-red">Services</span></>} text="De la billetterie aux circuits clé-en-main, nous gérons chaque détail de votre voyage avec professionnalisme depuis Ouagadougou.">
         <Link to="/reservation" className={btn({ variant: "cta", size: "lg" })}>Réserver maintenant</Link>
         <a href="#hadj" className={btn({ variant: "ghostLight", size: "lg" })}>Hadj & Omra</a>
       </PageHero>

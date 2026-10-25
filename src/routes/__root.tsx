@@ -5,6 +5,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -16,6 +17,10 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { Footer, FloatingActions, Header } from "@/components/site/SiteChrome";
 import { CONTACT } from "@/lib/site-data";
+import { loadSiteContent } from "@/lib/content-client";
+import { applyContent } from "@/lib/content-registry";
+import { ExtraContent } from "@/components/site/ExtraContent";
+import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -87,6 +92,7 @@ const jsonLd = {
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  beforeLoad: async () => ({ siteContent: await loadSiteContent() }),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -128,7 +134,28 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+  const { queryClient, siteContent } = Route.useRouteContext();
+  applyContent(siteContent);
+  const router = useRouter();
+  const { pathname } = useLocation();
+  const bare = pathname.startsWith("/admin") || pathname.startsWith("/auth") || pathname.startsWith("/reset-password");
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      router.invalidate();
+      if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
+    });
+    return () => data.subscription.unsubscribe();
+  }, [router, queryClient]);
+
+  if (bare) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+        <Toaster position="top-center" richColors />
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -138,6 +165,7 @@ function RootComponent() {
       <Header />
       <main id="contenu">
         <Outlet />
+        <ExtraContent />
       </main>
       <Footer />
       <FloatingActions />
