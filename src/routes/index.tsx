@@ -1,12 +1,12 @@
 import { AnimatedHeading } from "@/components/ui/hero-shutter-text";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, BedDouble, Check, ChevronLeft, ChevronRight, Compass, Headset, MapPin, Moon, Phone, Plane, Stamp, Star, MessageCircle } from "lucide-react";
+import { ArrowRight, BedDouble, Check, ChevronLeft, ChevronRight, Compass, Headset, Moon, Plane, Stamp, Star, MessageCircle } from "lucide-react";
 import couple from "@/assets/couple-passport.jpg";
 import aboutTeam from "@/assets/about-team.jpg.asset.json";
 import mecca from "@/assets/dest-arabie.jpg";
 import {
-  BLOG, CONTACT, PAGE_HEROES, DESTINATIONS, FAQ_HOME, HERO_SLIDES, NEWS, PARTNER_TILES, POPULAR, REVIEWS_HOME, SEO_SERVICES, SERVICES, VISA_CARDS, destBySlug, waLink,
+  CONTACT, PAGE_HEROES, DESTINATIONS, HERO_SLIDES, POPULAR, REVIEWS_HOME, SERVICES, destBySlug,
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Tilt } from "@/components/site/primitives";
@@ -35,9 +35,21 @@ const SLIDE_MS = 6500;
 
 function HeroSlider() {
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const n = HERO_SLIDES.length;
   const go = useCallback((d: number) => setI((x) => (x + d + n) % n), [n]);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  const paused = hovered || focused || reducedMotion;
   useEffect(() => {
     if (paused) return;
     const t = setTimeout(() => go(1), SLIDE_MS);
@@ -47,7 +59,17 @@ function HeroSlider() {
   const hero = PAGE_HEROES["accueil"] ?? {};
 
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carrousel" aria-label="Destinations à la une">
+    <section
+      className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+      }}
+      aria-roledescription="carrousel"
+      aria-label="Galerie de destinations"
+    >
       {HERO_SLIDES.map((sl, k) => (
         <div key={sl.code} className={cn("absolute inset-0 -z-20 transition-opacity duration-[1400ms] ease-out", k === i ? "opacity-100" : "opacity-0")} aria-hidden={k !== i}>
           <img src={sl.image} alt="" fetchPriority={k === 0 ? "high" : "low"} loading={k === 0 ? "eager" : "lazy"} className={cn("h-full w-full object-cover brightness-[1.1] saturate-[1.06]", k === i && "animate-kenburns")} />
@@ -95,6 +117,42 @@ function HeroSlider() {
         </div>
       </div>
 
+      <div className="absolute bottom-5 right-5 z-10 flex items-center gap-2 sm:bottom-8 sm:right-8">
+        <span className="mr-1 min-w-12 text-center font-display text-xs font-bold tracking-widest text-navy-foreground/75" aria-live="polite" aria-atomic="true">
+          <span className="sr-only">Image </span>{String(i + 1).padStart(2, "0")}<span className="mx-1 text-navy-foreground/40">/</span>{String(n).padStart(2, "0")}
+        </span>
+        <button
+          type="button"
+          onClick={() => go(-1)}
+          aria-label="Image précédente"
+          className="grid h-10 w-10 place-items-center rounded-full glass-light text-navy-foreground transition-transform hover:-translate-y-0.5"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <div className="flex items-center gap-1.5" role="group" aria-label="Choisir une image">
+          {HERO_SLIDES.map((slide, index) => (
+            <button
+              key={slide.code}
+              type="button"
+              onClick={() => setI(index)}
+              aria-label={`Afficher l’image ${index + 1}`}
+              aria-current={index === i ? "true" : undefined}
+              className={cn(
+                "h-2 rounded-full bg-navy-foreground/45 transition-all duration-300",
+                index === i ? "w-6 bg-gold" : "w-2 hover:bg-navy-foreground",
+              )}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={() => go(1)}
+          aria-label="Image suivante"
+          className="grid h-10 w-10 place-items-center rounded-full glass-light text-navy-foreground transition-transform hover:-translate-y-0.5"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
     </section>
   );
 }

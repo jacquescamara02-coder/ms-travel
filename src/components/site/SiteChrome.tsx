@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { ArrowUp, Mail, MapPin, Menu, Phone, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUp, Mail, MapPin, Menu, Phone, Plane, X } from "lucide-react";
 import { CONTACT } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { btn, FacebookIcon, InstagramIcon, Logo, WhatsAppIcon } from "./primitives";
@@ -34,6 +34,9 @@ function Socials({ className }: { className?: string }) {
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpen = useRef(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
@@ -45,7 +48,37 @@ export function Header() {
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
+  useEffect(() => {
+    if (open) closeButtonRef.current?.focus();
+    else if (wasOpen.current) menuButtonRef.current?.focus();
+    wasOpen.current = open;
+  }, [open]);
+
+  const handleMenuKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const items = event.currentTarget.querySelectorAll<HTMLElement>(
+      "a[href], button:not([disabled])",
+    );
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
 
   const isActive = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
 
@@ -67,7 +100,7 @@ export function Header() {
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV.map((n) => (
               <li key={n.to}>
-                <Link to={n.to} className={cn("relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200", isActive(n.to) ? "text-gold" : "text-navy-foreground/85 hover:text-navy-foreground")}>
+                <Link to={n.to} aria-current={isActive(n.to) ? "page" : undefined} className={cn("relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200", isActive(n.to) ? "text-gold" : "text-navy-foreground/85 hover:text-navy-foreground")}>
                   {n.label}
                   {isActive(n.to) && <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-gold" />}
                 </Link>
@@ -75,23 +108,34 @@ export function Header() {
             ))}
           </ul>
           <div className="flex items-center gap-3">
-            <Link to="/reservation" className={cn(btn({ variant: "cta", size: "sm" }), "hidden sm:inline-flex")}>Réserver</Link>
-            <button onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground lg:hidden" aria-label="Ouvrir le menu">
+            <Link to="/reservation" className={cn(btn({ variant: "cta", size: "sm" }), "h-10 w-10 px-0 sm:h-9 sm:w-auto sm:px-4")}>
+              <Plane className="h-4 w-4 sm:hidden" />
+              <span className="sr-only sm:not-sr-only">Réserver</span>
+            </Link>
+            <button ref={menuButtonRef} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground lg:hidden" aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-navigation">
               <Menu className="h-5 w-5" />
             </button>
           </div>
         </nav>
       </div>
       {/* Mobile full-screen menu */}
-      <div className={cn("fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-gradient grain transition-all duration-500 lg:hidden", open ? "visible opacity-100" : "invisible opacity-0")} aria-hidden={!open}>
+      <div
+        id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu de navigation"
+        onKeyDown={handleMenuKeyDown}
+        className={cn("fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-gradient grain transition-all duration-500 lg:hidden", open ? "visible opacity-100" : "invisible opacity-0")}
+        aria-hidden={!open}
+      >
         <div className="flex h-20 shrink-0 items-center justify-between px-5">
           <Logo />
-          <button onClick={() => setOpen(false)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground" aria-label="Fermer le menu"><X className="h-5 w-5" /></button>
+          <button ref={closeButtonRef} onClick={() => setOpen(false)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground" aria-label="Fermer le menu"><X className="h-5 w-5" /></button>
         </div>
         <ul className="mt-4 flex-1 space-y-1 px-6">
           {NAV.map((n, i) => (
             <li key={n.to} style={{ transitionDelay: `${open ? 80 + i * 60 : 0}ms` }} className={cn("transition-all duration-500", open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
-              <Link to={n.to} className={cn("block py-2.5 font-display text-3xl font-extrabold", isActive(n.to) ? "text-gold" : "text-navy-foreground")}>{n.label}</Link>
+              <Link to={n.to} aria-current={isActive(n.to) ? "page" : undefined} className={cn("block py-2.5 font-display text-3xl font-extrabold", isActive(n.to) ? "text-gold" : "text-navy-foreground")}>{n.label}</Link>
             </li>
           ))}
         </ul>

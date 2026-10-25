@@ -126,6 +126,8 @@ export function BookingModule() {
   const [values, setValues] = useState<Values>(DEFAULTS.billet);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
+  const [saved, setSaved] = useState<boolean | null>(null);
+  const [whatsappOpened, setWhatsappOpened] = useState(false);
   const [lastUrl, setLastUrl] = useState("");
 
   const select = (k: Kind) => {
@@ -133,6 +135,8 @@ export function BookingModule() {
     setValues(DEFAULTS[k]);
     setErrors({});
     setStatus("idle");
+    setSaved(null);
+    setWhatsappOpened(false);
   };
   const set = (k: Key) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const val = e.target.value;
@@ -158,29 +162,61 @@ export function BookingModule() {
     const v = parsed.data as Values;
     setStatus("sending");
     const url = waLink(buildWhatsAppMessage(kind, v));
-    // Open WhatsApp synchronously-ish to avoid popup blockers
+    // Open WhatsApp synchronously so the browser treats it as a user-initiated action.
     const win = window.open("", "_blank");
-    const { nom = "", prenom = "", email = "", whatsapp = "", ...details } = v;
-    const { error } = await supabase.from("booking_requests").insert({ request_type: kind, last_name: nom, first_name: prenom, email, whatsapp, details });
-    if (error) console.error(error);
     if (win) win.location.href = url;
-    else window.location.href = url;
+    const { nom = "", prenom = "", email = "", whatsapp = "", ...details } = v;
+    let requestSaved = false;
+    try {
+      const { error } = await supabase.from("booking_requests").insert({
+        request_type: kind,
+        last_name: nom,
+        first_name: prenom,
+        email,
+        whatsapp,
+        details,
+      });
+      if (error) console.error("Unable to save booking request", error);
+      else requestSaved = true;
+    } catch (error) {
+      console.error("Unable to save booking request", error);
+    }
     setLastUrl(url);
+    setSaved(requestSaved);
+    setWhatsappOpened(!!win);
     setStatus("done");
   };
 
   return (
     <div>
       <p className="eyebrow text-center text-gold">Choisissez votre besoin</p>
-      <div role="tablist" aria-label="Type de demande" className="mt-5 grid gap-4 md:grid-cols-3">
+      <div role="group" aria-label="Type de demande" className="mt-5 grid gap-4 md:grid-cols-3">
         {CHOICES.map(({ id, title, text, Icon }) => {
           const active = kind === id;
           return (
-            <button key={id} role="tab" aria-selected={active} onClick={() => select(id)} className={cn("group relative flex items-center gap-4 overflow-hidden rounded-2xl border p-5 text-left transition-all duration-300 hover:-translate-y-1", active ? "border-gold bg-navy text-navy-foreground shadow-gold" : "bg-card hover:border-gold/60 hover:shadow-soft")}>
+            <button
+              key={id}
+              type="button"
+              aria-pressed={active}
+              onClick={() => select(id)}
+              className={cn(
+                "group relative flex min-h-28 items-center gap-4 overflow-hidden rounded-2xl border p-5 text-left transition-all duration-300 hover:-translate-y-1",
+                active
+                  ? "border-gold bg-navy text-navy-foreground shadow-gold"
+                  : "bg-card hover:border-gold/60 hover:shadow-soft",
+              )}
+            >
               <span className={cn("grid h-12 w-12 shrink-0 place-items-center rounded-xl transition-colors", active ? "bg-gold text-navy" : "bg-secondary text-navy group-hover:bg-accent")}><Icon className="h-6 w-6" /></span>
               <span>
                 <span className="block font-display text-lg font-bold">{title}</span>
-                <span className={cn("text-sm", active ? "text-navy-foreground/70" : "text-muted-foreground")}>{text}</span>
+                <span
+                  className={cn(
+                    "text-sm",
+                    active ? "text-navy-foreground/70" : "text-muted-foreground",
+                  )}
+                >
+                  {text}
+                </span>
               </span>
               {active && <CheckCircle2 className="absolute right-4 top-4 h-5 w-5 text-gold" />}
             </button>
@@ -190,13 +226,35 @@ export function BookingModule() {
 
       <div className="mt-8 rounded-[1.75rem] border bg-card p-5 shadow-soft md:p-8">
         {status === "done" ? (
-          <div className="flex flex-col items-center py-12 text-center" role="status">
-            <span className="grid h-20 w-20 place-items-center rounded-full bg-success/15 text-success"><CheckCircle2 className="h-10 w-10" /></span>
-            <h3 className="mt-6 text-3xl font-extrabold text-navy">Demande envoyée</h3>
-            <p className="mt-3 max-w-md text-muted-foreground">Votre demande est enregistrée et WhatsApp s'est ouvert avec votre message pré-rempli. Notre équipe vous répond sous 30 min en jours ouvrés.</p>
+          <div
+            className="flex flex-col items-center py-12 text-center"
+            role="status"
+            aria-live="polite"
+          >
+            <span className="grid h-20 w-20 place-items-center rounded-full bg-success/15 text-success">
+              <CheckCircle2 className="h-10 w-10" />
+            </span>
+            <h3 className="mt-6 text-3xl font-extrabold text-navy">
+              {saved ? "Demande enregistrée" : "Message prêt dans WhatsApp"}
+            </h3>
+            <p className="mt-3 max-w-md text-muted-foreground">
+              {saved
+                ? `Votre demande est enregistrée. ${whatsappOpened ? "WhatsApp s'est ouvert avec votre message pré-rempli." : "Ouvrez WhatsApp avec le bouton ci-dessous pour envoyer votre message."} Notre équipe vous répond sous 30 min en jours ouvrés.`
+                : `L'enregistrement en ligne n'a pas abouti. ${whatsappOpened ? "WhatsApp s'est ouvert avec votre message pré-rempli." : "Ouvrez WhatsApp avec le bouton ci-dessous."} Envoyez le message pour transmettre votre demande à notre équipe.`}
+            </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href={lastUrl} target="_blank" rel="noreferrer" className={btn({ variant: "whatsapp" })}><Send className="h-4 w-4" />Rouvrir WhatsApp</a>
-              <button onClick={() => select(kind)} className={btn({ variant: "outline" })}>Nouvelle demande</button>
+              <a
+                href={lastUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={btn({ variant: "whatsapp" })}
+              >
+                <Send className="h-4 w-4" />
+                Ouvrir WhatsApp
+              </a>
+              <button onClick={() => select(kind)} className={btn({ variant: "outline" })}>
+                Nouvelle demande
+              </button>
             </div>
           </div>
         ) : (

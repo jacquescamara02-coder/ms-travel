@@ -137,12 +137,14 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    min-width: 320px;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -150,6 +152,13 @@
   }
   a, button, [role="button"], select, summary, label[for] {
     cursor: pointer;
+  }
+  img {
+    max-width: 100%;
+  }
+  ::selection {
+    color: var(--navy-foreground);
+    background: var(--brand-petrol);
   }
   :focus-visible {
     outline: 2px solid var(--ring);
@@ -271,6 +280,7 @@
   .journey-group { gap: 16px; padding-right: 16px; }
   .journey-cell { width: 44vw; }
   .journey-card figcaption { font-size: 10px; }
+  .journey-stage[data-static="true"] .journey-group { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }
 .journey-stage[data-static="true"] { padding: 32px 24px; }
 .journey-stage[data-static="true"] .journey-row { overflow: visible; -webkit-mask-image: none; mask-image: none; }
