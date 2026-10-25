@@ -100,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "M-S TRAVEL — Agence de voyage à Ouagadougou" },
       { name: "description", content: "Billets d'avion, visas tourisme, Hadj & Omra et hôtels depuis Ouagadougou, Burkina Faso." },
       { name: "author", content: "M-S TRAVEL" },
-      { name: "theme-color", content: "#0A1330" },
+      { name: "theme-color", content: "#06384A" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

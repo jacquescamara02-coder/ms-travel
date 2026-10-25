@@ -94,15 +94,15 @@ export function Header() {
           <Socials />
         </div>
       </div>
-      <div className={cn("transition-all duration-300", scrolled ? "bg-navy shadow-soft border-b border-gold/20" : "bg-navy/95")}>
+      <div className={cn("border-b border-border/70 backdrop-blur-xl transition-all duration-300", scrolled ? "bg-background/95 shadow-soft" : "bg-background/90")}>
         <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-6" aria-label="Navigation principale">
-          <Link to="/" aria-label="M-S TRAVEL — Accueil"><Logo /></Link>
+          <Link to="/" aria-label="M-S TRAVEL — Accueil"><Logo light={false} /></Link>
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV.map((n) => (
               <li key={n.to}>
-                <Link to={n.to} aria-current={isActive(n.to) ? "page" : undefined} className={cn("relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200", isActive(n.to) ? "text-gold" : "text-navy-foreground/85 hover:text-navy-foreground")}>
+                <Link to={n.to} aria-current={isActive(n.to) ? "page" : undefined} className={cn("relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200", isActive(n.to) ? "text-brand-red" : "text-navy/75 hover:text-navy")}>
                   {n.label}
-                  {isActive(n.to) && <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-gold" />}
+                  {isActive(n.to) && <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-brand-red" />}
                 </Link>
               </li>
             ))}
@@ -112,7 +112,7 @@ export function Header() {
               <Plane className="h-4 w-4 sm:hidden" />
               <span className="sr-only sm:not-sr-only">Réserver</span>
             </Link>
-            <button ref={menuButtonRef} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full glass-light text-navy-foreground lg:hidden" aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-navigation">
+            <button ref={menuButtonRef} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-full border border-border bg-white text-navy lg:hidden" aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-navigation">
               <Menu className="h-5 w-5" />
             </button>
           </div>

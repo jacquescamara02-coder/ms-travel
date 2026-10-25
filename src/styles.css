@@ -122,11 +122,11 @@
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  --gradient-night: linear-gradient(180deg, oklch(0.22 0.04 228 / 0.42), oklch(0.22 0.04 228 / 0.38) 40%, oklch(0.22 0.04 228 / 0.80));
+  --gradient-night: linear-gradient(180deg, oklch(0.18 0.045 225 / 0.18), oklch(0.18 0.045 225 / 0.34) 48%, oklch(0.18 0.045 225 / 0.84));
   --gradient-gold: linear-gradient(120deg, var(--gold-soft), var(--brand-sky));
   --gradient-heading: linear-gradient(120deg, var(--brand-petrol), var(--brand-red));
-  --gradient-navy: linear-gradient(135deg, var(--brand-petrol-deep), var(--brand-ink) 70%);
-  --shadow-soft: 0 20px 50px -24px oklch(0.32 0.055 228 / 0.35);
+  --gradient-navy: linear-gradient(135deg, #0c566b, var(--brand-ink) 72%);
+  --shadow-soft: 0 22px 54px -30px oklch(0.32 0.055 228 / 0.38);
   --shadow-gold: 0 18px 40px -16px oklch(0.70 0.13 228 / 0.45);
   --shadow-cta: 0 14px 30px -12px oklch(0.59 0.20 15 / 0.5);
 }
@@ -185,8 +185,7 @@
   background-image: var(--gradient-night);
 }
 @utility bg-night-gradient {
-  /* Fond d'origine de la section Destinations (Nuit d'Harmattan), conservé à la demande du client */
-  background: radial-gradient(120% 90% at 10% 0%, oklch(0.32 0.11 268) 0%, oklch(0.2 0.06 268) 55%, oklch(0.15 0.05 268) 100%);
+  background: radial-gradient(120% 90% at 10% 0%, #17617a 0%, #0b4659 52%, #06384a 100%);
 }
 @utility bg-navy-gradient {
   background: var(--gradient-navy);
@@ -300,11 +299,11 @@
   --orbit-accent: var(--brand-red);
   --shutter-accent: var(--gold);
 }
-button, .orbit-border-btn {
+.orbit-border-btn {
   position: relative;
   isolation: isolate;
 }
-button::before, .orbit-border-btn::before {
+.orbit-border-btn::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -319,8 +318,8 @@ button::before, .orbit-border-btn::before {
   pointer-events: none;
   animation: orbit-border 3.5s linear infinite;
 }
-button:hover::before, .orbit-border-btn:hover::before { animation-duration: 1.8s; }
-button:disabled::before, .orbit-border-btn[aria-disabled="true"]::before { animation: none; opacity: 0; }
+ .orbit-border-btn:hover::before { animation-duration: 1.8s; }
+ .orbit-border-btn[aria-disabled="true"]::before { animation: none; opacity: 0; }
 @keyframes orbit-border { to { --orbit-angle: 360deg; } }
 .letter-swing-text { letter-spacing: 0; overflow-wrap: anywhere; }
 .letter-swing-word { display: inline-block; max-width: 100%; }
@@ -336,6 +335,54 @@ button:disabled::before, .orbit-border-btn[aria-disabled="true"]::before { anima
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  button::before, .orbit-border-btn::before { animation: none; }
+  .orbit-border-btn::before { animation: none; }
   .letter-swing-char { transform: none !important; opacity: 1 !important; }
+}
+
+/* M-S TRAVEL's shared visual system: airy pages, clear surfaces and restrained motion. */
+.travel-hero {
+  min-height: min(900px, 100svh);
+}
+.travel-hero > div > img {
+  object-position: center 54%;
+}
+.travel-hero .reveal {
+  transition-duration: 680ms;
+}
+.home-trip-card {
+  animation: card-arrive 700ms 120ms both cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.service-card {
+  box-shadow: 0 12px 34px -28px oklch(0.32 0.055 228 / 0.24);
+}
+.destination-tile {
+  isolation: isolate;
+}
+.destination-scrim {
+  z-index: 1;
+  background: linear-gradient(180deg, oklch(0.16 0.04 228 / 0.04) 20%, oklch(0.16 0.04 228 / 0.2) 55%, oklch(0.16 0.04 228 / 0.86) 100%);
+}
+.destination-tile > span:not(.destination-scrim) {
+  z-index: 2;
+}
+.page-hero {
+  isolation: isolate;
+}
+.page-hero > img {
+  object-position: center 48%;
+}
+@keyframes card-arrive {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 640px) {
+  .travel-hero {
+    min-height: 0;
+  }
+  .travel-hero > div > img {
+    object-position: 58% center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-trip-card { animation: none; }
 }

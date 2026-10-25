@@ -18,24 +18,25 @@ export function PageHero({ pageKey, image: baseImage, badge: baseBadge, title: b
   const title = o.title ? <Marked text={o.title} /> : baseTitle;
   const text = o.text || baseText;
   return (
-    <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
+    <section className="page-hero relative isolate flex min-h-[560px] items-center overflow-hidden bg-navy pb-16 pt-36 text-navy-foreground md:min-h-[680px] md:pb-20 md:pt-40">
       <img src={image} alt="" className={`absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns ${imageClass}`} />
       <div className={`absolute inset-0 -z-10 ${overlayClass}`} />
       <div className="grain absolute inset-0 -z-10" />
-      {scrim && <div className="absolute inset-x-0 bottom-0 -z-10 h-4/5 bg-gradient-to-t from-navy via-navy/85 to-transparent" />}
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,35,48,.88)_0%,rgba(4,49,63,.62)_55%,rgba(4,49,63,.12)_100%)]" />
+      {scrim && <div className="absolute inset-x-0 bottom-0 -z-10 h-4/5 bg-gradient-to-t from-navy/75 via-navy/35 to-transparent" />}
       <div className="mx-auto w-full max-w-7xl px-6">
         <PageBack />
         <Reveal>
-          <span className="eyebrow inline-flex items-center gap-2 rounded-full bg-navy/70 px-4 py-2 text-gold backdrop-blur-md">{badge}</span>
+          <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sky-200 backdrop-blur-md">{badge}</span>
         </Reveal>
         <Reveal delay={100}>
-          <AnimatedHeading as="h1" className="mt-6 max-w-4xl text-5xl font-extrabold leading-[0.98] md:text-7xl">{title}</AnimatedHeading>
+          <AnimatedHeading as="h1" className="mt-6 max-w-4xl text-[clamp(3rem,7vw,5.5rem)] font-extrabold leading-[.96] tracking-[-.04em]">{title}</AnimatedHeading>
         </Reveal>
         <Reveal delay={200}>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-foreground/80">{text}</p>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-navy-foreground/80 md:text-lg">{text}</p>
         </Reveal>
-        {children && <Reveal delay={300} className="mt-9 flex flex-wrap gap-3">{children}</Reveal>}
-        {bottom && <Reveal delay={400} className="mt-14">{bottom}</Reveal>}
+        {children && <Reveal delay={300} className="mt-8 flex flex-wrap gap-3">{children}</Reveal>}
+        {bottom && <Reveal delay={400} className="mt-10">{bottom}</Reveal>}
       </div>
     </section>
   );

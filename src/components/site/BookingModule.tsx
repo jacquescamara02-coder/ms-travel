@@ -121,9 +121,9 @@ function Fieldset({ step, title, children }: { step: string; title: string; chil
   );
 }
 
-export function BookingModule() {
-  const [kind, setKind] = useState<Kind>("billet");
-  const [values, setValues] = useState<Values>(DEFAULTS.billet);
+export function BookingModule({ initialKind = "billet" }: { initialKind?: Kind }) {
+  const [kind, setKind] = useState<Kind>(initialKind);
+  const [values, setValues] = useState<Values>(DEFAULTS[initialKind]);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
   const [saved, setSaved] = useState<boolean | null>(null);

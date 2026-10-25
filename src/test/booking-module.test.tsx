@@ -57,6 +57,16 @@ describe("BookingModule", () => {
     vi.clearAllMocks();
   });
 
+  it("opens on the requested service from the home-page trip planner", () => {
+    render(<BookingModule initialKind="visa" />);
+
+    expect(screen.getByRole("form", { name: "Demande de visa" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Demande de visa/ })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+  });
+
   it("confirms when a request is saved and opens the prefilled WhatsApp message", async () => {
     const popup = { location: { href: "" } };
     vi.spyOn(window, "open").mockReturnValue(popup as unknown as Window);
