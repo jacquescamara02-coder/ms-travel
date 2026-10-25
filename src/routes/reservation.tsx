@@ -17,6 +17,9 @@ import heroWing from "@/assets/hero-wing.jpg";
 import { PageBack } from "@/components/site/PageBack";
 
 export const Route = createFileRoute("/reservation")({
+  validateSearch: (search: Record<string, unknown>): { kind: "billet" | "hotel" | "visa" } => ({
+    kind: search.kind === "visa" || search.kind === "hotel" ? search.kind : "billet",
+  }),
   head: () => ({ meta: [
     { title: "Réservation — Billet, hôtel ou visa | M-S TRAVEL Ouagadougou" },
     { name: "description", content: "Demandez votre billet d'avion, votre hôtel ou votre visa tourisme en ligne. Réponse sous 30 min en jours ouvrés via WhatsApp." },
@@ -29,6 +32,7 @@ export const Route = createFileRoute("/reservation")({
 });
 
 function ReservationPage() {
+  const { kind } = Route.useSearch();
   return (
     <>
       <div className="bg-navy-gradient grain h-28" aria-hidden />
@@ -60,7 +64,7 @@ function ReservationPage() {
                 </div>
               </div>
             </div>
-            <Reveal delay={150}><BookingModule /></Reveal>
+            <Reveal delay={150}><BookingModule initialKind={kind} /></Reveal>
           </div>
         </div>
       </section>
