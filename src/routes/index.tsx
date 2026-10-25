@@ -71,7 +71,7 @@ function HeroSlider() {
             </AnimatedHeading>
           </Reveal>
           <Reveal delay={260}>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-foreground/80">{hero.text || "Billets d"avion au meilleur prix, visas touristiques rapides et accompagnement complet pour votre Hadj — tout depuis Ouagadougou."}</p>
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-foreground/80">{hero.text || "Billets d'avion au meilleur prix, visas touristiques rapides et accompagnement complet pour votre Hadj — tout depuis Ouagadougou."}</p>
           </Reveal>
           <Reveal delay={340} className="mt-10 flex flex-wrap gap-3">
             <Link to="/reservation" className={btn({ variant: "cta", size: "lg" })}>Réserver maintenant <ArrowRight className="h-5 w-5" /></Link>
