@@ -44,7 +44,7 @@ function HeroSlider() {
     return () => clearTimeout(t);
   }, [i, paused, go]);
   const s = HERO_SLIDES[i];
-  const hero = PAGE_HEROES.accueil ?? {};
+  const hero = PAGE_HEROES["accueil"] ?? {};
 
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-navy-foreground" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carrousel" aria-label="Destinations à la une">

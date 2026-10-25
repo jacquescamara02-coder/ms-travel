@@ -56,7 +56,7 @@ function Editor({ entry, initial, custom }: { entry: Entry; initial: unknown; cu
     setSaving(true);
     const { error } = await supabase.from("site_content").upsert({ key: entry.key, value: value as Json, updated_at: new Date().toISOString() });
     setSaving(false);
-    if (error) return toast.error("Enregistrement impossible : droits administrateur requis.");
+    if (error) { toast.error("Enregistrement impossible : droits administrateur requis."); return; }
     setDirty(false);
     toast.success("Enregistré — visible sur le site.");
     await after();
@@ -110,7 +110,7 @@ function ObjectForm({ fields, value, onChange }: { fields: Field[]; value: Item;
   );
 }
 
-function ListEditor({ fields, items, titleKey, onChange }: { fields: Field[]; items: Item[]; titleKey?: string; onChange: (v: Item[]) => void }) {
+function ListEditor({ fields, items, titleKey, onChange }: { fields: Field[]; items: Item[]; titleKey?: string | undefined; onChange: (v: Item[]) => void }) {
   const [open, setOpen] = useState<number | null>(null);
   const move = (i: number, d: number) => {
     const j = i + d;

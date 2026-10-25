@@ -35,13 +35,14 @@ function AuthPage() {
     if (mode === "forgot") {
       const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), { redirectTo: `${window.location.origin}/reset-password` });
       setBusy(false);
-      if (error) return toast.error("Envoi impossible. Réessayez.");
+      if (error) { toast.error("Envoi impossible. Réessayez."); return; }
       toast.success("Un lien de réinitialisation vous a été envoyé par e-mail.");
-      return setMode("login");
+      setMode("login");
+      return;
     }
     const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
     setBusy(false);
-    if (error) return toast.error(error.message.includes("confirmed") ? "Confirmez d'abord votre adresse via l'e-mail reçu." : "E-mail ou mot de passe incorrect.");
+    if (error) { toast.error(error.message.includes("confirmed") ? "Confirmez d'abord votre adresse via l'e-mail reçu." : "E-mail ou mot de passe incorrect."); return; }
     navigate({ to: "/admin" });
   };
 

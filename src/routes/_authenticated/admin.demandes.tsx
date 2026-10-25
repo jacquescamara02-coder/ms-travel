@@ -30,7 +30,7 @@ function Requests() {
   const del = async (table: "booking_requests" | "newsletter_subscribers", id: string) => {
     if (!confirm("Supprimer définitivement ?")) return;
     const { error } = await supabase.from(table).delete().eq("id", id);
-    if (error) return toast.error("Suppression impossible.");
+    if (error) { toast.error("Suppression impossible."); return; }
     qc.invalidateQueries({ queryKey: [table === "booking_requests" ? "admin-requests" : "admin-subs"] });
   };
 

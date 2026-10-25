@@ -1,15 +1,16 @@
+import type { Json } from "@/integrations/supabase/types";
 import { getSiteContent } from "./content.functions";
 import { applyContent } from "./content-registry";
 
-let cache: { at: number; data: Record<string, unknown> } | undefined;
+let cache: { at: number; data: Record<string, Json> } | undefined;
 const TTL = 15_000;
 
-export async function loadSiteContent(): Promise<Record<string, unknown>> {
+export async function loadSiteContent(): Promise<Record<string, Json>> {
   if (cache && Date.now() - cache.at < TTL) {
     applyContent(cache.data);
     return cache.data;
   }
-  let data: Record<string, unknown> = {};
+  let data: Record<string, Json> = {};
   try {
     data = await getSiteContent();
   } catch (e) {

@@ -1,12 +1,12 @@
 import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
-import type { Database } from "@/integrations/supabase/types";
+import type { Database, Json } from "@/integrations/supabase/types";
 
 /** Public read of admin-edited site content (key -> value). */
 export const getSiteContent = createServerFn({ method: "GET" }).handler(async () => {
   const url = process.env["SUPABASE_URL"];
   const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
-  if (!url || !key) return {} as Record<string, unknown>;
+  if (!url || !key) return {} as Record<string, Json>;
   const client = createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
     global: {
@@ -21,7 +21,7 @@ export const getSiteContent = createServerFn({ method: "GET" }).handler(async ()
   const { data, error } = await client.from("site_content").select("key, value");
   if (error) {
     console.error("site_content", error.message);
-    return {} as Record<string, unknown>;
+    return {} as Record<string, Json>;
   }
-  return Object.fromEntries((data ?? []).map((r) => [r.key, r.value])) as Record<string, unknown>;
+  return Object.fromEntries((data ?? []).map((r) => [r.key, r.value])) as Record<string, Json>;
 });
