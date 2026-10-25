@@ -31,7 +31,7 @@ function About() {
   const mapQ = encodeURIComponent("Échangeur du Nord, Nonsin, Ouagadougou, Burkina Faso");
   return (
     <>
-      <PageHero
+      <PageHero pageKey="a-propos"
         image={directeur.url}
         imageClass="object-[18%_0%] md:object-[44%_0%]"
         overlayClass="bg-night-overlay bg-navy/30"

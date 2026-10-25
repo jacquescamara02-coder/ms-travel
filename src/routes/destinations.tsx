@@ -38,7 +38,7 @@ function DestinationsPage() {
 
   return (
     <>
-      <PageHero
+      <PageHero pageKey="destinations"
         image={wing}
         badge="14 destinations disponibles"
         title={<>Explorez nos <span className="text-brand-red">Destinations</span> Visa Tourisme</>}

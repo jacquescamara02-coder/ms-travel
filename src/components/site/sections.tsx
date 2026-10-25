@@ -5,12 +5,18 @@ import { ArrowRight, Check, Loader2, Mail, Plus, Quote } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import type { BlogPost, Destination } from "@/lib/site-data";
+import { PAGE_HEROES, type BlogPost, type Destination } from "@/lib/site-data";
+import { Marked } from "./ExtraContent";
 import { cn } from "@/lib/utils";
 import { btn, Counter, Reveal, SectionHeading, Stars, Tilt } from "./primitives";
 import { PageBack } from "./PageBack";
 
-export function PageHero({ image, badge, title, text, children, bottom, imageClass = "object-center", overlayClass = "bg-night-overlay bg-navy/15", scrim = false }: { image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode; imageClass?: string; overlayClass?: string; scrim?: boolean }) {
+export function PageHero({ pageKey, image: baseImage, badge: baseBadge, title: baseTitle, text: baseText, children, bottom, imageClass = "object-center", overlayClass = "bg-night-overlay bg-navy/15", scrim = false }: { pageKey?: string; image: string; badge: string; title: ReactNode; text: string; children?: ReactNode; bottom?: ReactNode; imageClass?: string; overlayClass?: string; scrim?: boolean }) {
+  const o = (pageKey && PAGE_HEROES[pageKey]) || {};
+  const image = o.image || baseImage;
+  const badge = o.badge || baseBadge;
+  const title = o.title ? <Marked text={o.title} /> : baseTitle;
+  const text = o.text || baseText;
   return (
     <section className="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-navy pb-16 pt-40 text-navy-foreground">
       <img src={image} alt="" className={`absolute inset-0 -z-20 h-full w-full object-cover animate-kenburns ${imageClass}`} />
